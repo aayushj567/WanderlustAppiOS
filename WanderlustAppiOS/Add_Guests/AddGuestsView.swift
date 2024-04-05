@@ -9,11 +9,13 @@ import UIKit
 
 class AddGuestsView: UIView {
     var searchBar: UISearchBar!
+    var tableViewPeople: UITableView!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = .white
         setupSearchBar()
+        setupTableViewContacts()
         initConstraints()
     }
     
@@ -34,11 +36,23 @@ class AddGuestsView: UIView {
         searchBar.searchBarStyle = .minimal
     }
     
+    func setupTableViewContacts(){
+        tableViewPeople = UITableView()
+        tableViewPeople.register(AddPeopleTableViewCell.self, forCellReuseIdentifier: "addGuestPeople")
+        tableViewPeople.translatesAutoresizingMaskIntoConstraints = false
+        self.addSubview(tableViewPeople)
+    }
+    
     func initConstraints(){
         NSLayoutConstraint.activate([
             searchBar.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 8),
             searchBar.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 16),
             searchBar.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -16),
+            
+            tableViewPeople.topAnchor.constraint(equalTo: searchBar.bottomAnchor, constant: 16),
+            tableViewPeople.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            tableViewPeople.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -16),
+            tableViewPeople.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor)
         ])
     }
 }
