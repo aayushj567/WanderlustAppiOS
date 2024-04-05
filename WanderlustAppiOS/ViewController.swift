@@ -8,10 +8,17 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    let homeScreen = HomeView()
+    
+    override func loadView() {
+        view = homeScreen
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        title = "Welcome"
     }
 
     

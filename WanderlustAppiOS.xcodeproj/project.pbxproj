@@ -13,6 +13,7 @@
 		A542435E2BAE3C5800189102 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = A542435D2BAE3C5800189102 /* Base */; };
 		A54243602BAE3C5900189102 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A542435F2BAE3C5900189102 /* Assets.xcassets */; };
 		A54243632BAE3C5900189102 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = A54243622BAE3C5900189102 /* Base */; };
+		A58047342BBE32A700CA53A0 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A58047332BBE32A700CA53A0 /* HomeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		A542435F2BAE3C5900189102 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A54243622BAE3C5900189102 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A54243642BAE3C5900189102 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A58047332BBE32A700CA53A0 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 			children = (
 				A54243562BAE3C5800189102 /* AppDelegate.swift */,
 				A54243582BAE3C5800189102 /* SceneDelegate.swift */,
+				A58047332BBE32A700CA53A0 /* HomeView.swift */,
 				A542435A2BAE3C5800189102 /* ViewController.swift */,
 				A542435C2BAE3C5800189102 /* Main.storyboard */,
 				A542435F2BAE3C5900189102 /* Assets.xcassets */,
@@ -139,6 +142,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A542435B2BAE3C5800189102 /* ViewController.swift in Sources */,
+				A58047342BBE32A700CA53A0 /* HomeView.swift in Sources */,
 				A54243572BAE3C5800189102 /* AppDelegate.swift in Sources */,
 				A54243592BAE3C5800189102 /* SceneDelegate.swift in Sources */,
 			);
