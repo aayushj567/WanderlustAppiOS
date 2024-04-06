@@ -36,7 +36,7 @@ class SearchDestinationController: UIViewController {
             searchDestinationView.tableView.dataSource = self
             searchDestinationView.tableView.rowHeight = UITableView.automaticDimension
             searchDestinationView.tableView.estimatedRowHeight = 100
-        
+        searchDestinationView.nextButton.addTarget(self, action: #selector(onNextButtonTapped), for: .touchUpInside)
         
         searchDestinationView.onIconTapped = { [unowned self] index in
             // Handle the icon tap, switch views accordingly
@@ -46,6 +46,11 @@ class SearchDestinationController: UIViewController {
             // Insert logic to switch to the corresponding view
         }
         searchDestinationView.tableView.reloadData()
+    }
+    
+    @objc func onNextButtonTapped(){
+        let myPlanVC = MyPlansViewController()
+        navigationController?.pushViewController(myPlanVC, animated: true)
     }
 }
 extension SearchDestinationController: UITableViewDelegate, UITableViewDataSource{

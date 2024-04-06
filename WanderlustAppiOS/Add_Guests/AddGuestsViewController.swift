@@ -16,10 +16,16 @@ class AddGuestsViewController: UIViewController {
         addGuestView.tableViewPeople.allowsSelection = false
         addGuestView.tableViewPeople.dataSource = self
         addGuestView.tableViewPeople.delegate = self
+        addGuestView.buttonNext.addTarget(self, action: #selector(onNextButtonTapped), for: .touchUpInside)
     }
     
-
+    @objc func onNextButtonTapped(){
+        let addItenaryController = ItineraryViewController()
+        navigationController?.pushViewController(addItenaryController, animated: true)
+    }
 }
+
+
 
 extension AddGuestsViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

@@ -14,10 +14,18 @@ class ItineraryViewController: UIViewController, UITableViewDelegate, UITableVie
     let startDatePicker = UIDatePicker()
     let endDatePicker = UIDatePicker()
     var tabBarView: UIView!
+    var saveButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .white
         setupUI()
+        saveButton.addTarget(self, action: #selector(onNextButtonTapped), for: .touchUpInside)
+    }
+    
+    @objc func onNextButtonTapped(){
+        let searchDestController = SearchDestinationController()
+        navigationController?.pushViewController(searchDestController, animated: true)
     }
     
     func setupUI() {
@@ -68,7 +76,7 @@ class ItineraryViewController: UIViewController, UITableViewDelegate, UITableVie
         estimateBudgetButton.layer.cornerRadius = 10
 
         // Save Button Setup
-        let saveButton = UIButton(type: .system)
+        saveButton = UIButton(type: .system)
         saveButton.setTitle("Save", for: .normal)
         saveButton.setTitleColor(.white, for: .normal) // Set title color
         saveButton.backgroundColor = .systemBlue
