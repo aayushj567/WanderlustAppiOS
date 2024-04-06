@@ -40,6 +40,11 @@ class SearchDestinationController: UIViewController {
         
         searchDestinationView.onIconTapped = { [unowned self] index in
             // Handle the icon tap, switch views accordingly
+            if(index == 2)
+            {
+                let chatView = ChatViewController()
+                navigationController?.pushViewController(chatView, animated: true)
+            }
             print("Icon at index \(index) was tapped.")
             
             

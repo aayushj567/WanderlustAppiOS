@@ -1,29 +1,31 @@
-//
-//  ChatViewController.swift
-//  WanderlustAppiOS
-//
-//  Created by Sai Sriker Reddy Vootukuri on 4/5/24.
-//
-
 import UIKit
-
+ 
 class ChatViewController: UIViewController {
-
+ 
+    var chatView: ChatView!
+ 
+    override func loadView() {
+        chatView = ChatView()
+        //view.backgroundColor = .white
+        view = chatView
+    }
+ 
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Chat Feature(To be implemented when it is integrated with Firebase)"
-        // Do any additional setup after loading the view.
+        view.backgroundColor = .white
+        chatView.sendButton.addTarget(self, action: #selector(sendMessage), for: .touchUpInside)
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+ 
+    @objc func sendMessage() {
+        guard let messageText = chatView.messageTextField.text, !messageText.isEmpty else {
+            print("No message to send.")
+            return
+        }
+        // Here, you'd typically integrate with your chat backend to send the message
+        print("Message sent: \(messageText)")
+        // Optionally clear the message text field after sending
+        chatView.messageTextField.text = ""
     }
-    */
-
 }
+
+
