@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9C0795002BC0C33E00AC46D5 /* DestinationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0794FC2BC0C33E00AC46D5 /* DestinationTableViewCell.swift */; };
+		9C0795012BC0C33E00AC46D5 /* SearchDestinationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0794FD2BC0C33E00AC46D5 /* SearchDestinationController.swift */; };
+		9C0795022BC0C33E00AC46D5 /* SearchDestinationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0794FE2BC0C33E00AC46D5 /* SearchDestinationView.swift */; };
+		9C07950B2BC0C3A600AC46D5 /* ItineraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C07950A2BC0C3A600AC46D5 /* ItineraryViewController.swift */; };
 		A54243572BAE3C5800189102 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54243562BAE3C5800189102 /* AppDelegate.swift */; };
 		A54243592BAE3C5800189102 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54243582BAE3C5800189102 /* SceneDelegate.swift */; };
 		A542435B2BAE3C5800189102 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A542435A2BAE3C5800189102 /* ViewController.swift */; };
@@ -17,6 +21,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9C0794FC2BC0C33E00AC46D5 /* DestinationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DestinationTableViewCell.swift; sourceTree = "<group>"; };
+		9C0794FD2BC0C33E00AC46D5 /* SearchDestinationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchDestinationController.swift; sourceTree = "<group>"; };
+		9C0794FE2BC0C33E00AC46D5 /* SearchDestinationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchDestinationView.swift; sourceTree = "<group>"; };
+		9C07950A2BC0C3A600AC46D5 /* ItineraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItineraryViewController.swift; sourceTree = "<group>"; };
 		A54243532BAE3C5800189102 /* WanderlustAppiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WanderlustAppiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A54243562BAE3C5800189102 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A54243582BAE3C5800189102 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -39,6 +47,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9C0794FF2BC0C33E00AC46D5 /* Search Destination */ = {
+			isa = PBXGroup;
+			children = (
+				9C0794FC2BC0C33E00AC46D5 /* DestinationTableViewCell.swift */,
+				9C0794FD2BC0C33E00AC46D5 /* SearchDestinationController.swift */,
+				9C0794FE2BC0C33E00AC46D5 /* SearchDestinationView.swift */,
+			);
+			path = "Search Destination";
+			sourceTree = "<group>";
+		};
+		9C07950C2BC0C3B500AC46D5 /* Itinerary Screen */ = {
+			isa = PBXGroup;
+			children = (
+				9C07950A2BC0C3A600AC46D5 /* ItineraryViewController.swift */,
+			);
+			path = "Itinerary Screen";
+			sourceTree = "<group>";
+		};
 		A542434A2BAE3C5700189102 = {
 			isa = PBXGroup;
 			children = (
@@ -58,6 +84,8 @@
 		A54243552BAE3C5800189102 /* WanderlustAppiOS */ = {
 			isa = PBXGroup;
 			children = (
+				9C07950C2BC0C3B500AC46D5 /* Itinerary Screen */,
+				9C0794FF2BC0C33E00AC46D5 /* Search Destination */,
 				A54243562BAE3C5800189102 /* AppDelegate.swift */,
 				A54243582BAE3C5800189102 /* SceneDelegate.swift */,
 				A58047332BBE32A700CA53A0 /* HomeView.swift */,
@@ -141,9 +169,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C0795012BC0C33E00AC46D5 /* SearchDestinationController.swift in Sources */,
+				9C0795022BC0C33E00AC46D5 /* SearchDestinationView.swift in Sources */,
 				A542435B2BAE3C5800189102 /* ViewController.swift in Sources */,
 				A58047342BBE32A700CA53A0 /* HomeView.swift in Sources */,
 				A54243572BAE3C5800189102 /* AppDelegate.swift in Sources */,
+				9C0795002BC0C33E00AC46D5 /* DestinationTableViewCell.swift in Sources */,
+				9C07950B2BC0C3A600AC46D5 /* ItineraryViewController.swift in Sources */,
 				A54243592BAE3C5800189102 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
