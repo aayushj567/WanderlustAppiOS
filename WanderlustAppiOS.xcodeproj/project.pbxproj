@@ -14,6 +14,9 @@
 		9C0795012BC0C33E00AC46D5 /* SearchDestinationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0794FD2BC0C33E00AC46D5 /* SearchDestinationController.swift */; };
 		9C0795022BC0C33E00AC46D5 /* SearchDestinationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0794FE2BC0C33E00AC46D5 /* SearchDestinationView.swift */; };
 		9C07950B2BC0C3A600AC46D5 /* ItineraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C07950A2BC0C3A600AC46D5 /* ItineraryViewController.swift */; };
+		9C0795112BC0CCB900AC46D5 /* RegistrationControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C07950D2BC0CCB900AC46D5 /* RegistrationControllerViewController.swift */; };
+		9C0795122BC0CCB900AC46D5 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C07950E2BC0CCB900AC46D5 /* RegistrationView.swift */; };
+		9C0795142BC0CCB900AC46D5 /* LoginScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0795102BC0CCB900AC46D5 /* LoginScreenView.swift */; };
 		A54243572BAE3C5800189102 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54243562BAE3C5800189102 /* AppDelegate.swift */; };
 		A54243592BAE3C5800189102 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54243582BAE3C5800189102 /* SceneDelegate.swift */; };
 		A542435B2BAE3C5800189102 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A542435A2BAE3C5800189102 /* ViewController.swift */; };
@@ -31,6 +34,9 @@
 		9C0794FD2BC0C33E00AC46D5 /* SearchDestinationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchDestinationController.swift; sourceTree = "<group>"; };
 		9C0794FE2BC0C33E00AC46D5 /* SearchDestinationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchDestinationView.swift; sourceTree = "<group>"; };
 		9C07950A2BC0C3A600AC46D5 /* ItineraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItineraryViewController.swift; sourceTree = "<group>"; };
+		9C07950D2BC0CCB900AC46D5 /* RegistrationControllerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationControllerViewController.swift; sourceTree = "<group>"; };
+		9C07950E2BC0CCB900AC46D5 /* RegistrationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
+		9C0795102BC0CCB900AC46D5 /* LoginScreenView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginScreenView.swift; sourceTree = "<group>"; };
 		A54243532BAE3C5800189102 /* WanderlustAppiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WanderlustAppiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A54243562BAE3C5800189102 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A54243582BAE3C5800189102 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -81,6 +87,23 @@
 			path = "Itinerary Screen";
 			sourceTree = "<group>";
 		};
+		9C0795152BC0CCC300AC46D5 /* Registration Screen */ = {
+			isa = PBXGroup;
+			children = (
+				9C07950D2BC0CCB900AC46D5 /* RegistrationControllerViewController.swift */,
+				9C07950E2BC0CCB900AC46D5 /* RegistrationView.swift */,
+			);
+			path = "Registration Screen";
+			sourceTree = "<group>";
+		};
+		9C0795162BC0CCD100AC46D5 /* Login Screen */ = {
+			isa = PBXGroup;
+			children = (
+				9C0795102BC0CCB900AC46D5 /* LoginScreenView.swift */,
+			);
+			path = "Login Screen";
+			sourceTree = "<group>";
+		};
 		A542434A2BAE3C5700189102 = {
 			isa = PBXGroup;
 			children = (
@@ -100,6 +123,8 @@
 		A54243552BAE3C5800189102 /* WanderlustAppiOS */ = {
 			isa = PBXGroup;
 			children = (
+				9C0795162BC0CCD100AC46D5 /* Login Screen */,
+				9C0795152BC0CCC300AC46D5 /* Registration Screen */,
 				57020F3F2BC0CB37009D9369 /* Add_Guests */,
 				9C07950C2BC0C3B500AC46D5 /* Itinerary Screen */,
 				9C0794FF2BC0C33E00AC46D5 /* Search Destination */,
@@ -189,10 +214,13 @@
 				9C0795012BC0C33E00AC46D5 /* SearchDestinationController.swift in Sources */,
 				57020F412BC0CB37009D9369 /* AddGuestsViewController.swift in Sources */,
 				9C0795022BC0C33E00AC46D5 /* SearchDestinationView.swift in Sources */,
+				9C0795122BC0CCB900AC46D5 /* RegistrationView.swift in Sources */,
 				A542435B2BAE3C5800189102 /* ViewController.swift in Sources */,
 				A58047342BBE32A700CA53A0 /* HomeView.swift in Sources */,
 				A54243572BAE3C5800189102 /* AppDelegate.swift in Sources */,
 				9C0795002BC0C33E00AC46D5 /* DestinationTableViewCell.swift in Sources */,
+				9C0795112BC0CCB900AC46D5 /* RegistrationControllerViewController.swift in Sources */,
+				9C0795142BC0CCB900AC46D5 /* LoginScreenView.swift in Sources */,
 				9C07950B2BC0C3A600AC46D5 /* ItineraryViewController.swift in Sources */,
 				A54243592BAE3C5800189102 /* SceneDelegate.swift in Sources */,
 				57020F402BC0CB37009D9369 /* AddGuestsView.swift in Sources */,
