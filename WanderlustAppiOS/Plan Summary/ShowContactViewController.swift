@@ -10,7 +10,7 @@ import UIKit
 class ShowContactViewController: UIViewController {
     
     let displayPlanSummary = ShowContactView()
-    var delegate:ViewController!
+    var delegate:MyPlansViewController!
     
     override func loadView() {
         view = displayPlanSummary

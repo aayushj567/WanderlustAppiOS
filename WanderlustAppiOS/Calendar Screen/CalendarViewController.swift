@@ -48,11 +48,8 @@ class CalendarViewController: UIViewController{
 
     
     @objc func onNextButtonTapped(){
-        print("Printing selected dates....")
-        print("")
-        for date in self.selectedDates{
-            print(date)
-        }
+        let addGuestsCOntroller = AddGuestsViewController()
+        navigationController?.pushViewController(addGuestsCOntroller, animated: true)
     }
 }
 

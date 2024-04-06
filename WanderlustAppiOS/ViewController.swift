@@ -44,23 +44,29 @@ class ViewController: UIViewController {
     
     @objc func onLoginTapped(){
        
-        guard let emailText = loginScreen.textFieldEmail.text, !emailText.isEmpty,
-              let passwordText = loginScreen.textFieldPassword.text, !passwordText.isEmpty
-        else {
-            showAlert(message: "Please fill out all required fields.")
-            return
-        }
-        
-        guard isValidEmail(emailText) else {
-            showAlert(message: "Invalid email. Please enter a valid email address.")
-            return
-        }
+//        guard let emailText = loginScreen.textFieldEmail.text, !emailText.isEmpty,
+//              let passwordText = loginScreen.textFieldPassword.text, !passwordText.isEmpty
+//        else {
+//            showAlert(message: "Please fill out all required fields.")
+//            return
+//        }
+//        
+//        guard isValidEmail(emailText) else {
+//            showAlert(message: "Invalid email. Please enter a valid email address.")
+//            return
+//        }
         
         //let user = User(id:"", name: "", email: emailText, password: passwordText)
         
         //loginExistingUser(user:user)
         //let mainScreen = NoteViewController()
         //navigationController?.pushViewController(mainScreen, animated: true)
+        let mainScreen = CalendarViewController()
+        //Setting up the contact object of display screen.
+        //Instead of sending the variables used a struct named Contact to send the details.
+        
+      
+        navigationController?.pushViewController(mainScreen, animated: true)
         
     }
     
