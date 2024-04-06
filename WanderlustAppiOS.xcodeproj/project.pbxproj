@@ -29,6 +29,18 @@
 		A542435E2BAE3C5800189102 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = A542435D2BAE3C5800189102 /* Base */; };
 		A54243602BAE3C5900189102 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A542435F2BAE3C5900189102 /* Assets.xcassets */; };
 		A54243632BAE3C5900189102 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = A54243622BAE3C5900189102 /* Base */; };
+		A56C26392BC0D65B0015B87A /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56C26282BC0D65B0015B87A /* CalendarView.swift */; };
+		A56C263A2BC0D65B0015B87A /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56C26292BC0D65B0015B87A /* CalendarViewController.swift */; };
+		A56C263B2BC0D65B0015B87A /* ChatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56C262B2BC0D65B0015B87A /* ChatsViewController.swift */; };
+		A56C263C2BC0D65B0015B87A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56C262C2BC0D65B0015B87A /* HomeViewController.swift */; };
+		A56C263D2BC0D65B0015B87A /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56C262D2BC0D65B0015B87A /* ProfileViewController.swift */; };
+		A56C263E2BC0D65B0015B87A /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56C262F2BC0D65B0015B87A /* HomeView.swift */; };
+		A56C263F2BC0D65B0015B87A /* PlansTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56C26302BC0D65B0015B87A /* PlansTableViewCell.swift */; };
+		A56C26402BC0D65B0015B87A /* ChatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56C26322BC0D65B0015B87A /* ChatsView.swift */; };
+		A56C26412BC0D65B0015B87A /* PlansTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56C26332BC0D65B0015B87A /* PlansTableViewCell.swift */; };
+		A56C26422BC0D65B0015B87A /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56C26342BC0D65B0015B87A /* ProfileView.swift */; };
+		A56C26432BC0D65B0015B87A /* ContactInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56C26362BC0D65B0015B87A /* ContactInfo.swift */; };
+		A56C26442BC0D65B0015B87A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56C26372BC0D65B0015B87A /* ViewController.swift */; };
 		A58047342BBE32A700CA53A0 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A58047332BBE32A700CA53A0 /* HomeView.swift */; };
 /* End PBXBuildFile section */
 
@@ -57,6 +69,18 @@
 		A542435F2BAE3C5900189102 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A54243622BAE3C5900189102 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A54243642BAE3C5900189102 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A56C26282BC0D65B0015B87A /* CalendarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
+		A56C26292BC0D65B0015B87A /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
+		A56C262B2BC0D65B0015B87A /* ChatsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatsViewController.swift; sourceTree = "<group>"; };
+		A56C262C2BC0D65B0015B87A /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		A56C262D2BC0D65B0015B87A /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		A56C262F2BC0D65B0015B87A /* HomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		A56C26302BC0D65B0015B87A /* PlansTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlansTableViewCell.swift; sourceTree = "<group>"; };
+		A56C26322BC0D65B0015B87A /* ChatsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatsView.swift; sourceTree = "<group>"; };
+		A56C26332BC0D65B0015B87A /* PlansTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlansTableViewCell.swift; sourceTree = "<group>"; };
+		A56C26342BC0D65B0015B87A /* ProfileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		A56C26362BC0D65B0015B87A /* ContactInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactInfo.swift; sourceTree = "<group>"; };
+		A56C26372BC0D65B0015B87A /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		A58047332BBE32A700CA53A0 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -162,6 +186,8 @@
 		A54243552BAE3C5800189102 /* WanderlustAppiOS */ = {
 			isa = PBXGroup;
 			children = (
+				A56C262A2BC0D65B0015B87A /* Calendar Screen */,
+				A56C26382BC0D65B0015B87A /* Main Screen View */,
 				415699D02BC0D18F005F9DE7 /* Data models */,
 				415699CB2BC0D18F005F9DE7 /* My Plans */,
 				415699CE2BC0D18F005F9DE7 /* Plan Summary */,
@@ -180,6 +206,56 @@
 				A54243642BAE3C5900189102 /* Info.plist */,
 			);
 			path = WanderlustAppiOS;
+			sourceTree = "<group>";
+		};
+		A56C262A2BC0D65B0015B87A /* Calendar Screen */ = {
+			isa = PBXGroup;
+			children = (
+				A56C26282BC0D65B0015B87A /* CalendarView.swift */,
+				A56C26292BC0D65B0015B87A /* CalendarViewController.swift */,
+			);
+			path = "Calendar Screen";
+			sourceTree = "<group>";
+		};
+		A56C262E2BC0D65B0015B87A /* Tab View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				A56C262B2BC0D65B0015B87A /* ChatsViewController.swift */,
+				A56C262C2BC0D65B0015B87A /* HomeViewController.swift */,
+				A56C262D2BC0D65B0015B87A /* ProfileViewController.swift */,
+			);
+			path = "Tab View Controllers";
+			sourceTree = "<group>";
+		};
+		A56C26312BC0D65B0015B87A /* Home View */ = {
+			isa = PBXGroup;
+			children = (
+				A56C262F2BC0D65B0015B87A /* HomeView.swift */,
+				A56C26302BC0D65B0015B87A /* PlansTableViewCell.swift */,
+			);
+			path = "Home View";
+			sourceTree = "<group>";
+		};
+		A56C26352BC0D65B0015B87A /* Tabs Views */ = {
+			isa = PBXGroup;
+			children = (
+				A56C26312BC0D65B0015B87A /* Home View */,
+				A56C26322BC0D65B0015B87A /* ChatsView.swift */,
+				A56C26332BC0D65B0015B87A /* PlansTableViewCell.swift */,
+				A56C26342BC0D65B0015B87A /* ProfileView.swift */,
+			);
+			path = "Tabs Views";
+			sourceTree = "<group>";
+		};
+		A56C26382BC0D65B0015B87A /* Main Screen View */ = {
+			isa = PBXGroup;
+			children = (
+				A56C262E2BC0D65B0015B87A /* Tab View Controllers */,
+				A56C26352BC0D65B0015B87A /* Tabs Views */,
+				A56C26362BC0D65B0015B87A /* ContactInfo.swift */,
+				A56C26372BC0D65B0015B87A /* ViewController.swift */,
+			);
+			path = "Main Screen View";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -253,24 +329,36 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A56C26402BC0D65B0015B87A /* ChatsView.swift in Sources */,
 				9C0795012BC0C33E00AC46D5 /* SearchDestinationController.swift in Sources */,
 				57020F412BC0CB37009D9369 /* AddGuestsViewController.swift in Sources */,
 				9C0795022BC0C33E00AC46D5 /* SearchDestinationView.swift in Sources */,
 				415699D12BC0D18F005F9DE7 /* FirstScreenView.swift in Sources */,
 				415699D62BC0D18F005F9DE7 /* Plan.swift in Sources */,
+				A56C263F2BC0D65B0015B87A /* PlansTableViewCell.swift in Sources */,
+				A56C263B2BC0D65B0015B87A /* ChatsViewController.swift in Sources */,
 				9C0795122BC0CCB900AC46D5 /* RegistrationView.swift in Sources */,
 				A542435B2BAE3C5800189102 /* ViewController.swift in Sources */,
 				A58047342BBE32A700CA53A0 /* HomeView.swift in Sources */,
+				A56C26392BC0D65B0015B87A /* CalendarView.swift in Sources */,
 				A54243572BAE3C5800189102 /* AppDelegate.swift in Sources */,
+				A56C263C2BC0D65B0015B87A /* HomeViewController.swift in Sources */,
+				A56C26442BC0D65B0015B87A /* ViewController.swift in Sources */,
 				415699D22BC0D18F005F9DE7 /* TableViewContactsCell.swift in Sources */,
 				415699D32BC0D18F005F9DE7 /* ViewController.swift in Sources */,
 				9C0795002BC0C33E00AC46D5 /* DestinationTableViewCell.swift in Sources */,
+				A56C263E2BC0D65B0015B87A /* HomeView.swift in Sources */,
 				9C0795112BC0CCB900AC46D5 /* RegistrationControllerViewController.swift in Sources */,
+				A56C263A2BC0D65B0015B87A /* CalendarViewController.swift in Sources */,
 				9C0795142BC0CCB900AC46D5 /* LoginScreenView.swift in Sources */,
 				9C07950B2BC0C3A600AC46D5 /* ItineraryViewController.swift in Sources */,
+				A56C26422BC0D65B0015B87A /* ProfileView.swift in Sources */,
+				A56C26412BC0D65B0015B87A /* PlansTableViewCell.swift in Sources */,
 				415699D52BC0D18F005F9DE7 /* ShowContactViewController.swift in Sources */,
+				A56C26432BC0D65B0015B87A /* ContactInfo.swift in Sources */,
 				A54243592BAE3C5800189102 /* SceneDelegate.swift in Sources */,
 				57020F402BC0CB37009D9369 /* AddGuestsView.swift in Sources */,
+				A56C263D2BC0D65B0015B87A /* ProfileViewController.swift in Sources */,
 				415699D42BC0D18F005F9DE7 /* ShowContactView.swift in Sources */,
 				57020F422BC0CB37009D9369 /* AddPeopleTableViewCell.swift in Sources */,
 			);
