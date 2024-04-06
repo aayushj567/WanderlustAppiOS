@@ -17,6 +17,11 @@
 		57020F412BC0CB37009D9369 /* AddGuestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57020F3D2BC0CB37009D9369 /* AddGuestsViewController.swift */; };
 		57020F422BC0CB37009D9369 /* AddPeopleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57020F3E2BC0CB37009D9369 /* AddPeopleTableViewCell.swift */; };
 		57020F452BC0E0E6009D9369 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57020F442BC0E0E6009D9369 /* ChatViewController.swift */; };
+		57020F472BC0E19B009D9369 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57020F462BC0E19B009D9369 /* ChatView.swift */; };
+		57020F4A2BC0E1E7009D9369 /* ShowProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57020F492BC0E1E7009D9369 /* ShowProfileView.swift */; };
+		57020F4C2BC0E24F009D9369 /* ShowProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57020F4B2BC0E24F009D9369 /* ShowProfileViewController.swift */; };
+		57020F4F2BC0E2AB009D9369 /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57020F4E2BC0E2AB009D9369 /* EditProfileView.swift */; };
+		57020F512BC0E2D9009D9369 /* EditProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57020F502BC0E2D9009D9369 /* EditProfileController.swift */; };
 		9C0795002BC0C33E00AC46D5 /* DestinationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0794FC2BC0C33E00AC46D5 /* DestinationTableViewCell.swift */; };
 		9C0795012BC0C33E00AC46D5 /* SearchDestinationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0794FD2BC0C33E00AC46D5 /* SearchDestinationController.swift */; };
 		9C0795022BC0C33E00AC46D5 /* SearchDestinationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0794FE2BC0C33E00AC46D5 /* SearchDestinationView.swift */; };
@@ -54,6 +59,11 @@
 		57020F3D2BC0CB37009D9369 /* AddGuestsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddGuestsViewController.swift; sourceTree = "<group>"; };
 		57020F3E2BC0CB37009D9369 /* AddPeopleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddPeopleTableViewCell.swift; sourceTree = "<group>"; };
 		57020F442BC0E0E6009D9369 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		57020F462BC0E19B009D9369 /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
+		57020F492BC0E1E7009D9369 /* ShowProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowProfileView.swift; sourceTree = "<group>"; };
+		57020F4B2BC0E24F009D9369 /* ShowProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowProfileViewController.swift; sourceTree = "<group>"; };
+		57020F4E2BC0E2AB009D9369 /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
+		57020F502BC0E2D9009D9369 /* EditProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileController.swift; sourceTree = "<group>"; };
 		9C0794FC2BC0C33E00AC46D5 /* DestinationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DestinationTableViewCell.swift; sourceTree = "<group>"; };
 		9C0794FD2BC0C33E00AC46D5 /* SearchDestinationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchDestinationController.swift; sourceTree = "<group>"; };
 		9C0794FE2BC0C33E00AC46D5 /* SearchDestinationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchDestinationView.swift; sourceTree = "<group>"; };
@@ -134,8 +144,27 @@
 			isa = PBXGroup;
 			children = (
 				57020F442BC0E0E6009D9369 /* ChatViewController.swift */,
+				57020F462BC0E19B009D9369 /* ChatView.swift */,
 			);
 			path = "Chat Feature";
+			sourceTree = "<group>";
+		};
+		57020F482BC0E1C3009D9369 /* My Profile */ = {
+			isa = PBXGroup;
+			children = (
+				57020F492BC0E1E7009D9369 /* ShowProfileView.swift */,
+				57020F4B2BC0E24F009D9369 /* ShowProfileViewController.swift */,
+			);
+			path = "My Profile";
+			sourceTree = "<group>";
+		};
+		57020F4D2BC0E26E009D9369 /* Edit Profile */ = {
+			isa = PBXGroup;
+			children = (
+				57020F4E2BC0E2AB009D9369 /* EditProfileView.swift */,
+				57020F502BC0E2D9009D9369 /* EditProfileController.swift */,
+			);
+			path = "Edit Profile";
 			sourceTree = "<group>";
 		};
 		9C0794FF2BC0C33E00AC46D5 /* Search Destination */ = {
@@ -192,6 +221,8 @@
 		A54243552BAE3C5800189102 /* WanderlustAppiOS */ = {
 			isa = PBXGroup;
 			children = (
+				57020F4D2BC0E26E009D9369 /* Edit Profile */,
+				57020F482BC0E1C3009D9369 /* My Profile */,
 				57020F432BC0E0CE009D9369 /* Chat Feature */,
 				A56C262A2BC0D65B0015B87A /* Calendar Screen */,
 				A56C26382BC0D65B0015B87A /* Main Screen View */,
@@ -334,12 +365,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				57020F4F2BC0E2AB009D9369 /* EditProfileView.swift in Sources */,
 				A56C26402BC0D65B0015B87A /* ChatsView.swift in Sources */,
 				9C0795012BC0C33E00AC46D5 /* SearchDestinationController.swift in Sources */,
 				57020F412BC0CB37009D9369 /* AddGuestsViewController.swift in Sources */,
 				9C0795022BC0C33E00AC46D5 /* SearchDestinationView.swift in Sources */,
+				57020F472BC0E19B009D9369 /* ChatView.swift in Sources */,
 				415699D12BC0D18F005F9DE7 /* FirstScreenView.swift in Sources */,
 				415699D62BC0D18F005F9DE7 /* Plan.swift in Sources */,
+				57020F4A2BC0E1E7009D9369 /* ShowProfileView.swift in Sources */,
 				A56C263F2BC0D65B0015B87A /* PlansTableViewCell.swift in Sources */,
 				A56C263B2BC0D65B0015B87A /* ChatsViewController.swift in Sources */,
 				9C0795122BC0CCB900AC46D5 /* RegistrationView.swift in Sources */,
@@ -360,7 +394,9 @@
 				415699D52BC0D18F005F9DE7 /* ShowContactViewController.swift in Sources */,
 				A56C26432BC0D65B0015B87A /* ContactInfo.swift in Sources */,
 				A54243592BAE3C5800189102 /* SceneDelegate.swift in Sources */,
+				57020F512BC0E2D9009D9369 /* EditProfileController.swift in Sources */,
 				57020F402BC0CB37009D9369 /* AddGuestsView.swift in Sources */,
+				57020F4C2BC0E24F009D9369 /* ShowProfileViewController.swift in Sources */,
 				A56C263D2BC0D65B0015B87A /* ProfileViewController.swift in Sources */,
 				415699D42BC0D18F005F9DE7 /* ShowContactView.swift in Sources */,
 				57020F422BC0CB37009D9369 /* AddPeopleTableViewCell.swift in Sources */,
