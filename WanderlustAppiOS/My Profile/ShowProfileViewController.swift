@@ -2,15 +2,22 @@ import UIKit
  
 class ShowProfileViewController: UIViewController {
     
-    let displayScreen = ShowContactView()
+    let displayScreen = ShowProfileView()
     var delegate:ViewController!
     
     override func loadView() {
         view = displayScreen
     }
     
-    var receivedContact: Contact = Contact()
-    
+    var receivedContact: Contact = Contact(id: 1,
+                                           name: "John Doe",
+                                           email: "johndoe@example.com",
+                                           phone: "+1234567890",
+                                           address: "123 Main Street",
+                                           city: "Anytown",
+                                           zip: "12345",
+                                           type: "Home",
+                                           image: UIImage(named: "profile_image"))
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -54,16 +61,22 @@ class ShowProfileViewController: UIViewController {
             displayScreen.imageView.image = unwrappedImage
         }
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(
-            barButtonSystemItem: .edit,
-            target: self,
-            action: #selector(onEditButtonTapped)
-        )
+//        navigationItem.rightBarButtonItem = UIBarButtonItem(
+//            barButtonSystemItem: .logout,
+//            target: self,
+//            action: #selector(onEditButtonTapped)
+//        )
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(logout))
+        
+    }
+    
+    @objc func logout() {
+        navigationController?.popToRootViewController(animated: true)
     }
     
     @objc func onEditButtonTapped(){
         
-        let addContactController = AddContactViewController()
+        let addContactController = EditProfileController()
         
         addContactController.delegateshow = self
         addContactController.addContactView.textFieldName.text = receivedContact.name
@@ -85,7 +98,7 @@ class ShowProfileViewController: UIViewController {
         navigationController?.setViewControllers(viewControllers, animated: true)
     }
     
-    func delegateOnEditContact(idVal: Int, newName: String, newEmail: String, newPhone:String, newAddress:String, newCity:String, newZip:String, newType:String, newImage: UIImage) {
-        delegate.delegateOnEditContact(idVal: idVal, newName: newName, newEmail: newEmail, newPhone: newPhone, newAddress: newAddress, newCity: newCity, newZip: newZip, newType: newType, newImage: newImage)
-    }
+//    func delegateOnEditContact(idVal: Int, newName: String, newEmail: String, newPhone:String, newAddress:String, newCity:String, newZip:String, newType:String, newImage: UIImage) {
+//        delegate.delegateOnEditContact(idVal: idVal, newName: newName, newEmail: newEmail, newPhone: newPhone, newAddress: newAddress, newCity: newCity, newZip: newZip, newType: newType, newImage: newImage)
+//    }
 }

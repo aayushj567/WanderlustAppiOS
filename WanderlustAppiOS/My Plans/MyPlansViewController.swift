@@ -31,6 +31,25 @@ class MyPlansViewController: UIViewController {
         firstScreen.onIconTapped = { [unowned self] index in
             // Handle the icon tap, switch views accordingly
             print("Icon at index \(index) was tapped.")
+            if(index == 0){
+                let homeView = CalendarViewController()
+                navigationController?.pushViewController(homeView, animated: true)
+            }
+            if(index == 1){
+                let myplansVC = MyPlansViewController()
+                navigationController?.pushViewController(myplansVC, animated: true)
+            }
+            if(index == 2)
+            {
+                let chatView = ChatViewController()
+                navigationController?.pushViewController(chatView, animated: true)
+            }
+            print("Icon at index \(index) was tapped.")
+            if(index == 3)
+            {
+                let profileView = ShowProfileViewController()
+                navigationController?.pushViewController(profileView, animated: true)
+            }
         }
         let newContact = Plan(id: 1, name: "No Limits", datefrom: "02/12", dateto:"02/31", people:"4", budget:"$2000", place:"New York" , image: (UIImage(systemName: "photo.fill"))!)
         let newContact1 = Plan(id: 2, name: "Go France", datefrom: "04/24", dateto:"05/02", people:"4", budget:"$5000", place:"Paris", image: (UIImage(systemName: "photo.fill"))!)

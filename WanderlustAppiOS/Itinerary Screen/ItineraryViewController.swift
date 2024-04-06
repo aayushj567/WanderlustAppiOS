@@ -205,7 +205,7 @@ class ItineraryViewController: UIViewController, UITableViewDelegate, UITableVie
         ])
         
         // Initialize icon views and add them to the stack view
-        let iconNames = ["magnifyingglass", "list.bullet", "message", "person.crop.circle"]
+        let iconNames = ["house", "list.bullet", "message", "person.crop.circle"]
         for (index, iconName) in iconNames.enumerated() {
             let iconImageView = UIImageView(image: UIImage(systemName: iconName)?.withTintColor(.systemBlue, renderingMode: .alwaysOriginal))
             iconImageView.contentMode = .scaleAspectFit
@@ -233,5 +233,27 @@ class ItineraryViewController: UIViewController, UITableViewDelegate, UITableVie
         let index = iconView.tag
         // Handle the icon tap based on the index
         print("Icon at index \(index) was tapped.")
+            // Handle the icon tap, switch views accordingly
+            if(index == 0){
+                let homeView = CalendarViewController()
+                navigationController?.pushViewController(homeView, animated: true)
+            }
+            if(index == 1){
+                let myplansVC = MyPlansViewController()
+                navigationController?.pushViewController(myplansVC, animated: true)
+            }
+            if(index == 2)
+            {
+                let chatView = ChatViewController()
+                navigationController?.pushViewController(chatView, animated: true)
+            }
+            print("Icon at index \(index) was tapped.")
+            if(index == 3)
+            {
+                let profileView = ShowProfileViewController()
+                navigationController?.pushViewController(profileView, animated: true)
+            }
+            
+            // Insert logic to switch to the corresponding view
     }
 }

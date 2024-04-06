@@ -65,7 +65,7 @@ class FirstScreenView: UIView {
         ])
         
         // Initialize icon views and add them to the stack view
-        let iconNames = ["magnifyingglass", "list.bullet", "message", "person.crop.circle"]
+        let iconNames = ["house", "list.bullet", "message", "person.crop.circle"]
         for (index, iconName) in iconNames.enumerated() {
             let iconImageView = UIImageView(image: UIImage(systemName: iconName))
             iconImageView.contentMode = .scaleAspectFit
