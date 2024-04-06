@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		415699D12BC0D18F005F9DE7 /* FirstScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 415699C82BC0D18F005F9DE7 /* FirstScreenView.swift */; };
+		415699D22BC0D18F005F9DE7 /* TableViewContactsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 415699C92BC0D18F005F9DE7 /* TableViewContactsCell.swift */; };
+		415699D32BC0D18F005F9DE7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 415699CA2BC0D18F005F9DE7 /* ViewController.swift */; };
+		415699D42BC0D18F005F9DE7 /* ShowContactView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 415699CC2BC0D18F005F9DE7 /* ShowContactView.swift */; };
+		415699D52BC0D18F005F9DE7 /* ShowContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 415699CD2BC0D18F005F9DE7 /* ShowContactViewController.swift */; };
+		415699D62BC0D18F005F9DE7 /* Plan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 415699CF2BC0D18F005F9DE7 /* Plan.swift */; };
 		57020F402BC0CB37009D9369 /* AddGuestsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57020F3C2BC0CB37009D9369 /* AddGuestsView.swift */; };
 		57020F412BC0CB37009D9369 /* AddGuestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57020F3D2BC0CB37009D9369 /* AddGuestsViewController.swift */; };
 		57020F422BC0CB37009D9369 /* AddPeopleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57020F3E2BC0CB37009D9369 /* AddPeopleTableViewCell.swift */; };
@@ -27,6 +33,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		415699C82BC0D18F005F9DE7 /* FirstScreenView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstScreenView.swift; sourceTree = "<group>"; };
+		415699C92BC0D18F005F9DE7 /* TableViewContactsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewContactsCell.swift; sourceTree = "<group>"; };
+		415699CA2BC0D18F005F9DE7 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		415699CC2BC0D18F005F9DE7 /* ShowContactView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowContactView.swift; sourceTree = "<group>"; };
+		415699CD2BC0D18F005F9DE7 /* ShowContactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowContactViewController.swift; sourceTree = "<group>"; };
+		415699CF2BC0D18F005F9DE7 /* Plan.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Plan.swift; sourceTree = "<group>"; };
 		57020F3C2BC0CB37009D9369 /* AddGuestsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddGuestsView.swift; sourceTree = "<group>"; };
 		57020F3D2BC0CB37009D9369 /* AddGuestsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddGuestsViewController.swift; sourceTree = "<group>"; };
 		57020F3E2BC0CB37009D9369 /* AddPeopleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddPeopleTableViewCell.swift; sourceTree = "<group>"; };
@@ -59,6 +71,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		415699CB2BC0D18F005F9DE7 /* My Plans */ = {
+			isa = PBXGroup;
+			children = (
+				415699C82BC0D18F005F9DE7 /* FirstScreenView.swift */,
+				415699C92BC0D18F005F9DE7 /* TableViewContactsCell.swift */,
+				415699CA2BC0D18F005F9DE7 /* ViewController.swift */,
+			);
+			path = "My Plans";
+			sourceTree = "<group>";
+		};
+		415699CE2BC0D18F005F9DE7 /* Plan Summary */ = {
+			isa = PBXGroup;
+			children = (
+				415699CC2BC0D18F005F9DE7 /* ShowContactView.swift */,
+				415699CD2BC0D18F005F9DE7 /* ShowContactViewController.swift */,
+			);
+			path = "Plan Summary";
+			sourceTree = "<group>";
+		};
+		415699D02BC0D18F005F9DE7 /* Data models */ = {
+			isa = PBXGroup;
+			children = (
+				415699CF2BC0D18F005F9DE7 /* Plan.swift */,
+			);
+			path = "Data models";
+			sourceTree = "<group>";
+		};
 		57020F3F2BC0CB37009D9369 /* Add_Guests */ = {
 			isa = PBXGroup;
 			children = (
@@ -123,6 +162,9 @@
 		A54243552BAE3C5800189102 /* WanderlustAppiOS */ = {
 			isa = PBXGroup;
 			children = (
+				415699D02BC0D18F005F9DE7 /* Data models */,
+				415699CB2BC0D18F005F9DE7 /* My Plans */,
+				415699CE2BC0D18F005F9DE7 /* Plan Summary */,
 				9C0795162BC0CCD100AC46D5 /* Login Screen */,
 				9C0795152BC0CCC300AC46D5 /* Registration Screen */,
 				57020F3F2BC0CB37009D9369 /* Add_Guests */,
@@ -214,16 +256,22 @@
 				9C0795012BC0C33E00AC46D5 /* SearchDestinationController.swift in Sources */,
 				57020F412BC0CB37009D9369 /* AddGuestsViewController.swift in Sources */,
 				9C0795022BC0C33E00AC46D5 /* SearchDestinationView.swift in Sources */,
+				415699D12BC0D18F005F9DE7 /* FirstScreenView.swift in Sources */,
+				415699D62BC0D18F005F9DE7 /* Plan.swift in Sources */,
 				9C0795122BC0CCB900AC46D5 /* RegistrationView.swift in Sources */,
 				A542435B2BAE3C5800189102 /* ViewController.swift in Sources */,
 				A58047342BBE32A700CA53A0 /* HomeView.swift in Sources */,
 				A54243572BAE3C5800189102 /* AppDelegate.swift in Sources */,
+				415699D22BC0D18F005F9DE7 /* TableViewContactsCell.swift in Sources */,
+				415699D32BC0D18F005F9DE7 /* ViewController.swift in Sources */,
 				9C0795002BC0C33E00AC46D5 /* DestinationTableViewCell.swift in Sources */,
 				9C0795112BC0CCB900AC46D5 /* RegistrationControllerViewController.swift in Sources */,
 				9C0795142BC0CCB900AC46D5 /* LoginScreenView.swift in Sources */,
 				9C07950B2BC0C3A600AC46D5 /* ItineraryViewController.swift in Sources */,
+				415699D52BC0D18F005F9DE7 /* ShowContactViewController.swift in Sources */,
 				A54243592BAE3C5800189102 /* SceneDelegate.swift in Sources */,
 				57020F402BC0CB37009D9369 /* AddGuestsView.swift in Sources */,
+				415699D42BC0D18F005F9DE7 /* ShowContactView.swift in Sources */,
 				57020F422BC0CB37009D9369 /* AddPeopleTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
