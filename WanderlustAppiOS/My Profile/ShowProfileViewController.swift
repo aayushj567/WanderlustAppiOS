@@ -1,4 +1,5 @@
 import UIKit
+import FirebaseAuth
  
 class ShowProfileViewController: UIViewController {
     
@@ -70,8 +71,26 @@ class ShowProfileViewController: UIViewController {
         
     }
     
+    @objc func onLogOutBarButtonTapped(){
+
+    }
+    
     @objc func logout() {
-        navigationController?.popToRootViewController(animated: true)
+        
+        let logoutAlert = UIAlertController(title: "Log out?", message: "Are you sure want to log out?",
+            preferredStyle: .actionSheet)
+        logoutAlert.addAction(UIAlertAction(title: "Yes", style: .default, handler: {(_) in
+                do{
+                    try Auth.auth().signOut()
+                    self.navigationController?.popToRootViewController(animated: true)
+                }catch{
+                    print("Error occured!")
+                }
+            })
+        )
+        logoutAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        
+        self.present(logoutAlert, animated: true)
     }
     
     @objc func onEditButtonTapped(){

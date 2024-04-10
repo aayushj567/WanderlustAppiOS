@@ -47,6 +47,8 @@ class RegistrationView: UIView {
         textFieldName.placeholder = "Name"
         textFieldName.keyboardType = .default
         textFieldName.borderStyle = .roundedRect
+        textFieldName.autocorrectionType = .no
+        textFieldName.autocapitalizationType = .none
         textFieldName.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(textFieldName)
     }
@@ -56,6 +58,8 @@ class RegistrationView: UIView {
         textFieldEmail.placeholder = "Email"
         textFieldEmail.keyboardType = .emailAddress
         textFieldEmail.borderStyle = .roundedRect
+        textFieldEmail.autocorrectionType = .no
+        textFieldEmail.autocapitalizationType = .none
         textFieldEmail.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(textFieldEmail)
     }
@@ -66,6 +70,8 @@ class RegistrationView: UIView {
         textFieldPassword.keyboardType = .default
         //textFieldPassword.isSecureTextEntry = true
         textFieldPassword.borderStyle = .roundedRect
+        textFieldPassword.autocorrectionType = .no
+        textFieldPassword.autocapitalizationType = .none
         textFieldPassword.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(textFieldPassword)
     }
@@ -121,3 +127,4 @@ class RegistrationView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 }
+

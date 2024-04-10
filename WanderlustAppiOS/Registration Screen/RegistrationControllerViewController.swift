@@ -6,12 +6,15 @@
 //
 
 import UIKit
-
+import FirebaseAuth
+import FirebaseFirestore
 
 class RegistrationViewController: UIViewController {
     
     let registrationScreen = RegistrationView()
     var delegate:RegistrationViewController!
+    
+    let db = Firestore.firestore()
     
     override func loadView() {
         view = registrationScreen
@@ -45,6 +48,7 @@ class RegistrationViewController: UIViewController {
         //let user = User(id:"", name: nameText, email: emailText, password: passwordText)
         
         //addNewUser(user:user)
+        registerNewAccount()
         sendUserToLoginScreen()
         
         
@@ -74,7 +78,7 @@ class RegistrationViewController: UIViewController {
     //MARK: add a new contact call: add endpoint...
 //    func addNewUser(user:User){
 //        if let url = URL(string: "http://apis.sakibnm.space:3000/api/auth/register"){
-//            
+//
 //            AF.request(url, method:.post, parameters:
 //                        [
 //                            //MARK: we can unwrap them here since we made sure they are not null above...
@@ -85,34 +89,34 @@ class RegistrationViewController: UIViewController {
 //                .responseString(completionHandler: { response in
 //                    //MARK: retrieving the status code...
 //                    let status = response.response?.statusCode
-//                    
+//
 //                    switch response.result{
 //                    case .success(let data):
 //                        //MARK: there was no network error...
-//                        
+//
 //                        //MARK: status code is Optional, so unwrapping it...
 //                        if let uwStatusCode = status{
 //                            switch uwStatusCode{
 //                                case 200...299:
 //                                //MARK: the request was valid 200-level...
-//                                
+//
 //                                self.showRegistrationSuccessAlert()
 //                                    break
-//                        
+//
 //                                case 400...499:
 //                                //MARK: the request was not valid 400-level...
 //                                self.showAlert(message: "Registration failed. Invalid request.Please try again.")
 //                                    break
-//                        
+//
 //                                default:
 //                                //MARK: probably a 500-level error...
 //                                self.showAlert(message: "Registration failed: User already exists!!!")
 //                                    break
-//                        
+//
 //                            }
 //                        }
 //                        break
-//                        
+//
 //                    case .failure(let error):
 //                        //MARK: there was a network error...
 //                        self.showAlert(message: "Network error. Please try again.")
@@ -124,7 +128,7 @@ class RegistrationViewController: UIViewController {
 //            showAlert(message: "Invalid URL.")
 //        }
 //    }
-//    
+//
     func showRegistrationSuccessAlert() {
         let alert = UIAlertController(title: "Success", message: "Registration successful. Please log in.", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default) { _ in
@@ -148,4 +152,5 @@ class RegistrationViewController: UIViewController {
     
     
 }
+
 

@@ -58,6 +58,8 @@ class LoginView: UIView {
         textFieldEmail.placeholder = "Email"
         textFieldEmail.keyboardType = .emailAddress
         textFieldEmail.borderStyle = .roundedRect
+        textFieldEmail.autocapitalizationType = .none
+        textFieldEmail.autocapitalizationType = .none
         textFieldEmail.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(textFieldEmail)
     }
@@ -68,6 +70,8 @@ class LoginView: UIView {
         textFieldPassword.textContentType = .password
         textFieldPassword.isSecureTextEntry = true
         textFieldPassword.borderStyle = .roundedRect
+        textFieldPassword.autocapitalizationType = .none
+        textFieldPassword.autocapitalizationType = .none
         textFieldPassword.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(textFieldPassword)
     }
@@ -153,4 +157,5 @@ class LoginView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 }
+
 
