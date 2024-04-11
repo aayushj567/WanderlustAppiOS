@@ -28,12 +28,12 @@ class ShowContactViewController: UIViewController {
                 displayPlanSummary.labelName.text = "\(unwrappedName)"
             }
         }
-        if let unwrappedEmail = receivedContact.datefrom{
+        if let unwrappedEmail = receivedContact.dateFrom{
             if !unwrappedEmail.isEmpty{
                 displayPlanSummary.labelDateFrom.text = "Date from: \(unwrappedEmail)"
             }
         }
-        if let unwrappedPhone = receivedContact.dateto{
+        if let unwrappedPhone = receivedContact.dateTo{
             if !unwrappedPhone.isEmpty{
                 //if let unwrappedType = receivedContact.type{
                    // if !unwrappedType.isEmpty{
@@ -42,28 +42,28 @@ class ShowContactViewController: UIViewController {
                 //}
             }
         }
-        if let unwrappedAddress = receivedContact.people{
-            if !unwrappedAddress.isEmpty{
-                displayPlanSummary.labelPeople.text = "People:"
-                displayPlanSummary.labelTravelPeople.text = "John Doe, Micheal Philips, Justin Beiber"
-            }
-        }
+//        if let unwrappedAddress = receivedContact.people{
+//            if !unwrappedAddress.isEmpty{
+//                displayPlanSummary.labelPeople.text = "People:"
+//                displayPlanSummary.labelTravelPeople.text = "John Doe, Micheal Philips, Justin Beiber"
+//            }
+//        }
         
-        displayPlanSummary.labelItenerary.text = "Itinerary:"
-        displayPlanSummary.labelIteneraryData.text = "Day 1: Empire State Building"
-        if let unwrappedCity = receivedContact.budget{
-            if !unwrappedCity.isEmpty{
-                displayPlanSummary.labelBudget.text = "Estimated budget: \(unwrappedCity)"
-            }
-        }
-        if let unwrappedZip = receivedContact.place{
-            if !unwrappedZip.isEmpty{
-                displayPlanSummary.labelPlace.text = "Place: \(unwrappedZip)"
-            }
-        }
-        if let unwrappedImage = receivedContact.image{
-            displayPlanSummary.imageView.image = unwrappedImage
-        }
+//        displayPlanSummary.labelItenerary.text = "Itinerary:"
+//        displayPlanSummary.labelIteneraryData.text = "Day 1: Empire State Building"
+//        if let unwrappedCity = receivedContact.budget{
+//            if !unwrappedCity.isEmpty{
+//                displayPlanSummary.labelBudget.text = "Estimated budget: \(unwrappedCity)"
+//            }
+//        }
+//        if let unwrappedZip = receivedContact.place{
+//            if !unwrappedZip.isEmpty{
+//                displayPlanSummary.labelPlace.text = "Place: \(unwrappedZip)"
+//            }
+//        }
+//        if let unwrappedImage = receivedContact.image{
+//            displayPlanSummary.imageView.image = unwrappedImage
+//        }
         
 //        navigationItem.rightBarButtonItem = UIBarButtonItem(
 //            barButtonSystemItem: .edit,

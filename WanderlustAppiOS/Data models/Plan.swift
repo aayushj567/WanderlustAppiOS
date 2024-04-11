@@ -7,28 +7,24 @@
 
 import Foundation
 import UIKit
+import FirebaseFirestoreSwift
 
 
 struct Plan{
+    @DocumentID var id: String?
     var name: String?
-    var datefrom: String?
-    var dateto: String?
-    var budget: String?
-    var people: String?
-    var place: String?
-    var type: String?
-    var image: UIImage?
-    var id: Int?
+    var dateFrom: String?
+    var dateTo: String?
+    var days: [Days]?
+    var owner : User?
+    var guests: [User]?
     
-    init(id:Int? = nil, name: String? = nil, datefrom: String? = nil, dateto:String? = nil, people:String? = nil, budget:String? = nil, place:String? = nil, type: String? = nil, image: UIImage? = nil) {
+    init(name: String? = nil, dateFrom: String? = nil, dateTo: String? = nil, days: [Days]? = nil, owner: User? = nil, guests: [User]? = nil) {
         self.name = name
-        self.datefrom = datefrom
-        self.dateto = dateto
-        self.budget = budget
-        self.place = place
-        self.type = type
-        self.people = people
-        self.image = image
-        self.id = id
+        self.dateFrom = dateFrom
+        self.dateTo = dateTo
+        self.days = days
+        self.owner = owner
+        self.guests = guests
     }
 }

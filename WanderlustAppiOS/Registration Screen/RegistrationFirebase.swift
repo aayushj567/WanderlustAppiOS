@@ -49,20 +49,19 @@ extension RegistrationViewController{
         // Gather the data from the text fields...
         let registeredEmail = registrationScreen.textFieldEmail.text!
         let registeredName = registrationScreen.textFieldName.text!
-        
-        let userDict: [String: Any] = [
-            "email": registeredEmail,
-            "name": registeredName
-        ]
-        
-        // Save email and name data in users->email->data
-        db.collection("users").document(registeredEmail).setData(userDict) { error in
-            if let error = error {
-                print("Error adding document: \(error)")
-            } else {
-                print("Document added with ID: \(registeredEmail)")
-            }
+        let collectionUser = db.collection("users")
+        let user = User(name: registeredName, phone: "", image: nil, email: registeredEmail)
+        do{
+            try collectionUser.addDocument(from: user, completion: {(error) in
+                if error == nil{
+                    //MARK: hide progress indicator...
+                    print("successfully added user")
+                }
+            })
+        }catch{
+            print("Error adding user document!")
         }
+
     }
 
 }

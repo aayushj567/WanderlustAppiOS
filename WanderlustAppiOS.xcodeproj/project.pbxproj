@@ -30,6 +30,8 @@
 		5761833A2BC7316700CA28D1 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 576183392BC7316700CA28D1 /* FirebaseStorage */; };
 		5761833C2BC731DD00CA28D1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5761833B2BC731DC00CA28D1 /* GoogleService-Info.plist */; };
 		57A4686D2BC753B300FC0DB3 /* RegistrationFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A4686C2BC753B300FC0DB3 /* RegistrationFirebase.swift */; };
+		57A468702BC8837000FC0DB3 /* Days.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A4686F2BC8837000FC0DB3 /* Days.swift */; };
+		57A468742BC8864100FC0DB3 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A468732BC8864100FC0DB3 /* User.swift */; };
 		9C0795002BC0C33E00AC46D5 /* DestinationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0794FC2BC0C33E00AC46D5 /* DestinationTableViewCell.swift */; };
 		9C0795012BC0C33E00AC46D5 /* SearchDestinationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0794FD2BC0C33E00AC46D5 /* SearchDestinationController.swift */; };
 		9C0795022BC0C33E00AC46D5 /* SearchDestinationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0794FE2BC0C33E00AC46D5 /* SearchDestinationView.swift */; };
@@ -76,6 +78,8 @@
 		57020F542BC0E4D1009D9369 /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
 		5761833B2BC731DC00CA28D1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		57A4686C2BC753B300FC0DB3 /* RegistrationFirebase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationFirebase.swift; sourceTree = "<group>"; };
+		57A4686F2BC8837000FC0DB3 /* Days.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Days.swift; sourceTree = "<group>"; };
+		57A468732BC8864100FC0DB3 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		9C0794FC2BC0C33E00AC46D5 /* DestinationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DestinationTableViewCell.swift; sourceTree = "<group>"; };
 		9C0794FD2BC0C33E00AC46D5 /* SearchDestinationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchDestinationController.swift; sourceTree = "<group>"; };
 		9C0794FE2BC0C33E00AC46D5 /* SearchDestinationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchDestinationView.swift; sourceTree = "<group>"; };
@@ -143,6 +147,8 @@
 			children = (
 				415699CF2BC0D18F005F9DE7 /* Plan.swift */,
 				57020F542BC0E4D1009D9369 /* Contact.swift */,
+				57A4686F2BC8837000FC0DB3 /* Days.swift */,
+				57A468732BC8864100FC0DB3 /* User.swift */,
 			);
 			path = "Data models";
 			sourceTree = "<group>";
@@ -401,6 +407,7 @@
 				57020F412BC0CB37009D9369 /* AddGuestsViewController.swift in Sources */,
 				9C0795022BC0C33E00AC46D5 /* SearchDestinationView.swift in Sources */,
 				57020F472BC0E19B009D9369 /* ChatView.swift in Sources */,
+				57A468702BC8837000FC0DB3 /* Days.swift in Sources */,
 				415699D12BC0D18F005F9DE7 /* FirstScreenView.swift in Sources */,
 				415699D62BC0D18F005F9DE7 /* Plan.swift in Sources */,
 				57020F4A2BC0E1E7009D9369 /* ShowProfileView.swift in Sources */,
@@ -412,6 +419,7 @@
 				A56C26392BC0D65B0015B87A /* CalendarView.swift in Sources */,
 				A54243572BAE3C5800189102 /* AppDelegate.swift in Sources */,
 				A56C263C2BC0D65B0015B87A /* HomeViewController.swift in Sources */,
+				57A468742BC8864100FC0DB3 /* User.swift in Sources */,
 				57020F532BC0E30B009D9369 /* Utilities.swift in Sources */,
 				A56C26442BC0D65B0015B87A /* MainViewController.swift in Sources */,
 				415699D22BC0D18F005F9DE7 /* TableViewContactsCell.swift in Sources */,

@@ -13,7 +13,7 @@ class RegistrationViewController: UIViewController {
     
     let registrationScreen = RegistrationView()
     var delegate:RegistrationViewController!
-    
+    let loginScreen = ViewController()
     let db = Firestore.firestore()
     
     override func loadView() {
@@ -145,8 +145,9 @@ class RegistrationViewController: UIViewController {
             //Instead of sending the variables used a struct named Contact to send the details.
             
            
-           navigationController?.popToRootViewController(animated: true)
-            
+//           navigationController?.popToRootViewController(animated: true)
+        loginScreen.hasCompletedRegistration = true
+        navigationController?.pushViewController(loginScreen, animated: true)
             
         }
     

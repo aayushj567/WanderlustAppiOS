@@ -14,6 +14,7 @@ class ViewController: UIViewController {
     var handleAuth: AuthStateDidChangeListenerHandle?
     // variable to keep an instance of the current signed-in Firebase user
     var currentUser:FirebaseAuth.User?
+    var hasCompletedRegistration = false
 
     let loginScreen = LoginView()
     override func loadView() {
@@ -21,9 +22,20 @@ class ViewController: UIViewController {
     }
     
     
-//    override func viewWillAppear(_ animated: Bool) {
-//        super.viewWillAppear(animated)
-//    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print(hasCompletedRegistration)
+        handleAuth = Auth.auth().addStateDidChangeListener{ [weak self] auth, user in
+            guard let self = self else { return }
+            if user != nil && !self.hasCompletedRegistration {
+                let mainScreen = CalendarViewController();               self.navigationController?.pushViewController(mainScreen, animated: true)
+            } else if  user != nil && self.hasCompletedRegistration { // completed registration
+                    self.hasCompletedRegistration = false
+                    return
+            }
+        }
+
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,24 +44,14 @@ class ViewController: UIViewController {
         loginScreen.buttonLogin.addTarget(self, action: #selector(onLoginTapped), for: .touchUpInside)
         loginScreen.buttonRegister.addTarget(self, action: #selector(onRegistrationTapped), for: .touchUpInside)
         
-        handleAuth = Auth.auth().addStateDidChangeListener{ auth, user in
-            if user == nil{
-                //MARK: not signed in...
                 
-            } else {
-                //MARK: the user is signed in...
-                let mainScreen = CalendarViewController()
-                self.navigationController?.pushViewController(mainScreen, animated: true)
-            }
-        }
-        
     }
     
     
-//    override func viewWillDisappear(_ animated: Bool) {
-//        super.viewWillDisappear(animated)
-//        Auth.auth().removeStateDidChangeListener(handleAuth!)
-//    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        Auth.auth().removeStateDidChangeListener(handleAuth!)
+    }
     
     //MARK: sign-in logic for Firebase...
     func signIntoFirebase(email: String, password: String){
