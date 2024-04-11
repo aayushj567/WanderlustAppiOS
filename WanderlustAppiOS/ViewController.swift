@@ -70,11 +70,13 @@ class ViewController: UIViewController {
         guard let emailText = loginScreen.textFieldEmail.text, !emailText.isEmpty,
               let passwordText = loginScreen.textFieldPassword.text, !passwordText.isEmpty
         else {
+            //alert that all fields are required and cannot be empty...
             showAlert(title: "Error", message: "Please fill out all required fields.")
             return
         }
         
         guard isValidEmail(emailText) else {
+            //alert that the email is invalid...
             showAlert(title: "Error", message: "Invalid email. Please enter a valid email address.")
             return
         }
