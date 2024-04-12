@@ -5,13 +5,17 @@
 //  Created by Aayush Jaiswal on 4/9/24.
 //
 
+/*
+    This file contains the Firebase registration logic for the registration screen.
+ */
+
 import Foundation
 import FirebaseAuth
 
 extension RegistrationViewController{
     
+    //MARK: create a Firebase user with email and password...
     func registerNewAccount(){
-        //MARK: create a Firebase user with email and password...
         if let name = registrationScreen.textFieldName.text,
            let email = registrationScreen.textFieldEmail.text,
            let password = registrationScreen.textFieldPassword.text{
