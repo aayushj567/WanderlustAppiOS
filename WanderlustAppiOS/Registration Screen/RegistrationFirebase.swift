@@ -49,15 +49,22 @@ extension RegistrationViewController{
         // Gather the data from the text fields...
         let registeredEmail = registrationScreen.textFieldEmail.text!
         let registeredName = registrationScreen.textFieldName.text!
+        guard let uid = Auth.auth().currentUser?.uid else {
+               print("Error: User not logged in")
+               return
+        }
         let collectionUser = db.collection("users")
-        let user = User(name: registeredName, phone: "", image: nil, email: registeredEmail)
+        let user = User(id: uid, name: registeredName, phone: "", image: nil, email: registeredEmail)
+        let userDocumentRef = collectionUser.document(uid)
         do{
-            try collectionUser.addDocument(from: user, completion: {(error) in
-                if error == nil{
+            try userDocumentRef.setData(from: user) { error in
+                if let error = error {
+                    print("Error adding user document: \(error.localizedDescription)")
+                } else {
                     //MARK: hide progress indicator...
-                    print("successfully added user")
+                    print("Successfully added user")
                 }
-            })
+            }
         }catch{
             print("Error adding user document!")
         }
