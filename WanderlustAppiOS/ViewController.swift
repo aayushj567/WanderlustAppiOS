@@ -8,6 +8,7 @@
 import UIKit
 import FirebaseAuth
 
+//comment added
 class ViewController: UIViewController {
     
     // an authentication state change listener used to track whether any user is signed in
