@@ -20,6 +20,7 @@ class SearchDestinationView: UIView {
     var tableView: UITableView!
     var nextButton: UIButton!
     var tabBarView: UIView!
+    var activityIndicator: UIActivityIndicatorView!
     var contentWrapper:UIScrollView!
     var onIconTapped: ((Int) -> Void)?
     
@@ -34,6 +35,7 @@ class SearchDestinationView: UIView {
         setupTableView()
         setupNextButton()
         setupTabBarView()
+        setupActivityIndicator()
         initConstraints()
     }
     
@@ -73,7 +75,17 @@ class SearchDestinationView: UIView {
               
             
     }
-    
+    func setupActivityIndicator() {
+        activityIndicator = UIActivityIndicatorView(style: .medium)
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        activityIndicator.hidesWhenStopped = true
+        self.addSubview(activityIndicator)
+        
+        NSLayoutConstraint.activate([
+            activityIndicator.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            activityIndicator.centerYAnchor.constraint(equalTo: self.centerYAnchor)
+        ])
+    }
     
     func setupContentWrapper(){
         contentWrapper = UIScrollView()
