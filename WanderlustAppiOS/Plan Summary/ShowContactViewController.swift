@@ -28,20 +28,20 @@ class ShowContactViewController: UIViewController {
                 displayPlanSummary.labelName.text = "\(unwrappedName)"
             }
         }
-        if let unwrappedEmail = receivedContact.dateFrom{
-            if !unwrappedEmail.isEmpty{
-                displayPlanSummary.labelDateFrom.text = "Date from: \(unwrappedEmail)"
-            }
-        }
-        if let unwrappedPhone = receivedContact.dateTo{
-            if !unwrappedPhone.isEmpty{
-                //if let unwrappedType = receivedContact.type{
-                   // if !unwrappedType.isEmpty{
-                        displayPlanSummary.labelDateTo.text = "Date to: \(unwrappedPhone)"
-                   // }
-                //}
-            }
-        }
+//        if let unwrappedEmail = receivedContact.dateFrom{
+//            if !unwrappedEmail.isEmpty{
+//                displayPlanSummary.labelDateFrom.text = "Date from: \(unwrappedEmail)"
+//            }
+//        }
+//        if let unwrappedPhone = receivedContact.dateTo{
+//            if !unwrappedPhone.isEmpty{
+//                //if let unwrappedType = receivedContact.type{
+//                   // if !unwrappedType.isEmpty{
+//                        displayPlanSummary.labelDateTo.text = "Date to: \(unwrappedPhone)"
+//                   // }
+//                //}
+//            }
+//        }
 //        if let unwrappedAddress = receivedContact.people{
 //            if !unwrappedAddress.isEmpty{
 //                displayPlanSummary.labelPeople.text = "People:"

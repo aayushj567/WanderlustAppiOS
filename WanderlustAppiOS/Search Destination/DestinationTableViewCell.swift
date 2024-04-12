@@ -7,15 +7,35 @@
 
 import UIKit
 
-struct Destination {
+
+
+struct Destination: Codable {
     var name: String
     var rating: String
     var admissionPrice: String?
     var isAddedToPlan: Bool
     var placeId: String?
     var photoReference: String?
-    var image: UIImage?
+    var imageBase64: String?   // Use a String to store the image data in Base64
+    var duration: String?
+
+    // UIImage is not included here because it's not Codable
+    var image: UIImage? {
+        // UIImage does not get encoded/decoded, so it's computed from/to imageBase64
+        get {
+            guard let base64 = imageBase64, let imageData = Data(base64Encoded: base64) else { return nil }
+            return UIImage(data: imageData)
+        }
+        set {
+            imageBase64 = newValue?.jpegData(compressionQuality: 0.5)?.base64EncodedString()
+        }
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case name, rating, admissionPrice, isAddedToPlan, placeId, photoReference, imageBase64, duration
+    }
 }
+
 
 
 class DestinationTableViewCell: UITableViewCell {

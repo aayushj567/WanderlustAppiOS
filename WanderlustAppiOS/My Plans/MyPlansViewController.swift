@@ -79,8 +79,8 @@ class MyPlansViewController: UIViewController {
     func delegateOnEditContact(idVal: Int, newName: String, newEmail: String, newPhone:String, newAddress:String, newCity:String, newZip:String, newType: String, newImage: UIImage) {
         
         contacts[idVal].name = newName
-        contacts[idVal].dateFrom = newEmail
-        contacts[idVal].dateTo = newPhone
+//        contacts[idVal].dateFrom = newEmail
+//        contacts[idVal].dateTo = newPhone
         //contacts[idVal].budget = newCity
         //contacts[idVal].place = newZip
        // contacts[idVal].guests = newAddress

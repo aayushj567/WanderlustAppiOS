@@ -16,6 +16,7 @@ class SearchDestinationController: UIViewController {
     var destinations: [Destination] = []
     var activityIndicator: UIActivityIndicatorView?
     let placesClient = GMSPlacesClient.shared()
+    var onDestinationsSelected: (([Destination]) -> Void)?
     
     override func loadView() {
         searchDestinationView = SearchDestinationView()
@@ -70,6 +71,10 @@ class SearchDestinationController: UIViewController {
     @objc func onNextButtonTapped(){
 //        let myPlanVC = MyPlansViewController()
 //        navigationController?.pushViewController(myPlanVC, animated: true)
+        let selectedDestinations = destinations.filter { $0.isAddedToPlan }
+            onDestinationsSelected?(selectedDestinations)
+            navigationController?.popViewController(animated: true)
+        
     }
     
     func fetchDetailsForPlace(placeID: String, completion: @escaping (Destination) -> Void) {

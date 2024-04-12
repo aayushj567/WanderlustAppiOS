@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A4427E12BC9DFB300D3CA29 /* DayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A4427E02BC9DFB300D3CA29 /* DayTableViewCell.swift */; };
 		415699D12BC0D18F005F9DE7 /* FirstScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 415699C82BC0D18F005F9DE7 /* FirstScreenView.swift */; };
 		415699D22BC0D18F005F9DE7 /* TableViewContactsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 415699C92BC0D18F005F9DE7 /* TableViewContactsCell.swift */; };
 		415699D32BC0D18F005F9DE7 /* MyPlansViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 415699CA2BC0D18F005F9DE7 /* MyPlansViewController.swift */; };
@@ -60,6 +61,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0A4427E02BC9DFB300D3CA29 /* DayTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayTableViewCell.swift; sourceTree = "<group>"; };
 		214539518DC8AA7EC886ED6D /* Pods-WanderlustAppiOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WanderlustAppiOS.release.xcconfig"; path = "Target Support Files/Pods-WanderlustAppiOS/Pods-WanderlustAppiOS.release.xcconfig"; sourceTree = "<group>"; };
 		3DD4D277590155DFD4AE0D4E /* Pods_WanderlustAppiOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WanderlustAppiOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		415699C82BC0D18F005F9DE7 /* FirstScreenView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstScreenView.swift; sourceTree = "<group>"; };
@@ -227,6 +229,7 @@
 			isa = PBXGroup;
 			children = (
 				9C07950A2BC0C3A600AC46D5 /* ItineraryViewController.swift */,
+				0A4427E02BC9DFB300D3CA29 /* DayTableViewCell.swift */,
 			);
 			path = "Itinerary Screen";
 			sourceTree = "<group>";
@@ -515,6 +518,7 @@
 				A56C263E2BC0D65B0015B87A /* HomeView.swift in Sources */,
 				9C0795112BC0CCB900AC46D5 /* RegistrationControllerViewController.swift in Sources */,
 				A56C263A2BC0D65B0015B87A /* CalendarViewController.swift in Sources */,
+				0A4427E12BC9DFB300D3CA29 /* DayTableViewCell.swift in Sources */,
 				9C0795142BC0CCB900AC46D5 /* LoginScreenView.swift in Sources */,
 				9C07950B2BC0C3A600AC46D5 /* ItineraryViewController.swift in Sources */,
 				A56C26422BC0D65B0015B87A /* ProfileView.swift in Sources */,
