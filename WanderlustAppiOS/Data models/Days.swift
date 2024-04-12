@@ -9,13 +9,13 @@ import Foundation
 import UIKit
 import FirebaseFirestoreSwift
 
-struct Days{
+struct Days: Codable{
     @DocumentID var id: String?
     var date: String?
     var name: String?
-    var destinations: [Destination]?
+    var destinations: [String]?
     
-    init(date: String? = nil, name: String? = nil, destinations: [Destination]? = nil) {
+    init(date: String? = nil, name: String? = nil, destinations: [String]? = nil) {
         self.date = date
         self.name = name
         self.destinations = destinations

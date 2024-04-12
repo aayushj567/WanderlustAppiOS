@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import FirebaseAuth
+import FirebaseFirestore
 
 class ItineraryViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -24,6 +26,82 @@ class ItineraryViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     @objc func onNextButtonTapped(){
+        
+        
+        let dummyData: [[String: Any]] = [
+            ["date": "2024-04-11", "name": "Day 1", "destinations": ["Destination A", "Destination B", "Destination C"]],
+            ["date": "2024-04-12", "name": "Day 2", "destinations": ["Destination X", "Destination Y"]],
+            ["date": "2024-04-13", "name": "Day 3", "destinations": ["Destination P", "Destination Q", "Destination R"]],
+            // Add more dummy data as needed
+        ]
+//        let plan1 = Plan(
+//            name: "Vacation in Hawaii",
+//            dateFrom: "2024-06-01",
+//            dateTo: "2024-06-10",
+//            days: dummyData,
+//            owner: Auth.auth().currentUser?.uid,
+//            guests: ["mLDVMRupY1XUGGx3AQHDKaQvtDg1"]
+//        )
+        let db = Firestore.firestore()
+        let daysCollection = db.collection("days")
+        let daysArray: [[String: Any]] = [
+            [
+                "date": "2024-04-11",
+                "name": "Day 1",
+                "destinations": ["Destination A", "Destination B"]
+            ],
+            [
+                "date": "2024-04-12",
+                "name": "Day 2",
+                "destinations": ["Destination C", "Destination D"]
+            ],
+            [
+                "date": "2024-04-13",
+                "name": "Day 3",
+                "destinations": ["Destination E", "Destination F"]
+            ]
+        ]
+
+        // Loop through the array and upload each dictionary to Firestore
+        for dayData in daysArray {
+            // Add a new document with a generated ID
+            daysCollection.addDocument(data: dayData) { err in
+                if let err = err {
+                    print("Error adding document: \(err)")
+                } else {
+                    print("Document added with ID: ")
+                }
+            }
+        }
+        // Assuming you have a collection reference
+        let plansCollection = db.collection("plans")
+
+        // Retrieve the current user
+        guard let currentUser = Auth.auth().currentUser else {
+            fatalError("No user signed in")
+        }
+
+        // Create a sample plan
+        let planData: [String: Any] = [
+            "name": "Vacation in Hawaii",
+            "dateFrom": "2024-06-01",
+            "dateTo": "2024-06-10",
+            // Convert days array of objects to dictionaries
+            "days": dummyData,
+            // Assuming you want to store owner's UID
+            "owner": currentUser.uid,
+            // Assuming you have an array of guest UIDs
+            "guests": ["mLDVMRupY1XUGGx3AQHDKaQvtDg1"]
+        ]
+
+        // Add the plan to Firebase
+        plansCollection.addDocument(data: planData) { error in
+            if let error = error {
+                print("Error adding document: \(error)")
+            } else {
+                print("Document added ")
+            }
+        }
         let searchDestController = SearchDestinationController()
         navigationController?.pushViewController(searchDestController, animated: true)
     }

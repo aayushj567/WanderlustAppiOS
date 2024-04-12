@@ -10,16 +10,16 @@ import UIKit
 import FirebaseFirestoreSwift
 
 
-struct Plan{
+struct Plan: Codable{
     @DocumentID var id: String?
     var name: String?
     var dateFrom: String?
     var dateTo: String?
-    var days: [Days]?
-    var owner : User?
-    var guests: [User]?
+    var days: [String]?
+    var owner : String?
+    var guests: [String]?
     
-    init(name: String? = nil, dateFrom: String? = nil, dateTo: String? = nil, days: [Days]? = nil, owner: User? = nil, guests: [User]? = nil) {
+    init(name: String? = nil, dateFrom: String? = nil, dateTo: String? = nil, days: [String]? = nil, owner: String? = nil, guests: [String]? = nil) {
         self.name = name
         self.dateFrom = dateFrom
         self.dateTo = dateTo
