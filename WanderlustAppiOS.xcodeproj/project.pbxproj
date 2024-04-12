@@ -13,6 +13,7 @@
 		415699D42BC0D18F005F9DE7 /* ShowContactView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 415699CC2BC0D18F005F9DE7 /* ShowContactView.swift */; };
 		415699D52BC0D18F005F9DE7 /* ShowContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 415699CD2BC0D18F005F9DE7 /* ShowContactViewController.swift */; };
 		415699D62BC0D18F005F9DE7 /* Plan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 415699CF2BC0D18F005F9DE7 /* Plan.swift */; };
+		4AD18D42BD55E4D4A3CE2918 /* Pods_WanderlustAppiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DD4D277590155DFD4AE0D4E /* Pods_WanderlustAppiOS.framework */; };
 		57020F402BC0CB37009D9369 /* AddGuestsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57020F3C2BC0CB37009D9369 /* AddGuestsView.swift */; };
 		57020F412BC0CB37009D9369 /* AddGuestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57020F3D2BC0CB37009D9369 /* AddGuestsViewController.swift */; };
 		57020F422BC0CB37009D9369 /* AddPeopleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57020F3E2BC0CB37009D9369 /* AddPeopleTableViewCell.swift */; };
@@ -59,6 +60,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		214539518DC8AA7EC886ED6D /* Pods-WanderlustAppiOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WanderlustAppiOS.release.xcconfig"; path = "Target Support Files/Pods-WanderlustAppiOS/Pods-WanderlustAppiOS.release.xcconfig"; sourceTree = "<group>"; };
+		3DD4D277590155DFD4AE0D4E /* Pods_WanderlustAppiOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WanderlustAppiOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		415699C82BC0D18F005F9DE7 /* FirstScreenView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstScreenView.swift; sourceTree = "<group>"; };
 		415699C92BC0D18F005F9DE7 /* TableViewContactsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewContactsCell.swift; sourceTree = "<group>"; };
 		415699CA2BC0D18F005F9DE7 /* MyPlansViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPlansViewController.swift; sourceTree = "<group>"; };
@@ -106,6 +109,7 @@
 		A56C26342BC0D65B0015B87A /* ProfileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		A56C26362BC0D65B0015B87A /* ContactInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactInfo.swift; sourceTree = "<group>"; };
 		A56C26372BC0D65B0015B87A /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		CFB43322217446DE35F385C1 /* Pods-WanderlustAppiOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WanderlustAppiOS.debug.xcconfig"; path = "Target Support Files/Pods-WanderlustAppiOS/Pods-WanderlustAppiOS.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +121,7 @@
 				5761833A2BC7316700CA28D1 /* FirebaseStorage in Frameworks */,
 				576183362BC7316700CA28D1 /* FirebaseFirestore in Frameworks */,
 				576183382BC7316700CA28D1 /* FirebaseFirestoreSwift in Frameworks */,
+				4AD18D42BD55E4D4A3CE2918 /* Pods_WanderlustAppiOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -151,6 +156,15 @@
 				57A468732BC8864100FC0DB3 /* User.swift */,
 			);
 			path = "Data models";
+			sourceTree = "<group>";
+		};
+		4782B293367CD58A4583310A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				CFB43322217446DE35F385C1 /* Pods-WanderlustAppiOS.debug.xcconfig */,
+				214539518DC8AA7EC886ED6D /* Pods-WanderlustAppiOS.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 		57020F3F2BC0CB37009D9369 /* Add_Guests */ = {
@@ -189,6 +203,14 @@
 				57020F522BC0E30B009D9369 /* Utilities.swift */,
 			);
 			path = "Edit Profile";
+			sourceTree = "<group>";
+		};
+		5D0BBCBAB808BCA4300A2C64 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3DD4D277590155DFD4AE0D4E /* Pods_WanderlustAppiOS.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		9C0794FF2BC0C33E00AC46D5 /* Search Destination */ = {
@@ -232,6 +254,8 @@
 			children = (
 				A54243552BAE3C5800189102 /* WanderlustAppiOS */,
 				A54243542BAE3C5800189102 /* Products */,
+				4782B293367CD58A4583310A /* Pods */,
+				5D0BBCBAB808BCA4300A2C64 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -327,9 +351,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A54243672BAE3C5900189102 /* Build configuration list for PBXNativeTarget "WanderlustAppiOS" */;
 			buildPhases = (
+				AA70B1517A86D8F730685BED /* [CP] Check Pods Manifest.lock */,
 				A542434F2BAE3C5800189102 /* Sources */,
 				A54243502BAE3C5800189102 /* Frameworks */,
 				A54243512BAE3C5800189102 /* Resources */,
+				A9D80A48ADEF6EDE3384B5B8 /* [CP] Embed Pods Frameworks */,
+				E93EC99CFB985F1B04123A8B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -395,6 +422,65 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		A9D80A48ADEF6EDE3384B5B8 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-WanderlustAppiOS/Pods-WanderlustAppiOS-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-WanderlustAppiOS/Pods-WanderlustAppiOS-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-WanderlustAppiOS/Pods-WanderlustAppiOS-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AA70B1517A86D8F730685BED /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-WanderlustAppiOS-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E93EC99CFB985F1B04123A8B /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-WanderlustAppiOS/Pods-WanderlustAppiOS-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-WanderlustAppiOS/Pods-WanderlustAppiOS-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-WanderlustAppiOS/Pods-WanderlustAppiOS-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		A542434F2BAE3C5800189102 /* Sources */ = {
@@ -588,12 +674,14 @@
 		};
 		A54243682BAE3C5900189102 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CFB43322217446DE35F385C1 /* Pods-WanderlustAppiOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = R44B54UB9C;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WanderlustAppiOS/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -601,6 +689,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -616,12 +705,14 @@
 		};
 		A54243692BAE3C5900189102 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 214539518DC8AA7EC886ED6D /* Pods-WanderlustAppiOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = R44B54UB9C;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WanderlustAppiOS/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -629,6 +720,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

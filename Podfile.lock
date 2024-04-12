@@ -1,0 +1,28 @@
+PODS:
+  - Alamofire (5.8.1)
+  - GoogleMaps (8.4.0):
+    - GoogleMaps/Maps (= 8.4.0)
+  - GoogleMaps/Base (8.4.0)
+  - GoogleMaps/Maps (8.4.0):
+    - GoogleMaps/Base
+  - GooglePlaces (8.5.0)
+
+DEPENDENCIES:
+  - Alamofire
+  - GoogleMaps
+  - GooglePlaces
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - GoogleMaps
+    - GooglePlaces
+
+SPEC CHECKSUMS:
+  Alamofire: 3ca42e259043ee0dc5c0cdd76c4bc568b8e42af7
+  GoogleMaps: 8939898920281c649150e0af74aa291c60f2e77d
+  GooglePlaces: 426efb69051e7b460e16300ba63598687d10fa1a
+
+PODFILE CHECKSUM: 64a5ca96b8773e2375f96ea74f0923c680040bde
+
+COCOAPODS: 1.15.2

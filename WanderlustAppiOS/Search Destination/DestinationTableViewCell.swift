@@ -10,8 +10,11 @@ import UIKit
 struct Destination {
     var name: String
     var rating: String
-    var admissionPrice: String
+    var admissionPrice: String?
     var isAddedToPlan: Bool
+    var placeId: String?
+    var photoReference: String?
+    var image: UIImage?
 }
 
 
