@@ -179,7 +179,8 @@ extension SearchDestinationController: UISearchBarDelegate {
         searchDestinationView.activityIndicator.startAnimating()
         
         // Simulate fetching data with a delay
-        searchPlaces(cityName: searchText, apiKey: "AIzaSyDYP9pwECmbBwJzOBwzepkQRNpanvnsb3U") { placeIds in
+        let key = ProcessInfo.processInfo.environment["GOOGLE_API_KEY"]!
+        searchPlaces(cityName: searchText, apiKey: key) { placeIds in
             
                   self.searchDestinationView.activityIndicator.stopAnimating()
                   
