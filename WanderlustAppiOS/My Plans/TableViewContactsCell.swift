@@ -55,12 +55,6 @@ class TableViewContactsCell: UITableViewCell {
         labelDateTo.font = UIFont.boldSystemFont(ofSize: 15.0)
         wrapperCellView.addSubview(labelDateTo)
     }
-//    func setuplabelPeople(){
-//        labelBudget = UILabel()
-//        labelBudget.translatesAutoresizingMaskIntoConstraints = false
-//        labelBudget.font = UIFont.boldSystemFont(ofSize: 15.0)
-//        wrapperCellView.addSubview(labelBudget)
-//    }
     func setuplabelBudget(){
         labelPeople = UILabel()
         labelPeople.translatesAutoresizingMaskIntoConstraints = false

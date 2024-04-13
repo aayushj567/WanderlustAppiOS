@@ -6,6 +6,9 @@
 //
 
 import UIKit
+import FirebaseAuth
+import FirebaseFirestore
+
 
 class MyPlansViewController: UIViewController {
     let firstScreen = FirstScreenView()
@@ -28,6 +31,7 @@ class MyPlansViewController: UIViewController {
 //            barButtonSystemItem: .add, target: self,
 //            action: #selector(onAddBarButtonTapped)
 //        )
+        getPlans()
         firstScreen.onIconTapped = { [unowned self] index in
             // Handle the icon tap, switch views accordingly
             print("Icon at index \(index) was tapped.")
@@ -62,6 +66,8 @@ class MyPlansViewController: UIViewController {
     
     override func loadView() {
         view = firstScreen
+        getPlans()
+
     }
     
 //    @objc func onAddBarButtonTapped(){
@@ -89,6 +95,72 @@ class MyPlansViewController: UIViewController {
         
         firstScreen.tableViewExpense.reloadData()
     }
+    
+    func getPlans(){
+        let db = Firestore.firestore()
+        guard let currentUser = Auth.auth().currentUser else {
+                   fatalError("No user signed in")
+               }
+            do {
+                db.collection("plans").getDocuments { (querySnapshot, error) in
+                    if let error = error {
+                        print("Error getting documents: \(error)")
+                    } else {
+                        
+                        for document in querySnapshot!.documents {
+                           // let days = document.data()["days"] as? [Day]
+                            //print(days[0].name)
+                            //let destinations = days[0].destinations
+                            //let destinations: [Destination]
+                            if let name = document.data()["name"] as? String,
+                               let owner = document.data()["owner"] as? String,
+                               let dateFrom = document.data()["dateFrom"] as? String,
+                               let dateTo = document.data()["dateTo"] as? String
+                              // let daydetails = days
+                               {
+                               //for day in daydetails{
+                                    //if let destinations = day.destinations{
+                                        //for dest in destinations{
+                                   //contacts[1].name = name;
+//                                  print("Name: \(name), Owner: \(owner), datefrom: \(dateFrom), dateto: \(dateTo) ")
+
+                               
+                                var guests: [String] = []
+                                guests.append("2")
+                                guests.append("3")
+                                var dayslist: [Day] = []
+                                var destinationlist: [Destination] = []
+                                var desti = Destination(name:"Boston", rating:"4,3", admissionPrice:"$30", isAddedToPlan: false, placeId:"1", photoReference:"XXZZXXZX", imageBase64:"HELLO", duration:"24")
+                                destinationlist.append(desti)
+                                var day = Day(name:"Day 1", destinations: destinationlist)
+                                
+                                
+                                dayslist.append(day)
+                                let dateFormatter = DateFormatter()
+
+                                // Set the date format
+                                dateFormatter.dateFormat = "yyyy-MM-dd "
+
+                                // Convert Date to String
+                                let dateString = dateFormatter.date(from: dateFrom)
+                                let dateString2 = dateFormatter.date(from: dateTo)
+                                var newContact = Plan(name: name, dateFrom: dateString, dateTo:dateString2, days:dayslist, owner:"4", guests:guests)
+                                self.contacts.append(newContact)
+                                print(newContact)
+                                        //}
+                                  //}
+                               //}
+                                
+
+                            }
+                        }
+                        self.firstScreen.tableViewExpense.reloadData()
+                    }
+                }
+            } catch let error {
+                print("Error serializing plan: \(error)")
+            }
+    }
 }
 
 
@@ -112,9 +184,6 @@ extension MyPlansViewController: UITableViewDelegate, UITableViewDataSource{
         if let uwZip = contacts[indexPath.row].days{
             cell.labelPlace.text = "Place: \(uwZip)"
         }
-//        if let uwImage = contacts[indexPath.row].image{
-//            cell.imageReceipt.image = uwImage
-//        }
         
         cell.selectionStyle = .none
         return cell
@@ -122,13 +191,12 @@ extension MyPlansViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let showContactController = ShowContactViewController()
+        let showContactController = ShowPlanDetailsViewController()
         showContactController.receivedContact = self.contacts[indexPath.row]
         showContactController.delegate = self
         navigationController?.pushViewController(showContactController, animated: true)
         firstScreen.tableViewExpense.deselectRow(at: indexPath, animated: true)
     }
-    
    
 }
 

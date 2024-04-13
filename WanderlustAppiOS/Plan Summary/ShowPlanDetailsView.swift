@@ -7,15 +7,8 @@
 
 import UIKit
 
-class ShowContactView: UIView {
-    
-    /*
-     // Only override draw() if you perform custom drawing.
-     // An empty implementation adversely affects performance during animation.
-     override func draw(_ rect: CGRect) {
-     // Drawing code
-     }
-     */
+class ShowPlanDetailsView: UIView {
+
     var labelName: UILabel!
     var labelDateFrom: UILabel!
     var labelDateTo: UILabel!
@@ -98,8 +91,6 @@ class ShowContactView: UIView {
     }
     func setuplabelIteneraryData(){
         labelIteneraryData = UILabel()
-        //labelPeople.textAlignment = .center
-       // labelPeople.font = UIFont.boldSystemFont(ofSize: 18.0)
         labelIteneraryData.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(labelIteneraryData)
     }

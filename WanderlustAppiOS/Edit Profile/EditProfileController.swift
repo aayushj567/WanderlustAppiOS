@@ -16,7 +16,7 @@ class EditProfileController: UIViewController, UIImagePickerControllerDelegate, 
     var delegate:ViewController!
     var delegateshow:ShowProfileViewController!
     var pickedImage:UIImage?
-    var contacts = [Contact]()
+    var contacts = [Plan]()
     var currentid:Int? = 0
     
     override func viewDidLoad() {

@@ -6,10 +6,12 @@
 //
 
 import UIKit
+import FirebaseAuth
+import FirebaseFirestore
 
-class ShowContactViewController: UIViewController {
+class ShowPlanDetailsViewController: UIViewController {
     
-    let displayPlanSummary = ShowContactView()
+    let displayPlanSummary = ShowPlanDetailsView()
     var delegate:MyPlansViewController!
     
     override func loadView() {
@@ -28,6 +30,8 @@ class ShowContactViewController: UIViewController {
                 displayPlanSummary.labelName.text = "\(unwrappedName)"
             }
         }
+        
+       // getPlans()
 //        if let unwrappedEmail = receivedContact.dateFrom{
 //            if !unwrappedEmail.isEmpty{
 //                displayPlanSummary.labelDateFrom.text = "Date from: \(unwrappedEmail)"
@@ -99,4 +103,9 @@ class ShowContactViewController: UIViewController {
     func delegateOnEditContact(idVal: Int, newName: String, newEmail: String, newPhone:String, newAddress:String, newCity:String, newZip:String, newType:String, newImage: UIImage) {
         delegate.delegateOnEditContact(idVal: idVal, newName: newName, newEmail: newEmail, newPhone: newPhone, newAddress: newAddress, newCity: newCity, newZip: newZip, newType: newType, newImage: newImage)
     }
+    
+//    @objc func getPlans(){
+//        let db = Firestore.firestore()
+//        
+//    }
 }
