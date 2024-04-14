@@ -42,7 +42,11 @@ class CalendarView: UIView {
         calendarView.calendar = .current
         calendarView.locale = .current
         calendarView.fontDesign = .rounded
-        calendarView.availableDateRange = DateInterval(start: .now, end: .distantFuture)
+        // set the available date range to start from tomorrow
+        let today = Date()
+        let tomorrow = Calendar.current.date(byAdding: .day, value: 1, to: today)!
+        // present the calendar from tomorrow to a distant future
+        calendarView.availableDateRange = DateInterval(start: tomorrow, end: .distantFuture)
         self.addSubview(calendarView)
         
         buttonNext = UIButton(type: .system)
@@ -56,8 +60,8 @@ class CalendarView: UIView {
         
         
         NSLayoutConstraint.activate([
-            topLabel.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor),
-            topLabel.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 10),
+            topLabel.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 8),
+            topLabel.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 16),
             
             planTextField.topAnchor.constraint(equalTo: self.topLabel.bottomAnchor, constant: 10),
             planTextField.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 16),
@@ -66,7 +70,7 @@ class CalendarView: UIView {
             calendarView.topAnchor.constraint(equalTo: self.planTextField.bottomAnchor, constant: 10),
             calendarView.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 10),
             calendarView.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -10),
-            calendarView.heightAnchor.constraint(equalToConstant: 500),
+            calendarView.heightAnchor.constraint(equalToConstant: 400),
             
             buttonNext.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -60),
             buttonNext.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor),

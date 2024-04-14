@@ -29,11 +29,25 @@ class ViewController: UIViewController {
         handleAuth = Auth.auth().addStateDidChangeListener{ [weak self] auth, user in
             guard let self = self else { return }
             if user != nil && !self.hasCompletedRegistration { // already a user
-                let mainScreen = CalendarViewController();               self.navigationController?.pushViewController(mainScreen, animated: true)
+                self.currentUser = user
+                let mainScreen = CalendarViewController()
+                self.navigationController?.pushViewController(mainScreen, animated: true)
             } else if  user != nil && self.hasCompletedRegistration { // new user just completed registration
                     self.hasCompletedRegistration = false
+                    self.currentUser = user
                     return
             }
+        }
+    }
+    
+    func fetchUserFromFirestore() {
+        if let user = currentUser {
+            print("User ID: \(user.uid)")
+            print("Name: \(user.displayName ?? "N/A")")
+            print("Email: \(user.email ?? "N/A")")
+            print("Image URL: \(user.photoURL?.absoluteString ?? "N/A")")
+        } else {
+            print("No current user")
         }
     }
     
@@ -48,6 +62,8 @@ class ViewController: UIViewController {
     //MARK: remove the Firebase auth listener when the view disappears...
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        loginScreen.textFieldEmail.text = ""
+        loginScreen.textFieldPassword.text = ""
         Auth.auth().removeStateDidChangeListener(handleAuth!)
     }
     
@@ -58,7 +74,16 @@ class ViewController: UIViewController {
             if error == nil{
                 //user authenticated...
                 let mainScreen = CalendarViewController()
+                mainScreen.currentUserDelegate = self.currentUser
                 self.navigationController?.pushViewController(mainScreen, animated: true)
+                // Access current user (if already signed in)
+                if let currentUser = Auth.auth().currentUser {
+                    self.currentUser = currentUser
+                    print("Current user:", currentUser.uid)
+                    // You can access user information like currentUser.uid, currentUser.email, etc.
+                } else {
+                    print("No user is currently signed in")
+                }
             }else{
                 //alert that no user found or password wrong...
                 self.showAlert(title: "Error", message: "No user found with the provided credentials.")
@@ -66,13 +91,13 @@ class ViewController: UIViewController {
         })
     }
     
-    // MARK: action when the login button is tapped...
+    //MARK: action when the login button is tapped...
     @objc func onLoginTapped(){
         guard let emailText = loginScreen.textFieldEmail.text, !emailText.isEmpty,
               let passwordText = loginScreen.textFieldPassword.text, !passwordText.isEmpty
         else {
             //alert that all fields are required and cannot be empty...
-            showAlert(title: "Error", message: "Please fill out all required fields.")
+            showAlert(title: "Error", message: "Please fill out all fields.")
             return
         }
         
@@ -87,6 +112,7 @@ class ViewController: UIViewController {
     //MARK: action when the registration button is tapped...
     @objc func onRegistrationTapped(){
         let registrationScreen = RegistrationViewController()
+        registrationScreen.loginScreenDelegate = self
         navigationController?.pushViewController(registrationScreen, animated: true)
     }
 

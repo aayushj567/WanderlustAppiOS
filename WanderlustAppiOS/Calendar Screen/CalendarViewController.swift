@@ -6,10 +6,13 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class CalendarViewController: UIViewController{
     let homeScreen = CalendarView()
     var selectedDates = [DateComponents]()
+    // variable to keep an instance of the current signed-in Firebase user
+    var currentUserDelegate:FirebaseAuth.User?
     
     override func loadView() {
         view = homeScreen
@@ -20,15 +23,21 @@ class CalendarViewController: UIViewController{
         view.backgroundColor = .white
         title = "Create plan"
         
+        // Hide the default back button (arrow)
+        navigationItem.hidesBackButton = true
+
+        // Create a custom back button which is basically invisible and has no functionlaity.
+        let backButton = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        navigationItem.leftBarButtonItem = backButton
+        
         let multiSelect = UICalendarSelectionMultiDate(delegate: self)
         homeScreen.calendarView.selectionBehavior = multiSelect
-        
         homeScreen.calendarView.delegate = self
-        
         homeScreen.buttonNext.addTarget(self, action: #selector(onNextButtonTapped), for: .touchUpInside)
+        fetchUserFromFirestore()
     }
     
-    // Function to insert a date into the array in sorted order
+    //MARK: Function to insert a date into the array in sorted order
     func insertDate(_ date: DateComponents, into array: inout [DateComponents]) {
         // Find the index where the date should be inserted
         let insertionIndex = array.firstIndex { $0.date! > date.date! } ?? array.endIndex
@@ -37,7 +46,7 @@ class CalendarViewController: UIViewController{
         array.insert(date, at: insertionIndex)
     }
     
-    // Function to remove a date from the array
+    //MARK: Function to remove a date from the array
     func removeDate(_ date: DateComponents, from array: inout [DateComponents]) {
         // Find the index of the date to remove
         if let index = array.firstIndex(where: { $0.date == date.date }) {
@@ -46,13 +55,26 @@ class CalendarViewController: UIViewController{
         }
     }
 
-    
+    //MARK: action to perform when next button is tapped...
     @objc func onNextButtonTapped(){
         let addGuestsCOntroller = AddGuestsViewController()
+        addGuestsCOntroller.currentUserDelegate = self.currentUserDelegate
         navigationController?.pushViewController(addGuestsCOntroller, animated: true)
+    }
+    
+    func fetchUserFromFirestore() {
+        if let user = currentUserDelegate {
+            print("User ID: \(user.uid)")
+            print("Name: \(user.displayName ?? "N/A")")
+            print("Email: \(user.email ?? "N/A")")
+            print("Image URL: \(user.photoURL?.absoluteString ?? "N/A")")
+        } else {
+            print("No current user")
+        }
     }
 }
 
+//MARK: extension to handle calendar view selection and deselection of dates...
 extension CalendarViewController: UICalendarViewDelegate, UICalendarSelectionMultiDateDelegate{
     
     func multiDateSelection(_ selection: UICalendarSelectionMultiDate, didSelectDate dateComponents: DateComponents) {

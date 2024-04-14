@@ -2,13 +2,7 @@ import UIKit
  
 class ShowProfileView: UIView {
     
-    /*
-     // Only override draw() if you perform custom drawing.
-     // An empty implementation adversely affects performance during animation.
-     override func draw(_ rect: CGRect) {
-     // Drawing code
-     }
-     */
+    var imageView: UIImageView!
     var labelName: UILabel!
     var labelEmail: UILabel!
     var labelPhone: UILabel!
@@ -16,7 +10,6 @@ class ShowProfileView: UIView {
     var labelAddress: UILabel!
     var labelCity: UILabel!
     var labelZip: UILabel!
-    var imageView: UIImageView!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -32,6 +25,17 @@ class ShowProfileView: UIView {
         setupLabelAddressHeading()
         setupImage()
         initConstraints()
+    }
+    
+    func setupImage(){
+        imageView = UIImageView()
+        imageView.image = UIImage(systemName: "person.circle")?.withRenderingMode(.alwaysOriginal)
+        imageView.contentMode = .scaleToFill
+        imageView.tintColor = .black
+        imageView.clipsToBounds = true
+        imageView.layer.masksToBounds = true
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        self.addSubview(imageView)
     }
     
     func setupLabelName(){
@@ -77,13 +81,6 @@ class ShowProfileView: UIView {
         labelAddressHeading.font = UIFont.boldSystemFont(ofSize: 18.0)
         labelAddressHeading.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(labelAddressHeading)
-    }
-    
-    func setupImage(){
-        imageView = UIImageView()
-        imageView.tintColor = .black
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        self.addSubview(imageView)
     }
     
     func initConstraints(){

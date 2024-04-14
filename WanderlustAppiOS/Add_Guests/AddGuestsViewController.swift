@@ -1,9 +1,13 @@
 import UIKit
+import FirebaseAuth
 
 class AddGuestsViewController: UIViewController {
     
     let addGuestView = AddGuestsView()
+    // variable to keep an instance of the current signed-in Firebase user
+    var currentUserDelegate:FirebaseAuth.User?
     var guests: [String] = ["John Doe", "Jane Smith", "Michael Johnson"]
+    
     override func loadView() {
         view = addGuestView
     }
@@ -21,6 +25,7 @@ class AddGuestsViewController: UIViewController {
     
     @objc func onNextButtonTapped(){
         let addItenaryController = ItineraryViewController()
+        addItenaryController.currentUserDelegate = self.currentUserDelegate
         navigationController?.pushViewController(addItenaryController, animated: true)
     }
 }

@@ -57,6 +57,8 @@
 		A56C26422BC0D65B0015B87A /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56C26342BC0D65B0015B87A /* ProfileView.swift */; };
 		A56C26432BC0D65B0015B87A /* ContactInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56C26362BC0D65B0015B87A /* ContactInfo.swift */; };
 		A56C26442BC0D65B0015B87A /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56C26372BC0D65B0015B87A /* MainViewController.swift */; };
+		A5E719192BCA012A000113D0 /* PhotoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E719182BCA012A000113D0 /* PhotoManager.swift */; };
+		A5E7191B2BCA119A000113D0 /* ImageViewUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E7191A2BCA119A000113D0 /* ImageViewUtils.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -109,6 +111,8 @@
 		A56C26342BC0D65B0015B87A /* ProfileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		A56C26362BC0D65B0015B87A /* ContactInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactInfo.swift; sourceTree = "<group>"; };
 		A56C26372BC0D65B0015B87A /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		A5E719182BCA012A000113D0 /* PhotoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoManager.swift; sourceTree = "<group>"; };
+		A5E7191A2BCA119A000113D0 /* ImageViewUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewUtils.swift; sourceTree = "<group>"; };
 		CFB43322217446DE35F385C1 /* Pods-WanderlustAppiOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WanderlustAppiOS.debug.xcconfig"; path = "Target Support Files/Pods-WanderlustAppiOS/Pods-WanderlustAppiOS.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -235,6 +239,7 @@
 			isa = PBXGroup;
 			children = (
 				9C07950D2BC0CCB900AC46D5 /* RegistrationControllerViewController.swift */,
+				A5E719182BCA012A000113D0 /* PhotoManager.swift */,
 				57A4686C2BC753B300FC0DB3 /* RegistrationFirebase.swift */,
 				9C07950E2BC0CCB900AC46D5 /* RegistrationView.swift */,
 			);
@@ -287,6 +292,7 @@
 				A54243562BAE3C5800189102 /* AppDelegate.swift */,
 				A54243582BAE3C5800189102 /* SceneDelegate.swift */,
 				A542435A2BAE3C5800189102 /* ViewController.swift */,
+				A5E7191A2BCA119A000113D0 /* ImageViewUtils.swift */,
 				A542435C2BAE3C5800189102 /* Main.storyboard */,
 				A542435F2BAE3C5900189102 /* Assets.xcassets */,
 				A54243612BAE3C5900189102 /* LaunchScreen.storyboard */,
@@ -492,6 +498,7 @@
 				9C0795012BC0C33E00AC46D5 /* SearchDestinationController.swift in Sources */,
 				57020F412BC0CB37009D9369 /* AddGuestsViewController.swift in Sources */,
 				9C0795022BC0C33E00AC46D5 /* SearchDestinationView.swift in Sources */,
+				A5E7191B2BCA119A000113D0 /* ImageViewUtils.swift in Sources */,
 				57020F472BC0E19B009D9369 /* ChatView.swift in Sources */,
 				57A468702BC8837000FC0DB3 /* Days.swift in Sources */,
 				415699D12BC0D18F005F9DE7 /* FirstScreenView.swift in Sources */,
@@ -517,6 +524,7 @@
 				A56C263A2BC0D65B0015B87A /* CalendarViewController.swift in Sources */,
 				9C0795142BC0CCB900AC46D5 /* LoginScreenView.swift in Sources */,
 				9C07950B2BC0C3A600AC46D5 /* ItineraryViewController.swift in Sources */,
+				A5E719192BCA012A000113D0 /* PhotoManager.swift in Sources */,
 				A56C26422BC0D65B0015B87A /* ProfileView.swift in Sources */,
 				415699D52BC0D18F005F9DE7 /* ShowContactViewController.swift in Sources */,
 				A56C26432BC0D65B0015B87A /* ContactInfo.swift in Sources */,

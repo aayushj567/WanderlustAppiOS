@@ -17,6 +17,8 @@ class ItineraryViewController: UIViewController, UITableViewDelegate, UITableVie
     let endDatePicker = UIDatePicker()
     var tabBarView: UIView!
     var saveButton: UIButton!
+    // variable to keep an instance of the current signed-in Firebase user
+    var currentUserDelegate:FirebaseAuth.User?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -329,6 +331,7 @@ class ItineraryViewController: UIViewController, UITableViewDelegate, UITableVie
             if(index == 3)
             {
                 let profileView = ShowProfileViewController()
+                profileView.currentUser = self.currentUserDelegate
                 navigationController?.pushViewController(profileView, animated: true)
             }
             

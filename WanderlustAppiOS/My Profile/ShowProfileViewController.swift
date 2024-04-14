@@ -6,6 +6,8 @@ class ShowProfileViewController: UIViewController {
     let displayScreen = ShowProfileView()
     var delegate:ViewController!
     
+    var currentUser:FirebaseAuth.User?
+    
     override func loadView() {
         view = displayScreen
     }
@@ -19,6 +21,7 @@ class ShowProfileViewController: UIViewController {
                                            zip: "12345",
                                            type: "Home",
                                            image: UIImage(named: "profile_image"))
+
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -58,22 +61,29 @@ class ShowProfileViewController: UIViewController {
                 displayScreen.labelZip.text = "\(unwrappedZip)"
             }
         }
-        if let unwrappedImage = receivedContact.image{
-            displayScreen.imageView.image = unwrappedImage
+        //MARK: setting the profile photo...
+        print("Adding image...")
+        if let url = currentUser?.photoURL{
+            print("URL is:",url)
+            displayScreen.imageView.loadRemoteImage(from: url)
         }
         
-//        navigationItem.rightBarButtonItem = UIBarButtonItem(
-//            barButtonSystemItem: .logout,
-//            target: self,
-//            action: #selector(onEditButtonTapped)
-//        )
+        fetchUserFromFirestore()
+    
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(logout))
-        
     }
     
-    @objc func onLogOutBarButtonTapped(){
-
+    func fetchUserFromFirestore() {
+        if let user = currentUser {
+            print("User ID: \(user.uid)")
+            print("Name: \(user.displayName ?? "N/A")")
+            print("Email: \(user.email ?? "N/A")")
+            print("Image URL: \(user.photoURL?.absoluteString ?? "N/A")")
+        } else {
+            print("No current user")
+        }
     }
+
     
     @objc func logout() {
         
@@ -116,8 +126,4 @@ class ShowProfileViewController: UIViewController {
         }
         navigationController?.setViewControllers(viewControllers, animated: true)
     }
-    
-//    func delegateOnEditContact(idVal: Int, newName: String, newEmail: String, newPhone:String, newAddress:String, newCity:String, newZip:String, newType:String, newImage: UIImage) {
-//        delegate.delegateOnEditContact(idVal: idVal, newName: newName, newEmail: newEmail, newPhone: newPhone, newAddress: newAddress, newCity: newCity, newZip: newZip, newType: newType, newImage: newImage)
-//    }
 }
