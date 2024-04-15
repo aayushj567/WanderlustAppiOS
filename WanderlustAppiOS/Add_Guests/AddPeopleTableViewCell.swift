@@ -14,6 +14,12 @@ class AddPeopleTableViewCell: UITableViewCell {
     var personNameLabel: UILabel!
     var addButton: UIButton!
     
+    var addButtonTapHandler: (() -> Void)?
+    
+    @IBAction func addButtonTapped(_ sender: UIButton) {
+            addButtonTapHandler?()
+        }
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
@@ -61,6 +67,7 @@ class AddPeopleTableViewCell: UITableViewCell {
         addButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
         addButton.translatesAutoresizingMaskIntoConstraints = false
         wrapperCellView.addSubview(addButton)
+        addButton.addTarget(self, action: #selector(addButtonTapped(_:)), for: .touchUpInside)
     }
     
     func initConstraints(){

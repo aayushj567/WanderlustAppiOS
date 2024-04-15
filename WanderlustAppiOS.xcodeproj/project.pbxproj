@@ -46,6 +46,7 @@
 		9C0795112BC0CCB900AC46D5 /* RegistrationControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C07950D2BC0CCB900AC46D5 /* RegistrationControllerViewController.swift */; };
 		9C0795122BC0CCB900AC46D5 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C07950E2BC0CCB900AC46D5 /* RegistrationView.swift */; };
 		9C0795142BC0CCB900AC46D5 /* LoginScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0795102BC0CCB900AC46D5 /* LoginScreenView.swift */; };
+		9CC6072C2BCDD126003B3F01 /* ItineraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC6072B2BCDD126003B3F01 /* ItineraryView.swift */; };
 		A54243572BAE3C5800189102 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54243562BAE3C5800189102 /* AppDelegate.swift */; };
 		A54243592BAE3C5800189102 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54243582BAE3C5800189102 /* SceneDelegate.swift */; };
 		A542435B2BAE3C5800189102 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A542435A2BAE3C5800189102 /* ViewController.swift */; };
@@ -102,6 +103,7 @@
 		9C07950D2BC0CCB900AC46D5 /* RegistrationControllerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationControllerViewController.swift; sourceTree = "<group>"; };
 		9C07950E2BC0CCB900AC46D5 /* RegistrationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
 		9C0795102BC0CCB900AC46D5 /* LoginScreenView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginScreenView.swift; sourceTree = "<group>"; };
+		9CC6072B2BCDD126003B3F01 /* ItineraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItineraryView.swift; sourceTree = "<group>"; };
 		A54243532BAE3C5800189102 /* WanderlustAppiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WanderlustAppiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A54243562BAE3C5800189102 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A54243582BAE3C5800189102 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -252,6 +254,7 @@
 			children = (
 				9C07950A2BC0C3A600AC46D5 /* ItineraryViewController.swift */,
 				0A4427E02BC9DFB300D3CA29 /* DayTableViewCell.swift */,
+				9CC6072B2BCDD126003B3F01 /* ItineraryView.swift */,
 			);
 			path = "Itinerary Screen";
 			sourceTree = "<group>";
@@ -545,6 +548,7 @@
 				A56C263A2BC0D65B0015B87A /* CalendarViewController.swift in Sources */,
 				0A4427E12BC9DFB300D3CA29 /* DayTableViewCell.swift in Sources */,
 				9C0795142BC0CCB900AC46D5 /* LoginScreenView.swift in Sources */,
+				9CC6072C2BCDD126003B3F01 /* ItineraryView.swift in Sources */,
 				9C07950B2BC0C3A600AC46D5 /* ItineraryViewController.swift in Sources */,
 				A56C26422BC0D65B0015B87A /* ProfileView.swift in Sources */,
 				415699D52BC0D18F005F9DE7 /* ShowContactViewController.swift in Sources */,
