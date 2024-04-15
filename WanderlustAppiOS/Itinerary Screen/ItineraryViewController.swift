@@ -178,7 +178,7 @@ class ItineraryViewController: UIViewController, UITableViewDelegate, UITableVie
                 }
                 if(index == 2)
                 {
-                    let chatView = ChatViewController()
+                    let chatView = ChatPlanViewController()
                     navigationController?.pushViewController(chatView, animated: true)
                 }
                 print("Icon at index \(index) was tapped.")

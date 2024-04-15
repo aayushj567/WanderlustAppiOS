@@ -2,7 +2,7 @@ import FirebaseFirestore
 import FirebaseFirestoreSwift
 
 struct Plan: Codable {
-    @DocumentID var id: String?
+    var id: String?
     var name: String?
     var dateFrom: Date?
     var dateTo: Date?
