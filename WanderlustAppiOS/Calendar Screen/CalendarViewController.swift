@@ -21,15 +21,21 @@ class CalendarViewController: UIViewController{
         view.backgroundColor = .white
         title = "Create plan"
         
+        // Hide the default back button (arrow)
+        navigationItem.hidesBackButton = true
+        // Create a custom back button which is basically invisible and has no functionlaity.
+        let backButton = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        navigationItem.leftBarButtonItem = backButton
+        
+        // UICalendarView behavior...
         let multiSelect = UICalendarSelectionMultiDate(delegate: self)
         homeScreen.calendarView.selectionBehavior = multiSelect
-        
         homeScreen.calendarView.delegate = self
         
         homeScreen.buttonNext.addTarget(self, action: #selector(onNextButtonTapped), for: .touchUpInside)
     }
     
-    // Function to insert a date into the array in sorted order
+    //MARK: Function to insert a date into the selectedDates array in sorted order
     func insertDate(_ date: DateComponents, into array: inout [DateComponents]) {
         // Find the index where the date should be inserted
         let insertionIndex = array.firstIndex { $0.date! > date.date! } ?? array.endIndex
@@ -38,7 +44,7 @@ class CalendarViewController: UIViewController{
         array.insert(date, at: insertionIndex)
     }
     
-    // Function to remove a date from the array
+    //MARK: Function to remove a date from the selectedDates array
     func removeDate(_ date: DateComponents, from array: inout [DateComponents]) {
         // Find the index of the date to remove
         if let index = array.firstIndex(where: { $0.date == date.date }) {
@@ -47,12 +53,7 @@ class CalendarViewController: UIViewController{
         }
     }
 
-    
-//    @objc func onNextButtonTapped(){
-//        let addGuestsCOntroller = AddGuestsViewController()
-//        navigationController?.pushViewController(addGuestsCOntroller, animated: true)
-//    }
-    
+    //MARK: action to perform when next button is tapped...
     @objc func onNextButtonTapped() {
         let addGuestsController = AddGuestsViewController()
         addGuestsController.selectedDates = selectedDates
@@ -63,24 +64,16 @@ class CalendarViewController: UIViewController{
 extension CalendarViewController: UICalendarViewDelegate, UICalendarSelectionMultiDateDelegate{
     
     func multiDateSelection(_ selection: UICalendarSelectionMultiDate, didSelectDate dateComponents: DateComponents) {
-            if let date = dateComponents.date {
-                selectedDates.append(date)
-            }
+        if let date = dateComponents.date {
+            selectedDates.append(date)
         }
+    }
         
     func multiDateSelection(_ selection: UICalendarSelectionMultiDate, didDeselectDate dateComponents: DateComponents) {
         if let date = dateComponents.date, let index = selectedDates.firstIndex(of: date) {
             selectedDates.remove(at: index)
         }
     }
-    
-//    func multiDateSelection(_ selection: UICalendarSelectionMultiDate, didSelectDate dateComponents: DateComponents) {
-////        var selected = selection.selectedDates
-////        selected.removeAll { $0 == dateComponents }
-////        selection.setSelectedDates(selected, animated: false)
-//        //print("Selected Date:", dateComponents)
-//        self.insertDate(dateComponents, into: &self.selectedDates)
-//    }
     
     func multiDateSelection(_ selection: UICalendarSelectionMultiDate, canSelectDate dateComponents: DateComponents) -> Bool {
         guard let day = dateComponents.day else {
@@ -90,15 +83,8 @@ extension CalendarViewController: UICalendarViewDelegate, UICalendarSelectionMul
     }
 
     func multiDateSelection(_ selection: UICalendarSelectionMultiDate, canDeselectDate dateComponents: DateComponents) -> Bool {
-            //return dateComponents.day != 14
         return true
     }
-    
-//    func multiDateSelection(_ selection: UICalendarSelectionMultiDate, didDeselectDate dateComponents: DateComponents) {
-//        //print("Deselected Date:", dateComponents)
-//        self.removeDate(dateComponents, from: &self.selectedDates)
-//    }
-    
     
     func calendarView(_ calendarView: UICalendarView, decorationFor dateComponents: DateComponents) -> UICalendarView.Decoration? {
         return nil

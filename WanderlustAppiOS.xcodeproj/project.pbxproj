@@ -43,7 +43,7 @@
 		9C0795012BC0C33E00AC46D5 /* SearchDestinationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0794FD2BC0C33E00AC46D5 /* SearchDestinationController.swift */; };
 		9C0795022BC0C33E00AC46D5 /* SearchDestinationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0794FE2BC0C33E00AC46D5 /* SearchDestinationView.swift */; };
 		9C07950B2BC0C3A600AC46D5 /* ItineraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C07950A2BC0C3A600AC46D5 /* ItineraryViewController.swift */; };
-		9C0795112BC0CCB900AC46D5 /* RegistrationControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C07950D2BC0CCB900AC46D5 /* RegistrationControllerViewController.swift */; };
+		9C0795112BC0CCB900AC46D5 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C07950D2BC0CCB900AC46D5 /* RegistrationViewController.swift */; };
 		9C0795122BC0CCB900AC46D5 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C07950E2BC0CCB900AC46D5 /* RegistrationView.swift */; };
 		9C0795142BC0CCB900AC46D5 /* LoginScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0795102BC0CCB900AC46D5 /* LoginScreenView.swift */; };
 		9CC6072C2BCDD126003B3F01 /* ItineraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC6072B2BCDD126003B3F01 /* ItineraryView.swift */; };
@@ -53,6 +53,8 @@
 		A542435E2BAE3C5800189102 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = A542435D2BAE3C5800189102 /* Base */; };
 		A54243602BAE3C5900189102 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A542435F2BAE3C5900189102 /* Assets.xcassets */; };
 		A54243632BAE3C5900189102 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = A54243622BAE3C5900189102 /* Base */; };
+		A567B9372BCDD6DE0051C8A3 /* PhotoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A567B9362BCDD6DE0051C8A3 /* PhotoManager.swift */; };
+		A567B9392BCDDBF20051C8A3 /* ImageViewUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A567B9382BCDDBF20051C8A3 /* ImageViewUtils.swift */; };
 		A56C26392BC0D65B0015B87A /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56C26282BC0D65B0015B87A /* CalendarView.swift */; };
 		A56C263A2BC0D65B0015B87A /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56C26292BC0D65B0015B87A /* CalendarViewController.swift */; };
 		A56C263B2BC0D65B0015B87A /* ChatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56C262B2BC0D65B0015B87A /* ChatsViewController.swift */; };
@@ -100,7 +102,7 @@
 		9C0794FD2BC0C33E00AC46D5 /* SearchDestinationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchDestinationController.swift; sourceTree = "<group>"; };
 		9C0794FE2BC0C33E00AC46D5 /* SearchDestinationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchDestinationView.swift; sourceTree = "<group>"; };
 		9C07950A2BC0C3A600AC46D5 /* ItineraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItineraryViewController.swift; sourceTree = "<group>"; };
-		9C07950D2BC0CCB900AC46D5 /* RegistrationControllerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationControllerViewController.swift; sourceTree = "<group>"; };
+		9C07950D2BC0CCB900AC46D5 /* RegistrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		9C07950E2BC0CCB900AC46D5 /* RegistrationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
 		9C0795102BC0CCB900AC46D5 /* LoginScreenView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginScreenView.swift; sourceTree = "<group>"; };
 		9CC6072B2BCDD126003B3F01 /* ItineraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItineraryView.swift; sourceTree = "<group>"; };
@@ -112,6 +114,8 @@
 		A542435F2BAE3C5900189102 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A54243622BAE3C5900189102 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A54243642BAE3C5900189102 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A567B9362BCDD6DE0051C8A3 /* PhotoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoManager.swift; sourceTree = "<group>"; };
+		A567B9382BCDDBF20051C8A3 /* ImageViewUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewUtils.swift; sourceTree = "<group>"; };
 		A56C26282BC0D65B0015B87A /* CalendarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		A56C26292BC0D65B0015B87A /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		A56C262B2BC0D65B0015B87A /* ChatsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatsViewController.swift; sourceTree = "<group>"; };
@@ -262,7 +266,8 @@
 		9C0795152BC0CCC300AC46D5 /* Registration Screen */ = {
 			isa = PBXGroup;
 			children = (
-				9C07950D2BC0CCB900AC46D5 /* RegistrationControllerViewController.swift */,
+				9C07950D2BC0CCB900AC46D5 /* RegistrationViewController.swift */,
+				A567B9362BCDD6DE0051C8A3 /* PhotoManager.swift */,
 				57A4686C2BC753B300FC0DB3 /* RegistrationFirebase.swift */,
 				9C07950E2BC0CCB900AC46D5 /* RegistrationView.swift */,
 			);
@@ -315,6 +320,7 @@
 				A54243562BAE3C5800189102 /* AppDelegate.swift */,
 				A54243582BAE3C5800189102 /* SceneDelegate.swift */,
 				A542435A2BAE3C5800189102 /* ViewController.swift */,
+				A567B9382BCDDBF20051C8A3 /* ImageViewUtils.swift */,
 				A542435C2BAE3C5800189102 /* Main.storyboard */,
 				A542435F2BAE3C5900189102 /* Assets.xcassets */,
 				A54243612BAE3C5900189102 /* LaunchScreen.storyboard */,
@@ -532,8 +538,10 @@
 				A56C263B2BC0D65B0015B87A /* ChatsViewController.swift in Sources */,
 				9C0795122BC0CCB900AC46D5 /* RegistrationView.swift in Sources */,
 				A542435B2BAE3C5800189102 /* ViewController.swift in Sources */,
+				A567B9392BCDDBF20051C8A3 /* ImageViewUtils.swift in Sources */,
 				A56C26392BC0D65B0015B87A /* CalendarView.swift in Sources */,
 				A54243572BAE3C5800189102 /* AppDelegate.swift in Sources */,
+				A567B9372BCDD6DE0051C8A3 /* PhotoManager.swift in Sources */,
 				A56C263C2BC0D65B0015B87A /* HomeViewController.swift in Sources */,
 				57A468742BC8864100FC0DB3 /* User.swift in Sources */,
 				57020F532BC0E30B009D9369 /* Utilities.swift in Sources */,
@@ -544,7 +552,7 @@
 				57020F552BC0E4D1009D9369 /* Contact.swift in Sources */,
 				9C0795002BC0C33E00AC46D5 /* DestinationTableViewCell.swift in Sources */,
 				A56C263E2BC0D65B0015B87A /* HomeView.swift in Sources */,
-				9C0795112BC0CCB900AC46D5 /* RegistrationControllerViewController.swift in Sources */,
+				9C0795112BC0CCB900AC46D5 /* RegistrationViewController.swift in Sources */,
 				A56C263A2BC0D65B0015B87A /* CalendarViewController.swift in Sources */,
 				0A4427E12BC9DFB300D3CA29 /* DayTableViewCell.swift in Sources */,
 				9C0795142BC0CCB900AC46D5 /* LoginScreenView.swift in Sources */,

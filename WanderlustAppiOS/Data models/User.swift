@@ -14,10 +14,10 @@ struct User: Codable{
     var id: String?
     var name: String?
     var phone: String?
-    var image: String?
+    var image: URL?
     var email: String?
     
-    init(id: String?, name: String? = nil, phone: String? = nil, image: String? = nil, email: String? = nil) {
+    init(id: String?, name: String? = nil, phone: String? = nil, image: URL? = nil, email: String? = nil) {
         self.id = id
         self.name = name
         self.phone = phone
