@@ -4,6 +4,8 @@ class AddGuestsViewController: UIViewController {
     
     let addGuestView = AddGuestsView()
     var guests: [String] = ["John Doe", "Jane Smith", "Michael Johnson"]
+    var selectedUsers: [User] = []
+    var selectedDates: [Date] = []
     override func loadView() {
         view = addGuestView
     }
@@ -20,8 +22,13 @@ class AddGuestsViewController: UIViewController {
     }
     
     @objc func onNextButtonTapped(){
-        let addItenaryController = ItineraryViewController()
-        navigationController?.pushViewController(addItenaryController, animated: true)
+//        let addItenaryController = ItineraryViewController()
+//        navigationController?.pushViewController(addItenaryController, animated: true)
+        
+        let itineraryViewController = ItineraryViewController()
+            itineraryViewController.selectedDates = selectedDates
+            itineraryViewController.selectedUsers = selectedUsers
+            navigationController?.pushViewController(itineraryViewController, animated: true)
     }
 }
 

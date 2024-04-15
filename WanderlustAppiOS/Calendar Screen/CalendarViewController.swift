@@ -9,7 +9,8 @@ import UIKit
 
 class CalendarViewController: UIViewController{
     let homeScreen = CalendarView()
-    var selectedDates = [DateComponents]()
+    //var selectedDates = [DateComponents]()
+    var selectedDates: [Date] = []
     
     override func loadView() {
         view = homeScreen
@@ -47,21 +48,39 @@ class CalendarViewController: UIViewController{
     }
 
     
-    @objc func onNextButtonTapped(){
-        let addGuestsCOntroller = AddGuestsViewController()
-        navigationController?.pushViewController(addGuestsCOntroller, animated: true)
+//    @objc func onNextButtonTapped(){
+//        let addGuestsCOntroller = AddGuestsViewController()
+//        navigationController?.pushViewController(addGuestsCOntroller, animated: true)
+//    }
+    
+    @objc func onNextButtonTapped() {
+        let addGuestsController = AddGuestsViewController()
+        addGuestsController.selectedDates = selectedDates
+        navigationController?.pushViewController(addGuestsController, animated: true)
     }
 }
 
 extension CalendarViewController: UICalendarViewDelegate, UICalendarSelectionMultiDateDelegate{
     
     func multiDateSelection(_ selection: UICalendarSelectionMultiDate, didSelectDate dateComponents: DateComponents) {
-//        var selected = selection.selectedDates
-//        selected.removeAll { $0 == dateComponents }
-//        selection.setSelectedDates(selected, animated: false)
-        //print("Selected Date:", dateComponents)
-        self.insertDate(dateComponents, into: &self.selectedDates)
+            if let date = dateComponents.date {
+                selectedDates.append(date)
+            }
+        }
+        
+    func multiDateSelection(_ selection: UICalendarSelectionMultiDate, didDeselectDate dateComponents: DateComponents) {
+        if let date = dateComponents.date, let index = selectedDates.firstIndex(of: date) {
+            selectedDates.remove(at: index)
+        }
     }
+    
+//    func multiDateSelection(_ selection: UICalendarSelectionMultiDate, didSelectDate dateComponents: DateComponents) {
+////        var selected = selection.selectedDates
+////        selected.removeAll { $0 == dateComponents }
+////        selection.setSelectedDates(selected, animated: false)
+//        //print("Selected Date:", dateComponents)
+//        self.insertDate(dateComponents, into: &self.selectedDates)
+//    }
     
     func multiDateSelection(_ selection: UICalendarSelectionMultiDate, canSelectDate dateComponents: DateComponents) -> Bool {
         guard let day = dateComponents.day else {
@@ -75,10 +94,10 @@ extension CalendarViewController: UICalendarViewDelegate, UICalendarSelectionMul
         return true
     }
     
-    func multiDateSelection(_ selection: UICalendarSelectionMultiDate, didDeselectDate dateComponents: DateComponents) {
-        //print("Deselected Date:", dateComponents)
-        self.removeDate(dateComponents, from: &self.selectedDates)
-    }
+//    func multiDateSelection(_ selection: UICalendarSelectionMultiDate, didDeselectDate dateComponents: DateComponents) {
+//        //print("Deselected Date:", dateComponents)
+//        self.removeDate(dateComponents, from: &self.selectedDates)
+//    }
     
     
     func calendarView(_ calendarView: UICalendarView, decorationFor dateComponents: DateComponents) -> UICalendarView.Decoration? {

@@ -17,6 +17,8 @@ class ItineraryViewController: UIViewController, UITableViewDelegate, UITableVie
     var tabBarView: UIView!
     var onIconTapped: ((Int) -> Void)?
     var planNameLabel:UILabel!
+    var selectedDates: [Date] = []
+    var selectedUsers: [User] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -74,18 +76,36 @@ class ItineraryViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     @objc func saveItinerary()
     {
-        let db = Firestore.firestore()  // Get a reference to the Firestore service
-        guard let currentUser = Auth.auth().currentUser else {
-                   fatalError("No user signed in")
-               }
-            // Create an instance of the Plan
+        let db = Firestore.firestore()
+            guard let currentUser = Auth.auth().currentUser else {
+                fatalError("No user signed in")
+            }
+            
+            guard let startDate = selectedDates.first, let endDate = selectedDates.last else {
+                print("No selected dates")
+                return
+            }
+            
             let newPlan = Plan(
                 name: planNameLabel.text ?? "Untitled Plan",
-                dateFrom: startDatePicker.date,
-                dateTo: endDatePicker.date,
+                dateFrom: startDate,
+                dateTo: endDate,
                 days: days,
-                owner: currentUser.uid  // Use the appropriate user identifier
+                owner: currentUser.uid
             )
+        
+//        let db = Firestore.firestore()  // Get a reference to the Firestore service
+//        guard let currentUser = Auth.auth().currentUser else {
+//                   fatalError("No user signed in")
+//               }
+//            // Create an instance of the Plan
+//            let newPlan = Plan(
+//                name: planNameLabel.text ?? "Untitled Plan",
+//                dateFrom: startDatePicker.date,
+//                dateTo: endDatePicker.date,
+//                days: days,
+//                owner: currentUser.uid  // Use the appropriate user identifier
+//            )
 
             // Convert and set the plan data
             do {
@@ -172,7 +192,7 @@ class ItineraryViewController: UIViewController, UITableViewDelegate, UITableVie
                 // The view controller that holds this view will set this closure to handle the icon tap.
                 onIconTapped?(index)
             }
-
+    
     func applyConstraints() {
         NSLayoutConstraint.activate([
             planNameLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 4),
@@ -201,21 +221,42 @@ class ItineraryViewController: UIViewController, UITableViewDelegate, UITableVie
     @objc func dateChanged(_ sender: UIDatePicker) {
         updateDaysFromDates()
     }
-
+    
     func updateDaysFromDates() {
-        let start = startDatePicker.date
-        let end = endDatePicker.date
+        guard let startDate = selectedDates.first, let endDate = selectedDates.last else {
+            days = []
+            tableView.reloadData()
+            return
+        }
         
-        // Ensure the end date is not earlier than the start date
-        if end >= start {
-            let calendar = Calendar.current
-            let dateRange = calendar.dateComponents([.day], from: start, to: end).day ?? 0
+        let calendar = Calendar.current
+        let dateRange = calendar.dateComponents([.day], from: startDate, to: endDate).day ?? 0
+        
+        if dateRange >= 0 {
             days = (0...dateRange).map { Day(name: "Day \($0 + 1)", destinations: []) }
         } else {
-            days = []  // Clear days if the end date is before the start date
+            // If the date range is negative, swap the start and end dates
+            let swappedDateRange = calendar.dateComponents([.day], from: endDate, to: startDate).day ?? 0
+            days = (0...swappedDateRange).map { Day(name: "Day \($0 + 1)", destinations: []) }
         }
+        
         tableView.reloadData()
     }
+
+//    func updateDaysFromDates() {
+//        let start = startDatePicker.date
+//        let end = endDatePicker.date
+//        
+//        // Ensure the end date is not earlier than the start date
+//        if end >= start {
+//            let calendar = Calendar.current
+//            let dateRange = calendar.dateComponents([.day], from: start, to: end).day ?? 0
+//            days = (0...dateRange).map { Day(name: "Day \($0 + 1)", destinations: []) }
+//        } else {
+//            days = []  // Clear days if the end date is before the start date
+//        }
+//        tableView.reloadData()
+//    }
 
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
