@@ -39,6 +39,8 @@
 		57A468852BCA23F400FC0DB3 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A468842BCA23F400FC0DB3 /* ChatViewController.swift */; };
 		57A468872BCA23FB00FC0DB3 /* MessagesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A468862BCA23FB00FC0DB3 /* MessagesTableViewCell.swift */; };
 		57A468892BCA256B00FC0DB3 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A468882BCA256B00FC0DB3 /* Message.swift */; };
+		57A4688C2BCDD9F100FC0DB3 /* ChatPlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A4688B2BCDD9F100FC0DB3 /* ChatPlanView.swift */; };
+		57A4688E2BCDE1EF00FC0DB3 /* ChatViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A4688D2BCDE1EF00FC0DB3 /* ChatViewController2.swift */; };
 		9C0795002BC0C33E00AC46D5 /* DestinationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0794FC2BC0C33E00AC46D5 /* DestinationTableViewCell.swift */; };
 		9C0795012BC0C33E00AC46D5 /* SearchDestinationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0794FD2BC0C33E00AC46D5 /* SearchDestinationController.swift */; };
 		9C0795022BC0C33E00AC46D5 /* SearchDestinationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0794FE2BC0C33E00AC46D5 /* SearchDestinationView.swift */; };
@@ -98,6 +100,8 @@
 		57A468842BCA23F400FC0DB3 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		57A468862BCA23FB00FC0DB3 /* MessagesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesTableViewCell.swift; sourceTree = "<group>"; };
 		57A468882BCA256B00FC0DB3 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		57A4688B2BCDD9F100FC0DB3 /* ChatPlanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatPlanView.swift; sourceTree = "<group>"; };
+		57A4688D2BCDE1EF00FC0DB3 /* ChatViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController2.swift; sourceTree = "<group>"; };
 		9C0794FC2BC0C33E00AC46D5 /* DestinationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DestinationTableViewCell.swift; sourceTree = "<group>"; };
 		9C0794FD2BC0C33E00AC46D5 /* SearchDestinationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchDestinationController.swift; sourceTree = "<group>"; };
 		9C0794FE2BC0C33E00AC46D5 /* SearchDestinationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchDestinationView.swift; sourceTree = "<group>"; };
@@ -199,6 +203,7 @@
 		57020F432BC0E0CE009D9369 /* Chat Feature */ = {
 			isa = PBXGroup;
 			children = (
+				57A4688D2BCDE1EF00FC0DB3 /* ChatViewController2.swift */,
 				57A468822BCA23E700FC0DB3 /* ChatScreenView.swift */,
 				57A468842BCA23F400FC0DB3 /* ChatViewController.swift */,
 				57A468862BCA23FB00FC0DB3 /* MessagesTableViewCell.swift */,
@@ -231,6 +236,7 @@
 			children = (
 				57A4687E2BCA10FB00FC0DB3 /* ChatPlanViewController.swift */,
 				57A468802BCA113200FC0DB3 /* ChatPlanTableViewCell.swift */,
+				57A4688B2BCDD9F100FC0DB3 /* ChatPlanView.swift */,
 			);
 			path = "Main Screen";
 			sourceTree = "<group>";
@@ -560,7 +566,9 @@
 				9C07950B2BC0C3A600AC46D5 /* ItineraryViewController.swift in Sources */,
 				A56C26422BC0D65B0015B87A /* ProfileView.swift in Sources */,
 				415699D52BC0D18F005F9DE7 /* ShowContactViewController.swift in Sources */,
+				57A4688C2BCDD9F100FC0DB3 /* ChatPlanView.swift in Sources */,
 				A56C26432BC0D65B0015B87A /* ContactInfo.swift in Sources */,
+				57A4688E2BCDE1EF00FC0DB3 /* ChatViewController2.swift in Sources */,
 				A54243592BAE3C5800189102 /* SceneDelegate.swift in Sources */,
 				57020F512BC0E2D9009D9369 /* EditProfileController.swift in Sources */,
 				57A468832BCA23E700FC0DB3 /* ChatScreenView.swift in Sources */,

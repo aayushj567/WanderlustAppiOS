@@ -4,40 +4,42 @@ import FirebaseAuth
 
 class ChatPlanViewController: UIViewController {
     
-    private var tableView = UITableView()
-    
+//    private var tableView = UITableView()
+    var chatPlanView = ChatPlanView()
     var plans = [Plan]()
     var userID: String?
     let db = Firestore.firestore()
     
+    override func loadView() {
+        view = chatPlanView
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "chat"
-        view.backgroundColor = .white
-        setupTableView()
-        
         // Fetch current user's UID
         userID = Auth.auth().currentUser?.uid
-        
+        chatPlanView.tableView.dataSource = self
+        chatPlanView.tableView.delegate = self
         // Fetch plans where the current user is the owner or included in guests
         fetchPlans()
     }
     
-    private func setupTableView() {
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(tableView)
-        tableView.dataSource = self
-        tableView.delegate = self
-        tableView.register(ChatPlanTableViewCell.self, forCellReuseIdentifier: "PlanCell")
-        
-        // Set constraints
-        NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 8),
-            tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
-            tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
-            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -8)
-        ])
-    }
+//    private func setupTableView() {
+//        tableView.translatesAutoresizingMaskIntoConstraints = false
+//        view.addSubview(tableView)
+//        tableView.dataSource = self
+//        tableView.delegate = self
+//        tableView.register(ChatPlanTableViewCell.self, forCellReuseIdentifier: "PlanCell")
+//        
+//        // Set constraints
+//        NSLayoutConstraint.activate([
+//            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 8),
+//            tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+//            tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
+//            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -8)
+//        ])
+//    }
     
     private func fetchPlans() {
         guard let userID = userID else {
@@ -54,20 +56,19 @@ class ChatPlanViewController: UIViewController {
             } else {
                 for document in querySnapshot!.documents {
                     do {
-                        if let planData = document.data() as? [String: Any] {
-                            var plan = try Firestore.Decoder().decode(Plan.self, from: planData)
-                            print(plan.name)
+                        if let planID = document.documentID as? String,
+                           let planName = document.data()["name"] as? String{
+                            var plan = Plan(id: planID, name: planName)
                             plan.id = document.documentID
-                            print(plan)
                             self.plans.append(plan)
                         }
                     } catch {
                         print("Error decoding plan: \(error)")
                     }
                 }
-                
-                self.fetchPlansForGuests()
             }
+            chatPlanView.tableView.reloadData()
+            self.fetchPlansForGuests()
         }
     }
 
@@ -86,8 +87,9 @@ class ChatPlanViewController: UIViewController {
             } else {
                 for document in querySnapshot!.documents {
                     do {
-                        if let planData = document.data() as? [String: Any] {
-                            var plan = try Firestore.Decoder().decode(Plan.self, from: planData)
+                        if let planID = document.documentID as? String,
+                           let planName = document.data()["name"] as? String{
+                            var plan = Plan(id: planID, name: planName)
                             plan.id = document.documentID
                             self.plans.append(plan)
                         }
@@ -96,9 +98,7 @@ class ChatPlanViewController: UIViewController {
                     }
                 }
                 
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
-                }
+                chatPlanView.tableView.reloadData()
             }
         }
     }
@@ -113,12 +113,11 @@ extension ChatPlanViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "PlanCell", for: indexPath) as! ChatPlanTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: Configs.tableViewChatPlan, for: indexPath) as! ChatPlanTableViewCell
         
         // Configure the cell
         let plan = plans[indexPath.row]
-        print(plan.name!)
-        cell.planNameLabel.text = plan.name ?? "Unnamed Plan"
+        cell.planName.text = plan.name ?? "Unnamed Plan"
         
         return cell
     }
@@ -129,8 +128,12 @@ extension ChatPlanViewController: UITableViewDataSource {
 extension ChatPlanViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // Handle cell selection if needed
-        let chatViewController = ChatViewController()
-        let plan = plans[indexPath.row]
+        tableView.deselectRow(at: indexPath, animated: true)
+//        let chatViewController = ChatViewController()
+        let chatViewController = ChatViewController2()
+       let plan = plans[indexPath.row]
+//        print(plans)
+        chatViewController.title = "messages"
         chatViewController.planId = plan.id
         navigationController?.pushViewController(chatViewController, animated: true)
     }

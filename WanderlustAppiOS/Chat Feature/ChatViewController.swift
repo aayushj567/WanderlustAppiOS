@@ -35,7 +35,7 @@ class ChatViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        title = "messages"
         chatScreen.tableViewMessages.delegate = self
         chatScreen.tableViewMessages.dataSource = self
         chatScreen.tableViewMessages.separatorStyle = .none
@@ -49,7 +49,7 @@ class ChatViewController: UIViewController {
         let messageText = chatScreen.textFieldMessage.text ?? ""
         let date = Date()
         
-        let message = Message(sender: sender, planId: planId, messageText: messageText, date: date) // Receiver is not needed
+        let message = Message(sender: sender, senderID: currentUser?.uid ?? "", planId: planId, messageText: messageText, date: date) // Receiver is not needed
         saveMessageToFireStore(message: message, planId: planId)
         chatScreen.textFieldMessage.text = ""
         self.chatScreen.tableViewMessages.reloadData()

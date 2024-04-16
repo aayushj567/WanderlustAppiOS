@@ -9,7 +9,15 @@ struct Plan: Codable {
     var days: [Day]?
     var owner: String?
     var guests: [String]?
-
+    
+//    init(){
+//        
+//    }
+//    init(id: String, name: String) {
+//        self.id = id
+//        self.name = name
+//    }
+    
     enum CodingKeys: String, CodingKey {
         case id
         case name
