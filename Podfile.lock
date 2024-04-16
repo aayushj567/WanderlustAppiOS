@@ -6,23 +6,33 @@ PODS:
   - GoogleMaps/Maps (8.4.0):
     - GoogleMaps/Base
   - GooglePlaces (8.5.0)
+  - InputBarAccessoryView (5.5.0):
+    - InputBarAccessoryView/Core (= 5.5.0)
+  - InputBarAccessoryView/Core (5.5.0)
+  - MessageKit (3.8.0):
+    - InputBarAccessoryView (~> 5.5.0)
 
 DEPENDENCIES:
   - Alamofire
   - GoogleMaps
   - GooglePlaces
+  - MessageKit
 
 SPEC REPOS:
   trunk:
     - Alamofire
     - GoogleMaps
     - GooglePlaces
+    - InputBarAccessoryView
+    - MessageKit
 
 SPEC CHECKSUMS:
   Alamofire: 3ca42e259043ee0dc5c0cdd76c4bc568b8e42af7
   GoogleMaps: 8939898920281c649150e0af74aa291c60f2e77d
   GooglePlaces: 426efb69051e7b460e16300ba63598687d10fa1a
+  InputBarAccessoryView: 1d7b0a672b36e370f01f264b3907ef39d03328e3
+  MessageKit: a1ba0c69ebead94029867853eb44dd05b9b3f453
 
-PODFILE CHECKSUM: 64a5ca96b8773e2375f96ea74f0923c680040bde
+PODFILE CHECKSUM: 02a5a2592f39814b5bca88b18c79b5cc5d6de27f
 
 COCOAPODS: 1.15.2
