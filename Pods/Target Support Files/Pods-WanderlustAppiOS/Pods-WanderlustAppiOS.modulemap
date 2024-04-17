@@ -1,6 +1,0 @@
-framework module Pods_WanderlustAppiOS {
-  umbrella header "Pods-WanderlustAppiOS-umbrella.h"
-
-  export *
-  module * { export * }
-}
