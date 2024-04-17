@@ -115,7 +115,26 @@ class ChatPlanViewController: UIViewController {
 
 extension ChatPlanViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return plans.count
+        let numberOfPlans = plans.count
+        if numberOfPlans == 0 {
+            print("hi \(numberOfPlans)")
+            // Show placeholder message when plans array is empty
+            let messageLabel = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height))
+            messageLabel.text = "No plans found"
+            messageLabel.textColor = .gray
+            messageLabel.numberOfLines = 0
+            messageLabel.textAlignment = .center
+            messageLabel.font = UIFont.systemFont(ofSize: 20)
+            messageLabel.sizeToFit()
+
+            tableView.backgroundView = messageLabel
+            tableView.separatorStyle = .none
+        }
+        else {
+            tableView.backgroundView = nil
+            tableView.separatorStyle = .singleLine
+        }
+        return numberOfPlans
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
