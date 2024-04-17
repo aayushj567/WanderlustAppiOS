@@ -14,6 +14,13 @@ class ShowProfileViewController: UIViewController {
         
         super.viewDidLoad()
 
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(logout))
+
+
+    override func viewDidLoad() {
+        
+        super.viewDidLoad()
+
         // Check if a user is currently signed in
         if let currentUser = Auth.auth().currentUser {
             // if user is signed in load thir image
@@ -50,8 +57,7 @@ class ShowProfileViewController: UIViewController {
     }
     
     @objc func onEditButtonTapped(){
-        
-        //let addContactController = EditProfileController()
+          
     }
     
 //    func delegateOnEditContact(idVal: Int, newName: String, newEmail: String, newPhone:String, newAddress:String, newCity:String, newZip:String, newType:String, newImage: UIImage) {

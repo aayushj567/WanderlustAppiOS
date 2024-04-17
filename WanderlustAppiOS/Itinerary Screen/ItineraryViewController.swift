@@ -3,8 +3,15 @@
 //import FirebaseFirestore
 //
 struct Day: Codable {
+    @DocumentID var id: String?
     var name: String
-    var destinations: [Destination]
+    var destinationIds: [String]?
+    var planId: String?
+    var destinations: [Destination]? = []// Add planId to link back to the parent plan
+    
+    enum CodingKeys: String, CodingKey {
+        case id, name, destinationIds, planId, destinations
+    }
 }
 //
 //class ItineraryViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
@@ -295,6 +302,11 @@ class ItineraryViewController: UIViewController, UITableViewDelegate, UITableVie
     var itineraryView: ItineraryView!
     var days: [Day] = []
     var onIconTapped: ((Int) -> Void)?
+
+    var planNameLabel:UILabel!
+    var destinationIds: [String] = []
+
+
     var selectedDates: [Date] = []
     var selectedUsers: [User] = []
     
@@ -303,6 +315,7 @@ class ItineraryViewController: UIViewController, UITableViewDelegate, UITableVie
         view = itineraryView
     }
     
+
     override func viewDidLoad() {
         super.viewDidLoad()
         itineraryView.tableView.delegate = self
@@ -317,6 +330,152 @@ class ItineraryViewController: UIViewController, UITableViewDelegate, UITableVie
         setupTabBarActions()
         print("Selected Users: \(selectedUsers)")
     }
+
+    @objc func saveItinerary() {
+        guard let currentUser = Auth.auth().currentUser else {
+            fatalError("No user signed in")
+        }
+
+        let db = Firestore.firestore()
+        let plansRef = db.collection("plans")
+        let planDocument = plansRef.document()
+
+        var newPlan = Plan(
+            name: planNameLabel.text ?? "Untitled Plan",
+            dateFrom: startDatePicker.date,
+            dateTo: endDatePicker.date,
+            dayIds: [],
+            owner: currentUser.uid
+            
+        )
+
+        do {
+            try planDocument.setData(from: newPlan) { error in
+                if let error = error {
+                    print("Error writing document: \(error)")
+                } else {
+                    print("Plan successfully saved!")
+                    // After saving the plan, proceed to save the days.
+                    self.saveDays(planId: planDocument.documentID, planDocument: planDocument)
+                    let nextScreen = MyPlansViewController()
+                    self.navigationController?.pushViewController(nextScreen, animated: true)
+                }
+            }
+        } catch let error {
+            print("Error serializing plan: \(error)")
+        }
+    }
+    func saveDays(planId: String, planDocument: DocumentReference) {
+        let db = Firestore.firestore()
+        let daysRef = db.collection("days")
+
+        var dayIds: [String] = []
+
+        for day in days {
+            let dayDocument = daysRef.document()
+            var dayCopy = day
+            dayCopy.planId = planId  // Assign planId to day
+
+            do {
+                try dayDocument.setData(from: dayCopy) { error in
+                    if let error = error {
+                        print("Error saving day: \(error)")
+                    } else {
+                        print("Day \(day.name) successfully saved!")
+                        dayIds.append(dayDocument.documentID)
+                        // Save destinations for this day and update day with destination IDs
+                        self.saveDestinations(dayId: dayDocument.documentID, dayDocument: dayDocument, destinations: day.destinations!)
+                    }
+                }
+            } catch let error {
+                print("Error serializing day: \(error)")
+            }
+            
+        }
+
+        // Update the plan document with the day IDs after all days are saved
+        planDocument.updateData(["dayIds": dayIds]) { error in
+            if let error = error {
+                print("Error updating plan with day IDs: \(error)")
+            } else {
+                print("Plan updated with day IDs")
+            }
+        }
+    }
+
+
+    func saveDestinations(dayId: String, dayDocument: DocumentReference, destinations: [Destination]) {
+        let db = Firestore.firestore()
+        let destinationsRef = db.collection("destinations")
+
+        
+
+        for destination in destinations {
+            let destinationDocument = destinationsRef.document()
+            var destinationCopy = destination
+            destinationCopy.dayId = dayId  // Assign dayId to destination
+
+            do {
+                try destinationDocument.setData(from: destinationCopy) { error in
+                    if let error = error {
+                        print("Error saving destination: \(error)")
+                    } else {
+                        print("Destination \(destination.name) successfully saved!")
+                        self.destinationIds.append(destinationDocument.documentID)
+                        print(destinationDocument.documentID)
+                    }
+                }
+            } catch let error {
+                print("Error serializing destination: \(error)")
+            }
+        }
+
+        // Update the day document with the destination IDs after all destinations are saved
+        print(self.destinationIds)
+        dayDocument.updateData(["destinationIds": self.destinationIds]) { error in
+            if let error = error {
+                print("Error updating day with destination IDs: \(error)")
+            } else {
+                print("Day updated with destination IDs")
+            }
+        }
+    }
+
+    func setupTabBarView() {
+        tabBarView = UIView()
+        tabBarView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(tabBarView)
+
+        // Create a stack view for the icons
+        let stackView = UIStackView()
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.distribution = .fillEqually // This will distribute the space equally among the icons
+        stackView.alignment = .center
+        stackView.axis = .horizontal
+        tabBarView.addSubview(stackView)
+        
+        // Add constraints to the stack view
+        NSLayoutConstraint.activate([
+            stackView.leadingAnchor.constraint(equalTo: tabBarView.leadingAnchor),
+            stackView.trailingAnchor.constraint(equalTo: tabBarView.trailingAnchor),
+            stackView.topAnchor.constraint(equalTo: tabBarView.topAnchor),
+            stackView.bottomAnchor.constraint(equalTo: tabBarView.bottomAnchor)
+        ])
+        
+        // Initialize icon views and add them to the stack view
+        let iconNames = ["house", "list.bullet", "message", "person.crop.circle"]
+        for (index, iconName) in iconNames.enumerated() {
+            let iconImageView = UIImageView(image: UIImage(systemName: iconName))
+            iconImageView.contentMode = .scaleAspectFit
+            iconImageView.isUserInteractionEnabled = true
+            iconImageView.tag = index  // Set the tag to the index of the iconName
+
+            // Add a gesture recognizer to each icon
+            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tabBarIconTapped(_:)))
+            iconImageView.addGestureRecognizer(tapGesture)
+            
+            stackView.addArrangedSubview(iconImageView)
+
     
     func setupTabBarActions() {
         for subview in itineraryView.tabBarView.subviews {
@@ -326,6 +485,7 @@ class ItineraryViewController: UIViewController, UITableViewDelegate, UITableVie
                     iconView.addGestureRecognizer(tapGesture)
                 }
             }
+
         }
     }
     
@@ -401,10 +561,14 @@ class ItineraryViewController: UIViewController, UITableViewDelegate, UITableVie
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "dayCell", for: indexPath)
         let day = days[indexPath.row]
-        let destinationDetails = day.destinations.map { "\($0.name) - Duration: \($0.duration)" }.joined(separator: "\n")
-        cell.textLabel?.text = "\(day.name):\n\(destinationDetails)"
-        cell.textLabel?.numberOfLines = 0
-        cell.accessoryType = .detailDisclosureButton
+
+        // Using newline to separate destination names instead of commas
+        let destinationDetails = day.destinations?.map { "\($0.name) - Duration: \($0.duration)" }.joined(separator: "\n") ?? "No destinations available"
+
+            cell.textLabel?.text = "\(day.name):\n\(destinationDetails)"
+            cell.textLabel?.numberOfLines = 0  // Allow unlimited lines for text label
+            cell.accessoryType = .detailDisclosureButton
+
         return cell
     }
     
