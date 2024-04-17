@@ -28,7 +28,8 @@ class ViewController: UIViewController {
         handleAuth = Auth.auth().addStateDidChangeListener{ [weak self] auth, user in
             guard let self = self else { return }
             if user != nil && !self.hasCompletedRegistration { // already a user
-                let mainScreen = CalendarViewController();               self.navigationController?.pushViewController(mainScreen, animated: true)
+                let mainScreen = CalendarViewController()
+                self.navigationController?.pushViewController(mainScreen, animated: true)
             } else if  user != nil && self.hasCompletedRegistration { // new user just completed registration
                     self.hasCompletedRegistration = false
                     return
@@ -46,6 +47,8 @@ class ViewController: UIViewController {
     
     //MARK: remove the Firebase auth listener when the view disappears...
     override func viewWillDisappear(_ animated: Bool) {
+        loginScreen.textFieldEmail.text = ""
+        loginScreen.textFieldPassword.text = ""
         super.viewWillDisappear(animated)
         Auth.auth().removeStateDidChangeListener(handleAuth!)
     }
@@ -86,6 +89,7 @@ class ViewController: UIViewController {
     //MARK: action when the registration button is tapped...
     @objc func onRegistrationTapped(){
         let registrationScreen = RegistrationViewController()
+        registrationScreen.loginScreenDelegate = self
         navigationController?.pushViewController(registrationScreen, animated: true)
     }
 

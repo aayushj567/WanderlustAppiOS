@@ -9,5 +9,6 @@ target 'WanderlustAppiOS' do
    pod 'Alamofire'
    pod 'GooglePlaces'
    pod 'GoogleMaps'
-
+   pod 'MessageKit'
+   
 end
