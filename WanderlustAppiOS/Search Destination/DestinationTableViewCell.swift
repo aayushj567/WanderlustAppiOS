@@ -41,10 +41,10 @@ struct Destination: Codable {
 class DestinationTableViewCell: UITableViewCell {
 
     var wrapperCellView: UIView!
-        var labelName: UILabel!
+    var labelName: UILabel!
     var destinationImageView: UIImageView!
     var destinationNameLabel: UILabel!
-    var  destinationRatingLabel: UILabel!
+    var destinationRatingLabel: UILabel!
     var destinationPriceLabel: UILabel!
     var addToPlanCheckbox: UIButton!
     var addToPlanTapped: ((_ isSelected: Bool) -> Void)?
@@ -55,7 +55,6 @@ class DestinationTableViewCell: UITableViewCell {
             super.init(style: style, reuseIdentifier: reuseIdentifier)
             
             contentView.isUserInteractionEnabled = false
-            
             
             setupWrapperCellView()
             setupLabelName()

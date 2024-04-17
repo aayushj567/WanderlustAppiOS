@@ -12,21 +12,41 @@ class AddPeopleTableViewCell: UITableViewCell {
     var wrapperCellView: UIView!
     var personIconImageView: UIImageView!
     var personNameLabel: UILabel!
-    var addButton: UIButton!
+    //var addButton: UIButton!
+    var userTapped: ((_ isSelected: Bool) -> Void)?
+
+    var checkboxButton: UIButton!
     
-    var addButtonTapHandler: (() -> Void)?
-    
-    @IBAction func addButtonTapped(_ sender: UIButton) {
-            addButtonTapHandler?()
-        }
+    func setupCheckboxButton() {
+        checkboxButton = UIButton()
+        checkboxButton.translatesAutoresizingMaskIntoConstraints = false
+        // Here you might want to set up different images for selected and normal states
+        // For example:
+        checkboxButton.setImage(UIImage(systemName: "square"), for: .normal)
+        checkboxButton.setImage(UIImage(systemName: "checkmark.square.fill"), for: .selected)
+        checkboxButton.addTarget(self, action: #selector(checkBoxTapped), for: .touchUpInside)
+        checkboxButton.isUserInteractionEnabled = true;
+        
+        self.addSubview(checkboxButton)
+
+    }
+
+    @objc func checkBoxTapped(_ sender: UIButton) {
+        print("Clicked")
+        sender.isSelected = !sender.isSelected
+        userTapped?(sender.isSelected)
+        //addButtonTapHandler?(sender.isSelected)
+    }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
+        contentView.isUserInteractionEnabled = false
+        
         setupWrapperCellView()
         setupPersonIconImage()
         setupPersonNameLabel()
-        setupAddButton()
+        setupCheckboxButton()
         initConstraints()
     }
     
@@ -58,18 +78,6 @@ class AddPeopleTableViewCell: UITableViewCell {
         wrapperCellView.addSubview(personNameLabel)
     }
     
-    func setupAddButton(){
-        addButton = UIButton(type: .system)
-        addButton.setTitle("Add", for: .normal)
-        addButton.backgroundColor = .lightGray// Set background color to red
-        addButton.setTitleColor(.green, for: .normal) // Set text color to green
-        addButton.layer.cornerRadius = 8 // Set corner radius
-        addButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
-        addButton.translatesAutoresizingMaskIntoConstraints = false
-        wrapperCellView.addSubview(addButton)
-        addButton.addTarget(self, action: #selector(addButtonTapped(_:)), for: .touchUpInside)
-    }
-    
     func initConstraints(){
         NSLayoutConstraint.activate([
             wrapperCellView.topAnchor.constraint(equalTo: self.topAnchor, constant: 10),
@@ -88,10 +96,14 @@ class AddPeopleTableViewCell: UITableViewCell {
             personNameLabel.widthAnchor.constraint(lessThanOrEqualTo: wrapperCellView.widthAnchor),
             
             
-            addButton.trailingAnchor.constraint(equalTo: wrapperCellView.trailingAnchor, constant: -25),
-            addButton.heightAnchor.constraint(equalToConstant: 20),
-            addButton.centerYAnchor.constraint(equalTo: wrapperCellView.centerYAnchor),
-            addButton.widthAnchor.constraint(lessThanOrEqualTo: wrapperCellView.widthAnchor),
+//            addButton.trailingAnchor.constraint(equalTo: wrapperCellView.trailingAnchor, constant: -25),
+//            addButton.heightAnchor.constraint(equalToConstant: 20),
+//            addButton.centerYAnchor.constraint(equalTo: wrapperCellView.centerYAnchor),
+//            addButton.widthAnchor.constraint(lessThanOrEqualTo: wrapperCellView.widthAnchor),
+            checkboxButton.trailingAnchor.constraint(equalTo: wrapperCellView.trailingAnchor, constant: -25),
+                checkboxButton.heightAnchor.constraint(equalToConstant: 20),
+                checkboxButton.centerYAnchor.constraint(equalTo: wrapperCellView.centerYAnchor),
+                checkboxButton.widthAnchor.constraint(equalToConstant: 20),
             
             wrapperCellView.heightAnchor.constraint(equalToConstant: 88)
         ])
