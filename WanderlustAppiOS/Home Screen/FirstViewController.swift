@@ -29,6 +29,7 @@ class FirstViewController: UIViewController {
         super.viewDidLoad()
         firstView.newPlanButton.addTarget(self, action: #selector(onNewButtonTapped), for: .touchUpInside)
         firstView.allPlansButton.addTarget(self, action: #selector(onAllPlansButtonTapped), for: .touchUpInside)
+        firstView.logoutButton.addTarget(self, action: #selector(logout), for: .touchUpInside)
         
         //getUser()
         navigationItem.hidesBackButton = true
@@ -46,29 +47,22 @@ class FirstViewController: UIViewController {
         navigationController?.pushViewController(myplans, animated: true)
     }
     
-//    func getUser(){
-//        // let db = Firestore.firestore()
-//        let usersRef = db.collection("users").whereField("id", isEqualTo: userId)
-//        // print("Enter into the function")
-//        
-//        usersRef.getDocuments { (querySnapshot, err) in
-//            if let err = err {
-//                print("Error getting documents: \(err)")
-//            } else {
-//                // Iterate over each plan document
-//                for userDocument in querySnapshot!.documents {
-//                    do {
-//                        // Try to decode the plan document into a Plan struct
-//                        print("inside else")
-//                        var user = try userDocument.data(as: User.self)
-//                        self.userName = user.name!
-//                    }
-//                    catch {
-//                        print("Error decoding plan: \(error)")
-//                    }
-//                }
-//            }
-//        }
-//    }
+    @objc func logout() {
+        
+        let logoutAlert = UIAlertController(title: "Log out?", message: "Are you sure want to log out?",
+            preferredStyle: .actionSheet)
+        logoutAlert.addAction(UIAlertAction(title: "Yes", style: .default, handler: {(_) in
+                do{
+                    try Auth.auth().signOut()
+                    self.navigationController?.popToRootViewController(animated: true)
+                }catch{
+                    print("Error occured!")
+                }
+            })
+        )
+        logoutAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        
+        self.present(logoutAlert, animated: true)
+    }
 }
  

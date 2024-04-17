@@ -15,6 +15,7 @@ class FirstView: UIView {
     var backgroundImage: UIImageView!
     var labelWelcomeLabel:UILabel!
     var labelTextLabel: UILabel!
+    var logoutButton: UIButton!
     
     
     override init(frame: CGRect){
@@ -25,6 +26,7 @@ class FirstView: UIView {
         setupBackgroundImage()
         setupWelcomeLabel()
         setupTextLabel()
+        setupLogoutButton()
         initConstraints()
     }
     
@@ -40,11 +42,26 @@ class FirstView: UIView {
  
         self.addSubview(newPlanButton)
         
-        let sidePadding: CGFloat = 20
+        let sidePadding: CGFloat = 20 // Adjust padding to your preference
             NSLayoutConstraint.activate([
                 newPlanButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: sidePadding),
                 newPlanButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -sidePadding),
             ])
+    }
+    
+    func setupLogoutButton(){
+        logoutButton = UIButton(type: .system)
+        logoutButton.setTitle("Logout", for: .normal)
+        //logoutButton.backgroundColor = .systemBlue
+        
+        logoutButton.titleLabel?.font = .boldSystemFont(ofSize: 18)
+        logoutButton.translatesAutoresizingMaskIntoConstraints = false
+        logoutButton.setTitleColor(.systemRed, for: .normal)
+         
+ 
+        self.addSubview(logoutButton)
+        
+        
     }
     
     
@@ -109,13 +126,15 @@ class FirstView: UIView {
             
             newPlanButton.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             newPlanButton.topAnchor.constraint(equalTo: labelTextLabel.bottomAnchor, constant: 250),
+            newPlanButton.heightAnchor.constraint(equalToConstant: 50),
             
-            newPlanButton.heightAnchor.constraint(equalToConstant: 50), // Set to your desired height
-            
-            // Register button constraints
             allPlansButton.topAnchor.constraint(equalTo: newPlanButton.bottomAnchor, constant: 16),
             allPlansButton.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            allPlansButton.heightAnchor.constraint(equalToConstant: 50), // Set t
+            allPlansButton.heightAnchor.constraint(equalToConstant: 50),
+            
+            logoutButton.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            logoutButton.topAnchor.constraint(equalTo: allPlansButton.bottomAnchor, constant: 16),
+            logoutButton.heightAnchor.constraint(equalToConstant: 50),
         ])
     }
     

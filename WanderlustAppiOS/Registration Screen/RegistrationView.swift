@@ -104,12 +104,18 @@ class RegistrationView: UIView {
     func setupbuttonRegister(){
         buttonRegister = UIButton(type: .system)
         buttonRegister.titleLabel?.font = .boldSystemFont(ofSize: 16)
-        buttonRegister.setTitle("  Submit  ", for: .normal)
+        buttonRegister.setTitle("Register", for: .normal)
         buttonRegister.backgroundColor = #colorLiteral(red: 0.1844881177, green: 0.4828699231, blue: 1, alpha: 1)
-        buttonRegister.layer.cornerRadius = 5.0
+        //buttonRegister.layer.cornerRadius = 5.0
         buttonRegister.setTitleColor(UIColor.white, for: .normal)
         buttonRegister.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(buttonRegister)
+        
+        let sidePadding: CGFloat = 20 // Adjust padding to your preference
+            NSLayoutConstraint.activate([
+                buttonRegister.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: sidePadding),
+                buttonRegister.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -sidePadding),
+            ])
     }
     
     func setupBackgroundImage(){
@@ -156,8 +162,10 @@ class RegistrationView: UIView {
             labelPhoto.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor),
                       
             // Register button constraints
-            buttonRegister.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -60),
-            buttonRegister.centerXAnchor.constraint(equalTo: self.centerXAnchor)
+            buttonRegister.topAnchor.constraint(equalTo: labelPhoto.bottomAnchor, constant: 30),
+            buttonRegister.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            buttonRegister.heightAnchor.constraint(equalToConstant: 50),
+
         ])
     }
     
