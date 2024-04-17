@@ -22,10 +22,10 @@ class CalendarViewController: UIViewController{
         title = "Create plan"
         
         // Hide the default back button (arrow)
-        navigationItem.hidesBackButton = true
-        // Create a custom back button which is basically invisible and has no functionlaity.
-        let backButton = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-        navigationItem.leftBarButtonItem = backButton
+//        navigationItem.hidesBackButton = true
+//        // Create a custom back button which is basically invisible and has no functionlaity.
+//        let backButton = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+//        navigationItem.leftBarButtonItem = backButton
         
         // UICalendarView behavior...
         let multiSelect = UICalendarSelectionMultiDate(delegate: self)

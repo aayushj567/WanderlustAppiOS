@@ -41,6 +41,8 @@
 		57A468922BCF564700FC0DB3 /* ShowPlanDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A468912BCF564700FC0DB3 /* ShowPlanDetailsViewController.swift */; };
 		57A468942BCF564D00FC0DB3 /* TableViewItineraryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A468932BCF564D00FC0DB3 /* TableViewItineraryCell.swift */; };
 		57A468962BCF565B00FC0DB3 /* TableViewPlansCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A468952BCF565B00FC0DB3 /* TableViewPlansCell.swift */; };
+		57A468992BCF835300FC0DB3 /* FirstView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A468982BCF835300FC0DB3 /* FirstView.swift */; };
+		57A4689B2BCF836D00FC0DB3 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A4689A2BCF836D00FC0DB3 /* FirstViewController.swift */; };
 		9C0795002BC0C33E00AC46D5 /* DestinationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0794FC2BC0C33E00AC46D5 /* DestinationTableViewCell.swift */; };
 		9C0795012BC0C33E00AC46D5 /* SearchDestinationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0794FD2BC0C33E00AC46D5 /* SearchDestinationController.swift */; };
 		9C0795022BC0C33E00AC46D5 /* SearchDestinationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0794FE2BC0C33E00AC46D5 /* SearchDestinationView.swift */; };
@@ -102,6 +104,8 @@
 		57A468912BCF564700FC0DB3 /* ShowPlanDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowPlanDetailsViewController.swift; sourceTree = "<group>"; };
 		57A468932BCF564D00FC0DB3 /* TableViewItineraryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewItineraryCell.swift; sourceTree = "<group>"; };
 		57A468952BCF565B00FC0DB3 /* TableViewPlansCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewPlansCell.swift; sourceTree = "<group>"; };
+		57A468982BCF835300FC0DB3 /* FirstView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstView.swift; sourceTree = "<group>"; };
+		57A4689A2BCF836D00FC0DB3 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		9C0794FC2BC0C33E00AC46D5 /* DestinationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DestinationTableViewCell.swift; sourceTree = "<group>"; };
 		9C0794FD2BC0C33E00AC46D5 /* SearchDestinationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchDestinationController.swift; sourceTree = "<group>"; };
 		9C0794FE2BC0C33E00AC46D5 /* SearchDestinationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchDestinationView.swift; sourceTree = "<group>"; };
@@ -241,6 +245,15 @@
 			path = "Main Screen";
 			sourceTree = "<group>";
 		};
+		57A468972BCF830F00FC0DB3 /* Home Screen */ = {
+			isa = PBXGroup;
+			children = (
+				57A468982BCF835300FC0DB3 /* FirstView.swift */,
+				57A4689A2BCF836D00FC0DB3 /* FirstViewController.swift */,
+			);
+			path = "Home Screen";
+			sourceTree = "<group>";
+		};
 		5D0BBCBAB808BCA4300A2C64 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -309,6 +322,7 @@
 		A54243552BAE3C5800189102 /* WanderlustAppiOS */ = {
 			isa = PBXGroup;
 			children = (
+				57A468972BCF830F00FC0DB3 /* Home Screen */,
 				5761833B2BC731DC00CA28D1 /* GoogleService-Info.plist */,
 				57020F4D2BC0E26E009D9369 /* Edit Profile */,
 				57020F482BC0E1C3009D9369 /* My Profile */,
@@ -528,6 +542,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				57A468992BCF835300FC0DB3 /* FirstView.swift in Sources */,
 				57020F4F2BC0E2AB009D9369 /* EditProfileView.swift in Sources */,
 				A56C26402BC0D65B0015B87A /* ChatsView.swift in Sources */,
 				57A468902BCF563100FC0DB3 /* ShowPlanDetailsView.swift in Sources */,
@@ -554,6 +569,7 @@
 				A56C263C2BC0D65B0015B87A /* HomeViewController.swift in Sources */,
 				57A468742BC8864100FC0DB3 /* User.swift in Sources */,
 				57020F532BC0E30B009D9369 /* Utilities.swift in Sources */,
+				57A4689B2BCF836D00FC0DB3 /* FirstViewController.swift in Sources */,
 				57A468942BCF564D00FC0DB3 /* TableViewItineraryCell.swift in Sources */,
 				57A4687F2BCA10FB00FC0DB3 /* ChatPlanViewController.swift in Sources */,
 				A56C26442BC0D65B0015B87A /* MainViewController.swift in Sources */,

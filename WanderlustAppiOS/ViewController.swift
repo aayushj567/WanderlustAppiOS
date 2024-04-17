@@ -28,7 +28,8 @@ class ViewController: UIViewController {
         handleAuth = Auth.auth().addStateDidChangeListener{ [weak self] auth, user in
             guard let self = self else { return }
             if user != nil && !self.hasCompletedRegistration { // already a user
-                let mainScreen = CalendarViewController()
+//                let mainScreen = CalendarViewController()
+                let mainScreen = FirstViewController()
                 self.navigationController?.pushViewController(mainScreen, animated: true)
             } else if  user != nil && self.hasCompletedRegistration { // new user just completed registration
                     self.hasCompletedRegistration = false
@@ -59,7 +60,8 @@ class ViewController: UIViewController {
         Auth.auth().signIn(withEmail: email, password: password, completion: {(result, error) in
             if error == nil{
                 //user authenticated...
-                let mainScreen = CalendarViewController()
+//                let mainScreen = CalendarViewController()
+                let mainScreen = FirstViewController()
                 self.navigationController?.pushViewController(mainScreen, animated: true)
             }else{
                 //alert that no user found or password wrong...
