@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TableViewContactsCell: UITableViewCell {
+class TableViewPlansCell: UITableViewCell {
     
     var wrapperCellView: UIView!
     var labelName: UILabel!
@@ -15,17 +15,15 @@ class TableViewContactsCell: UITableViewCell {
     var labelDateTo: UILabel!
     var labelPeople: UILabel!
     var labelBudget: UILabel!
-    var labelPlace: UILabel!
+    var labelOwner: UILabel!
     var imageReceipt: UIImageView!
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupWrapperCellView()
         setuplabelName()
-        //setuplabelDateFrom()
         setuplabelDateTo()
         setuplabelBudget()
-        //setuplabelPeople()
         setupimageReceipt()
         setuplabelPlace()
         initConstraints()
@@ -46,6 +44,7 @@ class TableViewContactsCell: UITableViewCell {
     func setuplabelName(){
         labelName = UILabel()
         labelName.translatesAutoresizingMaskIntoConstraints = false
+        labelName.textColor = .systemBlue
         labelName.font = UIFont.boldSystemFont(ofSize: 15.0)
         wrapperCellView.addSubview(labelName)
     }
@@ -55,12 +54,6 @@ class TableViewContactsCell: UITableViewCell {
         labelDateTo.font = UIFont.boldSystemFont(ofSize: 15.0)
         wrapperCellView.addSubview(labelDateTo)
     }
-//    func setuplabelPeople(){
-//        labelBudget = UILabel()
-//        labelBudget.translatesAutoresizingMaskIntoConstraints = false
-//        labelBudget.font = UIFont.boldSystemFont(ofSize: 15.0)
-//        wrapperCellView.addSubview(labelBudget)
-//    }
     func setuplabelBudget(){
         labelPeople = UILabel()
         labelPeople.translatesAutoresizingMaskIntoConstraints = false
@@ -68,10 +61,11 @@ class TableViewContactsCell: UITableViewCell {
         wrapperCellView.addSubview(labelPeople)
     }
     func setuplabelPlace(){
-        labelPlace = UILabel()
-        labelPlace.translatesAutoresizingMaskIntoConstraints = false
-        labelPlace.font = UIFont.boldSystemFont(ofSize: 15.0)
-        wrapperCellView.addSubview(labelPlace)
+        labelOwner = UILabel()
+        labelOwner.translatesAutoresizingMaskIntoConstraints = false
+        labelOwner.textColor = .systemBlue
+        labelOwner.font = UIFont.boldSystemFont(ofSize: 15.0)
+        wrapperCellView.addSubview(labelOwner)
     }
     func setupimageReceipt(){
         imageReceipt = UIImageView()
@@ -93,7 +87,7 @@ class TableViewContactsCell: UITableViewCell {
             wrapperCellView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10),
             
             labelName.topAnchor.constraint(equalTo: wrapperCellView.topAnchor, constant: 14),
-            labelName.leadingAnchor.constraint(equalTo: wrapperCellView.leadingAnchor, constant: 100),
+            labelName.leadingAnchor.constraint(equalTo: wrapperCellView.leadingAnchor, constant: 110),
             labelName.heightAnchor.constraint(equalToConstant: 20),
             
             labelDateTo.topAnchor.constraint(equalTo: labelName.bottomAnchor, constant: 4),
@@ -105,9 +99,9 @@ class TableViewContactsCell: UITableViewCell {
             labelPeople.leadingAnchor.constraint(equalTo: labelName.leadingAnchor),
             labelPeople.heightAnchor.constraint(equalToConstant: 20),
             
-            labelPlace.topAnchor.constraint(equalTo: labelPeople.bottomAnchor, constant: 4),
-            labelPlace.leadingAnchor.constraint(equalTo: labelName.leadingAnchor),
-            labelPlace.heightAnchor.constraint(equalToConstant: 20),
+            labelOwner.topAnchor.constraint(equalTo: labelPeople.bottomAnchor, constant: 4),
+            labelOwner.trailingAnchor.constraint(equalTo: wrapperCellView.trailingAnchor, constant: -10),
+            labelOwner.heightAnchor.constraint(equalToConstant: 20),
             
             imageReceipt.leadingAnchor.constraint(equalTo: wrapperCellView.leadingAnchor, constant: 8),
             imageReceipt.centerYAnchor.constraint(equalTo: wrapperCellView.centerYAnchor),

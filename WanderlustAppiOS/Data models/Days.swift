@@ -10,7 +10,7 @@ import UIKit
 import FirebaseFirestoreSwift
 
 struct Days: Codable{
-    @DocumentID var id: String?
+    //@DocumentID var id: String?
     var date: String?
     var name: String?
     var destinations: [String]?

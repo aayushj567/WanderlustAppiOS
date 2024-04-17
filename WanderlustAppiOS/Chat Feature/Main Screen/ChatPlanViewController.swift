@@ -16,7 +16,7 @@ class ChatPlanViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "chat"
+        title = "Chat"
         // Fetch current user's UID
         userID = Auth.auth().currentUser?.uid
         chatPlanView.tableView.dataSource = self
@@ -53,6 +53,9 @@ class ChatPlanViewController: UIViewController {
             
             if let error = error {
                 print("Error getting documents: \(error)")
+            } else if querySnapshot!.isEmpty {
+                print("No plans found for this user.")
+                // Handle the absence of plans here, such as displaying a message to the user
             } else {
                 for document in querySnapshot!.documents {
                     do {
@@ -84,6 +87,9 @@ class ChatPlanViewController: UIViewController {
             
             if let error = error {
                 print("Error getting documents: \(error)")
+            } else if querySnapshot!.isEmpty {
+                print("No plans found for this user.")
+                // Handle the absence of plans here, such as displaying a message to the user
             } else {
                 for document in querySnapshot!.documents {
                     do {

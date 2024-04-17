@@ -6,10 +6,13 @@
 //
 
 import UIKit
+import FirebaseAuth
+import FirebaseFirestore
 
 
 
 struct Destination: Codable {
+    @DocumentID var id: String?
     var name: String
     var rating: String
     var admissionPrice: String?
@@ -18,6 +21,7 @@ struct Destination: Codable {
     var photoReference: String?
     var imageBase64: String?   // Use a String to store the image data in Base64
     var duration: String?
+    var dayId: String?
 
     // UIImage is not included here because it's not Codable
     var image: UIImage? {
@@ -32,7 +36,7 @@ struct Destination: Codable {
     }
 
     enum CodingKeys: String, CodingKey {
-        case name, rating, admissionPrice, isAddedToPlan, placeId, photoReference, imageBase64, duration
+        case id,name, rating, admissionPrice, isAddedToPlan, placeId, photoReference, imageBase64, duration,dayId
     }
 }
 
