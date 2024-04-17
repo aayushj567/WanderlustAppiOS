@@ -19,7 +19,7 @@ class CalendarViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        title = "Create plan"
+        title = "Create Plan"
         
         // Hide the default back button (arrow)
 //        navigationItem.hidesBackButton = true
@@ -33,6 +33,31 @@ class CalendarViewController: UIViewController{
         homeScreen.calendarView.delegate = self
         
         homeScreen.buttonNext.addTarget(self, action: #selector(onNextButtonTapped), for: .touchUpInside)
+        
+        
+        homeScreen.onIconTapped = { [unowned self] index in
+            // Handle the icon tap, switch views accordingly
+            print("Icon at index \(index) was tapped.")
+            if(index == 0){
+                let homeView = FirstViewController()
+                navigationController?.pushViewController(homeView, animated: true)
+            }
+            if(index == 1){
+                let myplansVC = MyPlansViewController()
+                navigationController?.pushViewController(myplansVC, animated: true)
+            }
+            if(index == 2)
+            {
+                let chatView = ChatPlanViewController()
+                navigationController?.pushViewController(chatView, animated: true)
+            }
+            print("Icon at index \(index) was tapped.")
+            if(index == 3)
+            {
+                let profileView = ShowProfileViewController()
+                navigationController?.pushViewController(profileView, animated: true)
+            }
+        }
     }
     
     //MARK: Function to insert a date into the selectedDates array in sorted order

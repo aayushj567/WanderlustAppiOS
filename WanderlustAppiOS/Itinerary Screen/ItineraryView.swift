@@ -15,6 +15,7 @@ class ItineraryView: UIView {
     var saveButton: UIButton!
     var tabBarView: UIView!
     var planNameLabel: UILabel!
+    var onIconTapped: ((Int) -> Void)?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -92,6 +93,12 @@ class ItineraryView: UIView {
             stackView.addArrangedSubview(iconImageView)
         }
     }
+    @objc func tabBarIconTapped(_ sender: UITapGestureRecognizer) {
+                guard let iconView = sender.view else { return }
+                let index = iconView.tag
+                // The view controller that holds this view will set this closure to handle the icon tap.
+                onIconTapped?(index)
+            }
     
     func applyConstraints() {
         NSLayoutConstraint.activate([

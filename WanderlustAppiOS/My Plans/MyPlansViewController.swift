@@ -11,7 +11,7 @@ import FirebaseFirestore
 
 
 class MyPlansViewController: UIViewController {
-    let firstScreen = FirstScreenView()
+    let plansScreen = PlanScreenView()
     
     var plans = [Plan]()
     
@@ -27,24 +27,20 @@ class MyPlansViewController: UIViewController {
        // super.viewDidLoad()
         title = "My Plans"
         
-        firstScreen.tableViewExpense.delegate = self
-        firstScreen.tableViewExpense.dataSource = self
-        firstScreen.tableViewExpense.separatorColor = .clear
-        firstScreen.tableViewExpense.separatorStyle = .none
+        plansScreen.tableViewExpense.delegate = self
+        plansScreen.tableViewExpense.dataSource = self
+        plansScreen.tableViewExpense.separatorColor = .clear
+        plansScreen.tableViewExpense.separatorStyle = .none
         
-//        navigationItem.rightBarButtonItem = UIBarButtonItem(
-//            barButtonSystemItem: .add, target: self,
-//            action: #selector(onAddBarButtonTapped)
-//        )
-//        getGuestPlans()
-//        getPlans()
         fetchPlansForUser()
+        fetchPlansForGuests()
         displayPlans()
-        firstScreen.onIconTapped = { [unowned self] index in
+        NotificationCenter.default.addObserver(self, selector: #selector(dataDeleted), name: NSNotification.Name("DataDeleted"), object: nil)
+        plansScreen.onIconTapped = { [unowned self] index in
             // Handle the icon tap, switch views accordingly
             print("Icon at index \(index) was tapped.")
             if(index == 0){
-                let homeView = CalendarViewController()
+                let homeView = FirstViewController()
                 navigationController?.pushViewController(homeView, animated: true)
             }
             if(index == 1){
@@ -63,31 +59,26 @@ class MyPlansViewController: UIViewController {
                 navigationController?.pushViewController(profileView, animated: true)
             }
         }
-//        let newContact = Plan(id: 1, name: "No Limits", datefrom: "02/12", dateto:"02/31", people:"4", budget:"$2000", place:"New York" , image: (UIImage(systemName: "photo.fill"))!)
-//        let newContact1 = Plan(id: 2, name: "Go France", datefrom: "04/24", dateto:"05/02", people:"4", budget:"$5000", place:"Paris", image: (UIImage(systemName: "photo.fill"))!)
-//        let newContact2 = Plan(id: 3, name: "Be a Roman in Rome", datefrom: "06/30", dateto:"07/31", people:"10", budget:"$5500", place:"Italy", image: (UIImage(systemName: "photo.fill"))!)
+
         
-//        contacts.append(newContact)
-//        contacts.append(newContact1)
-//        contacts.append(newContact2)
     }
     
     override func loadView() {
-        view = firstScreen
+        view = plansScreen
         //getPlans()
        
     }
     
     func delegateOnAddContact(contact: Plan){
         plans.append(contact)
-        firstScreen.tableViewExpense.reloadData()
+        plansScreen.tableViewExpense.reloadData()
     }
     
     func delegateOnEditContact(idVal: Int, newName: String, newEmail: String, newPhone:String, newAddress:String, newCity:String, newZip:String, newType: String, newImage: UIImage) {
         
         plans[idVal].name = newName
         
-        firstScreen.tableViewExpense.reloadData()
+        plansScreen.tableViewExpense.reloadData()
     }
     
 //    func getPlansDemo(){
@@ -174,7 +165,7 @@ class MyPlansViewController: UIViewController {
 //
 //                            }
 //                        }
-//                        self.firstScreen.tableViewExpense.reloadData()
+//                        self.plansScreen.tableViewExpense.reloadData()
 //                    }
 //                }
 //            } catch let error {
@@ -280,7 +271,7 @@ class MyPlansViewController: UIViewController {
 //                                    //print(newPlan)
 //                                }
 //                            
-//                            //self.firstScreen.tableViewExpense.reloadData()
+//                            //self.plansScreen.tableViewExpense.reloadData()
 //                                
 //                            } catch {
 //                                print("Error decoding plan: \(error)")
@@ -392,7 +383,7 @@ class MyPlansViewController: UIViewController {
 //                                    //print(newPlan)
 //                                }
 //                            
-//                            self.firstScreen.tableViewExpense.reloadData()
+//                            self.plansScreen.tableViewExpense.reloadData()
 //                                
 //                            } catch {
 //                                print("Error decoding plan: \(error)")
@@ -410,7 +401,7 @@ extension MyPlansViewController {
                 print("User not logged in")
                 return
             }
-            db.collection("plans").whereField("owner", isEqualTo: userId).getDocuments { [weak self] (snapshot, error) in
+        db.collection("plans").whereField("owner", isEqualTo: userId).getDocuments { [weak self] (snapshot, error) in
                 guard let documents = snapshot?.documents else {
                     print("Error fetching plans: \(error?.localizedDescription ?? "Unknown error")")
                     return
@@ -423,13 +414,36 @@ extension MyPlansViewController {
                     let dateToTimestamp = (document.data()["dateTo"] as? Timestamp)?.dateValue() ?? Date()
                     var guests: [String] = []
                     
-                    guests.append("John Doe")
-                    guests.append("Micheal Philips")
-                    guests.append("Justin Beiber")
-                    guests.append("Taylor Swift")
-                    guests.append("Sai Sriker Reddy Vootukuri")
+                    let guestsIds = (document.data()["guests"] as? [String] ?? [])
+                    print("guestids\(guestsIds)")
+                    for guest in guestsIds {
+                        self?.db.collection("users").whereField("id", isEqualTo: guest).getDocuments { [weak self] (snapshot, error) in
+                            guard let userdocuments = snapshot?.documents else {
+                                print("Error fetching plans: \(error?.localizedDescription ?? "Unknown error")")
+                                return
+                            }
+                            userdocuments.forEach { document in
+                                let guest = (document.data()["name"] as? String ?? "")
+                                print("guest\(guest)")
+                                guests.append(guest)
+                                print(guests)
+                            }
+                        }
+                    }
+                    print(guests)
+                
+//                    var isOnwer = false
+//                    if (document.data()["owner"] as? String ?? "") == userId{
+//                        isOwner = true
+//                    }
                     
-                    var plan = Plan(id: document.documentID, name: document.data()["name"] as? String ?? "No Name",dateFrom: dateFromTimestamp, dateTo: dateToTimestamp, owner: userId, guests:guests)
+//                    guests.append("John Doe")
+//                    guests.append("Micheal Philips")
+//                    guests.append("Justin Beiber")
+//                    guests.append("Taylor Swift")
+//                    guests.append("Sai Sriker Reddy Vootukuri")
+                    
+                    var plan = Plan(id: document.documentID, name: document.data()["name"] as? String ?? "No Name",dateFrom: dateFromTimestamp, dateTo: dateToTimestamp, owner: document.data()["owner"] as? String ?? "", guests:guests)
                     group.enter()
                     self?.fetchDaysForPlan(planId: plan.id!, completion: { days in
                         plan.days = days
@@ -437,15 +451,76 @@ extension MyPlansViewController {
                         group.leave()
                     })
                 }
-                self?.firstScreen.tableViewExpense.reloadData()
+                self?.plansScreen.tableViewExpense.reloadData()
                 group.notify(queue: .main) {
                     print("All plans have been fetched and structured.")
                     self?.displayPlans()
-                    self?.firstScreen.tableViewExpense.reloadData()
+                    self?.plansScreen.tableViewExpense.reloadData()
                 }
             }
         }
 
+    func fetchPlansForGuests() {
+            guard let userId = Auth.auth().currentUser?.uid else {
+                print("User not logged in")
+                return
+            }
+        db.collection("plans").whereField("guests", arrayContains: userId).getDocuments { [weak self] (snapshot, error) in
+                guard let documents = snapshot?.documents else {
+                    print("Error fetching plans: \(error?.localizedDescription ?? "Unknown error")")
+                    return
+                }
+                let group = DispatchGroup()
+           //     let group1 = DispatchGroup() // Create DispatchGroup
+                
+                documents.forEach { document in
+                    let dateFromTimestamp = (document.data()["dateFrom"] as? Timestamp)?.dateValue() ?? Date()
+                    let dateToTimestamp = (document.data()["dateTo"] as? Timestamp)?.dateValue() ?? Date()
+                    var guests: [String] = []
+                    
+                    let guestsIds = (document.data()["guests"] as? [String] ?? [])
+                    print("guestids\(guestsIds)")
+                    for guest in guestsIds {
+                        group.enter()
+                        self?.db.collection("users").whereField("id", isEqualTo: guest).getDocuments { [weak self] (snapshot, error) in
+                            defer {
+                                                    // Leave the DispatchGroup when this task is done, whether it succeeds or fails
+                                                    group.leave()
+                                                }
+                            guard let userdocuments = snapshot?.documents else {
+                                print("Error fetching plans: \(error?.localizedDescription ?? "Unknown error")")
+                                return
+                            }
+                            
+                            userdocuments.forEach { document in
+                                let guest = (document.data()["name"] as? String ?? "")
+                                print("guest\(guest)")
+                                guests.append(guest)
+                                //print(guests)
+                            }
+                            //group.leave()
+                        }
+                    }
+                    print(guests)
+                    
+                    var plan = Plan(id: document.documentID, name: document.data()["name"] as? String ?? "No Name",dateFrom: dateFromTimestamp, dateTo: dateToTimestamp, owner: document.data()["owner"] as? String ?? "", guests:guests)
+                    group.enter()
+                    self?.fetchDaysForPlan(planId: plan.id!, completion: { days in
+                        plan.days = days
+                        self?.plans.append(plan)
+                        group.leave()
+                        print("allguests\(guests)")
+                    })
+                }
+                self?.plansScreen.tableViewExpense.reloadData()
+                group.notify(queue: .main) {
+                    print("All plans have been fetched and structured.")
+                   // print(guests)
+                    self?.displayPlans()
+                    self?.plansScreen.tableViewExpense.reloadData()
+                }
+            }
+        }
         func fetchDaysForPlan(planId: String, completion: @escaping ([Day]) -> Void) {
             db.collection("days").whereField("planId", isEqualTo: planId).getDocuments { (snapshot, error) in
                 guard let documents = snapshot?.documents else {
@@ -470,10 +545,6 @@ extension MyPlansViewController {
                     completion(days)
                 }
             }
-            
-            
-
-            
         }
 
         func fetchDestinationsForDay(dayId: String, completion: @escaping ([Destination]) -> Void) {
@@ -501,6 +572,10 @@ extension MyPlansViewController {
             }
         }
     }
+    @objc func dataDeleted() {
+            // Reload your table view
+        self.plansScreen.tableViewExpense.reloadData()
+    }
 
 }
 
@@ -510,7 +585,7 @@ extension MyPlansViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let numberOfPlans = plans.count
         if numberOfPlans == 0 {
-            print("hi \(numberOfPlans)")
+            //print("hi \(numberOfPlans)")
             // Show placeholder message when plans array is empty
             let messageLabel = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height))
             messageLabel.text = "No plans found"
@@ -528,7 +603,6 @@ extension MyPlansViewController: UITableViewDelegate, UITableViewDataSource{
             tableView.separatorStyle = .singleLine
         }
         return numberOfPlans
-//        return plans.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -560,9 +634,9 @@ extension MyPlansViewController: UITableViewDelegate, UITableViewDataSource{
                                 if let image = UIImage(data: imageData) {
                                     // Set the image to the UIImageView
                                     cell.imageReceipt.image =  image
-                                }
-                            }
                         }
+                    }
+                }
             }
         }
         
@@ -573,11 +647,13 @@ extension MyPlansViewController: UITableViewDelegate, UITableViewDataSource{
             cell.labelPeople.text = "People: \(uwguest.count + 1)"
         }
         
-//        if let uwIsOwner = plans[indexPath.row].isOwner {
-//            if uwIsOwner{
-        cell.labelOwner.text = "Owner"
-//            }
-//        }
+       if let uwIsOwner = plans[indexPath.row].owner {
+            if uwIsOwner == userId{
+                cell.labelOwner.text = "Owner"
+            } else{
+                cell.labelOwner.text = ""
+            }
+        }
         
         cell.selectionStyle = .none
         return cell
@@ -589,7 +665,7 @@ extension MyPlansViewController: UITableViewDelegate, UITableViewDataSource{
         showPlanDetailsController.receivedPlan = self.plans[indexPath.row]
         showPlanDetailsController.delegate = self
         navigationController?.pushViewController(showPlanDetailsController, animated: true)
-        firstScreen.tableViewExpense.deselectRow(at: indexPath, animated: true)
+        plansScreen.tableViewExpense.deselectRow(at: indexPath, animated: true)
     }
    
 }

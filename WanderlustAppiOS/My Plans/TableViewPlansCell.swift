@@ -63,8 +63,8 @@ class TableViewPlansCell: UITableViewCell {
     func setuplabelPlace(){
         labelOwner = UILabel()
         labelOwner.translatesAutoresizingMaskIntoConstraints = false
-        labelOwner.textColor = .systemBlue
-        labelOwner.font = UIFont.boldSystemFont(ofSize: 15.0)
+        labelOwner.textColor = .gray
+        labelOwner.font = UIFont.italicSystemFont(ofSize: 15.0)
         wrapperCellView.addSubview(labelOwner)
     }
     func setupimageReceipt(){

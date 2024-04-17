@@ -19,6 +19,7 @@ class RegistrationView: UIView {
     // register button
     var buttonRegister: UIButton!
     var labelTitle: UILabel!
+    var backgroundImage: UIImageView!
     
     override init(frame: CGRect){
         super.init(frame: frame)
@@ -30,6 +31,7 @@ class RegistrationView: UIView {
         setupbuttonTakePhoto()
         setupbuttonRegister()
         setupLabelTitle()
+        setupBackgroundImage()
         initConstraints()
     }
     
@@ -49,6 +51,7 @@ class RegistrationView: UIView {
         textFieldName.borderStyle = .roundedRect
         textFieldName.autocorrectionType = .no
         textFieldName.autocapitalizationType = .none
+        textFieldName.layer.borderWidth = 1
         textFieldName.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(textFieldName)
     }
@@ -59,6 +62,7 @@ class RegistrationView: UIView {
         textFieldEmail.keyboardType = .emailAddress
         textFieldEmail.borderStyle = .roundedRect
         textFieldEmail.autocorrectionType = .no
+        textFieldEmail.layer.borderWidth = 1
         textFieldEmail.autocapitalizationType = .none
         textFieldEmail.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(textFieldEmail)
@@ -70,6 +74,7 @@ class RegistrationView: UIView {
         textFieldPassword.keyboardType = .default
         textFieldPassword.isSecureTextEntry = true
         textFieldPassword.borderStyle = .roundedRect
+        textFieldPassword.layer.borderWidth = 1
         textFieldPassword.autocorrectionType = .no
         textFieldPassword.autocapitalizationType = .none
         textFieldPassword.translatesAutoresizingMaskIntoConstraints = false
@@ -106,6 +111,18 @@ class RegistrationView: UIView {
         buttonRegister.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(buttonRegister)
     }
+    
+    func setupBackgroundImage(){
+                backgroundImage = UIImageView(frame: UIScreen.main.bounds)
+                backgroundImage.image = UIImage(named: "Image")
+                backgroundImage.contentMode = .scaleAspectFill // Adjust content mode as needed
+                backgroundImage.clipsToBounds = true // Clip to bounds to avoid image overflow
+                
+                // Add the UIImageView as the background of the view
+                self.addSubview(backgroundImage)
+                self.sendSubviewToBack(backgroundImage)
+    }
+    
     
     func initConstraints(){
         NSLayoutConstraint.activate([

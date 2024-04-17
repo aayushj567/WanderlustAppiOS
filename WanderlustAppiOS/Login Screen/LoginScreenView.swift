@@ -22,6 +22,7 @@ class LoginView: UIView {
     var buttonRegister: UIButton!
     var imageViewLogo: UIImageView!
     var labelTitle: UILabel!
+    var backgroundImage: UIImageView!
     
     override init(frame: CGRect){
         super.init(frame: frame)
@@ -32,6 +33,7 @@ class LoginView: UIView {
         setupbuttonRegister()
         setupImageViewLogo()
         setupLabelTitle()
+        setupBackgroundImage()
         initConstraints()
     }
     
@@ -41,7 +43,7 @@ class LoginView: UIView {
             labelTitle.font = UIFont(name: "HelveticaNeue-Bold", size: 30)
             labelTitle.textColor = .systemBlue
             labelTitle.textAlignment = .center
-            labelTitle.font = UIFont.boldSystemFont(ofSize: 24)
+            labelTitle.font = UIFont.boldSystemFont(ofSize: 34)
             labelTitle.translatesAutoresizingMaskIntoConstraints = false
             self.addSubview(labelTitle)
         }
@@ -58,6 +60,7 @@ class LoginView: UIView {
         textFieldEmail.placeholder = "Email"
         textFieldEmail.keyboardType = .emailAddress
         textFieldEmail.borderStyle = .roundedRect
+        textFieldEmail.layer.borderWidth = 1
         textFieldEmail.autocapitalizationType = .none
         textFieldEmail.autocapitalizationType = .none
         textFieldEmail.translatesAutoresizingMaskIntoConstraints = false
@@ -70,11 +73,24 @@ class LoginView: UIView {
         textFieldPassword.textContentType = .password
         textFieldPassword.isSecureTextEntry = true
         textFieldPassword.borderStyle = .roundedRect
+        textFieldPassword.layer.borderWidth = 1
         textFieldPassword.autocapitalizationType = .none
         textFieldPassword.autocapitalizationType = .none
         textFieldPassword.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(textFieldPassword)
     }
+    
+    func setupBackgroundImage(){
+                backgroundImage = UIImageView(frame: UIScreen.main.bounds)
+                backgroundImage.image = UIImage(named: "Image")
+                backgroundImage.contentMode = .scaleAspectFill // Adjust content mode as needed
+                backgroundImage.clipsToBounds = true // Clip to bounds to avoid image overflow
+                
+                // Add the UIImageView as the background of the view
+                self.addSubview(backgroundImage)
+                self.sendSubviewToBack(backgroundImage)
+    }
+    
     
     func setupbuttonLogin(){
         buttonLogin = UIButton(type: .system)
@@ -103,7 +119,7 @@ class LoginView: UIView {
             buttonRegister.setTitle("Register", for: .normal)
             buttonRegister.titleLabel?.font = .boldSystemFont(ofSize: 16)
             buttonRegister.translatesAutoresizingMaskIntoConstraints = false
-            buttonRegister.backgroundColor = .systemBlue
+            buttonRegister.backgroundColor = .systemGreen
             buttonRegister.setTitleColor(.white, for: .normal)  // Change .white to any UIColor you need
              
              // Set the background color of the button
@@ -122,7 +138,7 @@ class LoginView: UIView {
     func initConstraints(){
         NSLayoutConstraint.activate([
                 // Logo constraints
-            labelTitle.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 16),
+            labelTitle.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 20),
                 labelTitle.centerXAnchor.constraint(equalTo: self.centerXAnchor),
                 imageViewLogo.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 60),
                 imageViewLogo.centerXAnchor.constraint(equalTo: self.centerXAnchor),

@@ -17,6 +17,8 @@ class ShowPlanDetailsViewController: UIViewController {
     var receivedPlan: Plan = Plan()
     var dayWise = [Day]()
     
+    let userId = Auth.auth().currentUser?.uid
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -68,15 +70,22 @@ class ShowPlanDetailsViewController: UIViewController {
             displayPlanSummary.labelItenerary.text = "Itinerary:"
 
         }
-        
-        navigationItem.rightBarButtonItem = UIBarButtonItem(
-            barButtonSystemItem: .edit,
-            target: self,
-            action: #selector(onDeletePlan)
-        )
+        if let owner = receivedPlan.owner{
+            if owner == userId {
+                navigationItem.rightBarButtonItem = UIBarButtonItem(
+                    barButtonSystemItem: .edit,
+                    target: self,
+                    action: #selector(onDeletePlan)
+                )
+                displayPlanSummary.deletePlan.addTarget(self, action: #selector(onDeletePlan), for: .touchUpInside)
+            }else{
+                displayPlanSummary.deletePlan.isHidden = true
+            }
+        }
+       
         
         displayPlanSummary.showPeople.addTarget(self, action: #selector(showAlert), for: .touchUpInside)
-        displayPlanSummary.deletePlan.addTarget(self, action: #selector(onDeletePlan), for: .touchUpInside)
+        
        
     }
     
@@ -181,7 +190,8 @@ class ShowPlanDetailsViewController: UIViewController {
                 print("Document successfully deleted")
             }
         }
-        
+        NotificationCenter.default.post(name: NSNotification.Name("DataDeleted"), object: nil)
+
         navigationController?.popViewController(animated: true)
     }
 }

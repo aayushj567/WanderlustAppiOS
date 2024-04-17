@@ -10,6 +10,8 @@ class AddGuestsViewController: UIViewController {
     var selectedUserIds: [String] = []
     var selectedDates: [Date] = []
     
+    let userId = Auth.auth().currentUser?.uid
+    
     override func loadView() {
         view = addGuestView
     }
@@ -24,11 +26,35 @@ class AddGuestsViewController: UIViewController {
         addGuestView.buttonNext.addTarget(self, action: #selector(onNextButtonTapped), for: .touchUpInside)
         addGuestView.searchBar.delegate = self
         fetchUsers()
+        
+        addGuestView.onIconTapped = { [unowned self] index in
+            // Handle the icon tap, switch views accordingly
+            print("Icon at index \(index) was tapped.")
+            if(index == 0){
+                let homeView = FirstViewController()
+                navigationController?.pushViewController(homeView, animated: true)
+            }
+            if(index == 1){
+                let myplansVC = MyPlansViewController()
+                navigationController?.pushViewController(myplansVC, animated: true)
+            }
+            if(index == 2)
+            {
+                let chatView = ChatPlanViewController()
+                navigationController?.pushViewController(chatView, animated: true)
+            }
+            print("Icon at index \(index) was tapped.")
+            if(index == 3)
+            {
+                let profileView = ShowProfileViewController()
+                navigationController?.pushViewController(profileView, animated: true)
+            }
+        }
     }
     
     func fetchUsers() {
         let db = Firestore.firestore()
-        db.collection("users").getDocuments { [weak self] (querySnapshot, error) in
+        db.collection("users").whereField("id", isNotEqualTo: userId).getDocuments { [weak self] (querySnapshot, error) in
             guard let self = self else { return }
             if let error = error {
                 print("Error getting users: \(error)")

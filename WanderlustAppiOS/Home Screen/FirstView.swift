@@ -50,7 +50,7 @@ class FirstView: UIView {
     
         func setupallPlansButton(){
             allPlansButton = UIButton(type: .system)
-            allPlansButton.setTitle("Show Plans", for: .normal)
+            allPlansButton.setTitle("My Plans", for: .normal)
             allPlansButton.titleLabel?.font = .boldSystemFont(ofSize: 16)
             allPlansButton.translatesAutoresizingMaskIntoConstraints = false
             allPlansButton.backgroundColor = .systemGreen
@@ -70,7 +70,7 @@ class FirstView: UIView {
     
     func setupBackgroundImage(){
                 backgroundImage = UIImageView(frame: UIScreen.main.bounds)
-                backgroundImage.image = UIImage(named: "your_image_name_here")
+                backgroundImage.image = UIImage(named: "Image")
                 backgroundImage.contentMode = .scaleAspectFill // Adjust content mode as needed
                 backgroundImage.clipsToBounds = true // Clip to bounds to avoid image overflow
                 
@@ -84,7 +84,7 @@ class FirstView: UIView {
         labelWelcomeLabel = UILabel()
         labelWelcomeLabel.textAlignment = .center
         labelWelcomeLabel.translatesAutoresizingMaskIntoConstraints = false
-        labelWelcomeLabel.font = UIFont.boldSystemFont(ofSize: 36.0)
+        labelWelcomeLabel.font = UIFont.boldSystemFont(ofSize: 34.0)
         self.addSubview(labelWelcomeLabel)
     }
     
@@ -100,26 +100,21 @@ class FirstView: UIView {
     func initConstraints(){
         NSLayoutConstraint.activate([
             
-            labelWelcomeLabel.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 30),
+            labelWelcomeLabel.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 40),
             labelWelcomeLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             labelWelcomeLabel.heightAnchor.constraint(equalToConstant: 40),
             
-            labelTextLabel.topAnchor.constraint(equalTo: labelWelcomeLabel.bottomAnchor, constant: 60),
+            labelTextLabel.topAnchor.constraint(equalTo: labelWelcomeLabel.bottomAnchor, constant: 80),
             labelTextLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            //labelDestinationName.heightAnchor.constraint(equalToConstant: 20),
-            // Login button constraints
-            //newPlanButton.topAnchor.constraint(equalTo: .bottomAnchor, constant: 32),
-            newPlanButton.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            newPlanButton.centerYAnchor.constraint(equalTo: self.centerYAnchor),
             
-        //newPlanButton.widthAnchor.constraint(equalTo: self.safeAreaLayoutGuide.widthAnchor),
+            newPlanButton.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            newPlanButton.topAnchor.constraint(equalTo: labelTextLabel.bottomAnchor, constant: 250),
+            
             newPlanButton.heightAnchor.constraint(equalToConstant: 50), // Set to your desired height
             
             // Register button constraints
             allPlansButton.topAnchor.constraint(equalTo: newPlanButton.bottomAnchor, constant: 16),
             allPlansButton.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            //newPlanButton.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-            // allPlansButton.widthAnchor.constraint(equalTo: self.safeAreaLayoutGuide.widthAnchor),
             allPlansButton.heightAnchor.constraint(equalToConstant: 50), // Set t
         ])
     }

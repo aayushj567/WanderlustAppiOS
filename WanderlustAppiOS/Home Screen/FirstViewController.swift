@@ -32,7 +32,7 @@ class FirstViewController: UIViewController {
         
         //getUser()
         navigationItem.hidesBackButton = true
-        firstView.labelWelcomeLabel.text = "Welcome, \(userName!)"
+        firstView.labelWelcomeLabel.text = "Welcome, \(userName!) !"
         firstView.labelTextLabel.text = "What would you like to do today ?"
     }
     
