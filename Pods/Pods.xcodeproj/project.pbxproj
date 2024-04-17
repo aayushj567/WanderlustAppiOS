@@ -17,7 +17,6 @@
 				B93FCBDF204160136FD366C6CDD5BDF2 /* PBXTargetDependency */,
 			);
 			name = GooglePlaces;
-			productName = GooglePlaces;
 		};
 		E5B4BBC6DD552AC8943C7E22772FC1D3 /* GoogleMaps */ = {
 			isa = PBXAggregateTarget;
@@ -29,7 +28,6 @@
 				FE45EF55BF5747D3F9820B7E44827666 /* PBXTargetDependency */,
 			);
 			name = GoogleMaps;
-			productName = GoogleMaps;
 		};
 /* End PBXAggregateTarget section */
 
@@ -254,17 +252,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-<<<<<<< HEAD
-		042B4A1E8B1D4838D64FD8482B6F539B /* HTTPHeaders.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HTTPHeaders.swift; path = Source/HTTPHeaders.swift; sourceTree = "<group>"; };
-		051900E0BF40B04630EF22BAE040C545 /* GooglePlaces.xcframework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.xcframework; name = GooglePlaces.xcframework; path = Frameworks/GooglePlaces.xcframework; sourceTree = "<group>"; };
-		09C5016FD15175A1B2589B71D7338E16 /* Notifications.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Notifications.swift; path = Source/Notifications.swift; sourceTree = "<group>"; };
-		0A1D78B42DC3298344D5F2AB1C11E952 /* ResourceBundle-GoogleMapsResources-GoogleMaps-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-GoogleMapsResources-GoogleMaps-Info.plist"; sourceTree = "<group>"; };
-		0D61544275D5ACBC1799DF6965AD127C /* Request.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Request.swift; path = Source/Request.swift; sourceTree = "<group>"; };
-		0DAE6D342BC581626C069F31EA11D4F2 /* RequestInterceptor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RequestInterceptor.swift; path = Source/RequestInterceptor.swift; sourceTree = "<group>"; };
-		0E68219825F315868CA5A5A801594AA6 /* Protected.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Protected.swift; path = Source/Protected.swift; sourceTree = "<group>"; };
-		120BAE58FE918C25DD8545FEB1DD4C1B /* GMSEmpty.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GMSEmpty.h; path = Base/Sources/GMSEmpty.h; sourceTree = "<group>"; };
-		1F7B75D82BABD1792A32C3C0E64113DF /* Alamofire.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Alamofire.debug.xcconfig; sourceTree = "<group>"; };
-=======
 		0308A78A09426A7C5B503CB4FA38FFFC /* MessagesCollectionViewLayoutAttributes.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MessagesCollectionViewLayoutAttributes.swift; path = Sources/Layout/MessagesCollectionViewLayoutAttributes.swift; sourceTree = "<group>"; };
 		087D7AA4D01FCEF78D17984A40E1EEF5 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/CFNetwork.framework; sourceTree = DEVELOPER_DIR; };
 		0914F520A174136F1D5027166954C4E8 /* MessageStyle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MessageStyle.swift; path = Sources/Models/MessageStyle.swift; sourceTree = "<group>"; };
@@ -296,7 +283,6 @@
 		207144E9CB5D3E27F18FB31C5D5D2BD5 /* TextMessageCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TextMessageCell.swift; path = Sources/Views/Cells/TextMessageCell.swift; sourceTree = "<group>"; };
 		20DE5EAF7FCFF49446911077A7114F0C /* InputTextView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = InputTextView.swift; path = Sources/Views/InputTextView.swift; sourceTree = "<group>"; };
 		216F58A6C3CE5DD07394A776B31E4D51 /* AttachmentCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AttachmentCell.swift; path = Sources/Plugins/AttachmentManager/Views/AttachmentCell.swift; sourceTree = "<group>"; };
->>>>>>> 04a06de8d40f8ed3200f30709fc962229f32415c
 		21BC9DE5EE18F27517C52ABD3FBF38ED /* GoogleMaps-GoogleMapsResources */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = "GoogleMaps-GoogleMapsResources"; path = GoogleMapsResources.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		23725FEDFE8FF4253E21DBCB5D1CAF15 /* InputBarAccessoryView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = InputBarAccessoryView.swift; path = Sources/InputBarAccessoryView.swift; sourceTree = "<group>"; };
 		23AD26C269EE3EDEC0AE21EF0639F22A /* InputBarAccessoryView-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "InputBarAccessoryView-umbrella.h"; sourceTree = "<group>"; };
@@ -306,14 +292,6 @@
 		292DA07572B5AF8A784A6E190360BABB /* GoogleMaps.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = GoogleMaps.debug.xcconfig; sourceTree = "<group>"; };
 		297DBFD13CA0D9E9FD58CDBA2DCBE0DA /* URLSessionConfiguration+Alamofire.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "URLSessionConfiguration+Alamofire.swift"; path = "Source/URLSessionConfiguration+Alamofire.swift"; sourceTree = "<group>"; };
 		2999CD74DAFFCD6C814BB82AA08B5880 /* Pods-WanderlustAppiOS-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-WanderlustAppiOS-dummy.m"; sourceTree = "<group>"; };
-<<<<<<< HEAD
-		2E35B6830556C50CBF94C535309F8CB5 /* GooglePlaces-xcframeworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "GooglePlaces-xcframeworks.sh"; sourceTree = "<group>"; };
-		371BBC16A0AB716E8491B20C7AD0B623 /* Alamofire-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Alamofire-umbrella.h"; sourceTree = "<group>"; };
-		39241503EA632FD0200FF124FFE28B49 /* ResourceBundle-GooglePlacesResources-GooglePlaces-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-GooglePlacesResources-GooglePlaces-Info.plist"; sourceTree = "<group>"; };
-		3A2FCA4EA278BA82A88A50A2A353380C /* GoogleMaps.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = GoogleMaps.release.xcconfig; sourceTree = "<group>"; };
-		4527066B47B08ABE96194FE285130792 /* OperationQueue+Alamofire.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "OperationQueue+Alamofire.swift"; path = "Source/OperationQueue+Alamofire.swift"; sourceTree = "<group>"; };
-		48EBF2D3BE0ED34B19F2E513C5D9181E /* GoogleMapsCore.xcframework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.xcframework; name = GoogleMapsCore.xcframework; path = Maps/Frameworks/GoogleMapsCore.xcframework; sourceTree = "<group>"; };
-=======
 		29B60778797082814414C57A1132D78A /* MessageSizeCalculator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MessageSizeCalculator.swift; path = Sources/Layout/MessageSizeCalculator.swift; sourceTree = "<group>"; };
 		2A22BCCE7895269A6A0CDF279F39F00E /* CellSizeCalculator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CellSizeCalculator.swift; path = Sources/Layout/CellSizeCalculator.swift; sourceTree = "<group>"; };
 		2B13181CB5B5C43C7583A1A39EBE5008 /* URLEncodedFormEncoder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = URLEncodedFormEncoder.swift; path = Source/URLEncodedFormEncoder.swift; sourceTree = "<group>"; };
@@ -349,7 +327,6 @@
 		4B835EE84F56F371619EE54B9E496741 /* MessageKit-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MessageKit-umbrella.h"; sourceTree = "<group>"; };
 		4BB43D1E0B0AA7717389112CF0B8C798 /* RetryPolicy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RetryPolicy.swift; path = Source/RetryPolicy.swift; sourceTree = "<group>"; };
 		4E5ED9FFC00152EDD63F2A35A0E5D3D1 /* GMSEmpty.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GMSEmpty.h; path = Maps/Sources/GMSEmpty.h; sourceTree = "<group>"; };
->>>>>>> 04a06de8d40f8ed3200f30709fc962229f32415c
 		4FDA2C3E23679E34BD584A7A6C45BD3E /* Pods-WanderlustAppiOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-WanderlustAppiOS.release.xcconfig"; sourceTree = "<group>"; };
 		512C3DAB7084B758808EB7FAE4A1692F /* AttachmentsView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AttachmentsView.swift; path = Sources/Plugins/AttachmentManager/Views/AttachmentsView.swift; sourceTree = "<group>"; };
 		529E21341545B52EFBD95B1691C1224A /* Pods-WanderlustAppiOS-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-WanderlustAppiOS-umbrella.h"; sourceTree = "<group>"; };
@@ -398,24 +375,6 @@
 		88A2663737133E1D42E3C46E34C29D7D /* AvatarView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AvatarView.swift; path = Sources/Views/AvatarView.swift; sourceTree = "<group>"; };
 		8B09A219F947AB46FBE84BF68C7D8938 /* Avatar.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Avatar.swift; path = Sources/Models/Avatar.swift; sourceTree = "<group>"; };
 		8B0BDFE85BA182EFBBE933C3EE866D3B /* Pods-WanderlustAppiOS-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-WanderlustAppiOS-Info.plist"; sourceTree = "<group>"; };
-<<<<<<< HEAD
-		8C16BD99E542F8B8602B27816ADEDF43 /* Session.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Session.swift; path = Source/Session.swift; sourceTree = "<group>"; };
-		8D3D57353834825F7B52B816066B7789 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/CFNetwork.framework; sourceTree = DEVELOPER_DIR; };
-		924EBAEC9A38332E37349248D3B34FF4 /* GooglePlaces.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = GooglePlaces.bundle; path = Resources/GooglePlacesResources/GooglePlaces.bundle; sourceTree = "<group>"; };
-		92EC7CFB69F2C7256F09F509770F4065 /* ParameterEncoding.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ParameterEncoding.swift; path = Source/ParameterEncoding.swift; sourceTree = "<group>"; };
-		932992ADA61D65D268D37D82F5628991 /* GoogleMaps-xcframeworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "GoogleMaps-xcframeworks.sh"; sourceTree = "<group>"; };
-		959D4E0E8826A87053EE5A954BAAB21D /* ResponseSerialization.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ResponseSerialization.swift; path = Source/ResponseSerialization.swift; sourceTree = "<group>"; };
-		95BC4B71E76D18ADCE015AFF6EECE56A /* RequestTaskMap.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RequestTaskMap.swift; path = Source/RequestTaskMap.swift; sourceTree = "<group>"; };
-		974A42680F6C3B91A97B8C9EC47FBFF5 /* URLRequest+Alamofire.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "URLRequest+Alamofire.swift"; path = "Source/URLRequest+Alamofire.swift"; sourceTree = "<group>"; };
-		9C73BA7EF122ABBC9DBF435C610EBB33 /* AFError.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AFError.swift; path = Source/AFError.swift; sourceTree = "<group>"; };
-		9C8F868DCC84496761C6EBAE0434F12E /* RedirectHandler.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RedirectHandler.swift; path = Source/RedirectHandler.swift; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		A3CDB496328F5CDC622693FC92D01384 /* NetworkReachabilityManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NetworkReachabilityManager.swift; path = Source/NetworkReachabilityManager.swift; sourceTree = "<group>"; };
-		A4357E0A9AF08D090C2E964AA20A0A2B /* Concurrency.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Concurrency.swift; path = Source/Concurrency.swift; sourceTree = "<group>"; };
-		A478DEBD3857D91ADF24D0EB496C1981 /* Alamofire-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Alamofire-prefix.pch"; sourceTree = "<group>"; };
-		A4B1464A04383FC1900606F87D3A9F19 /* GoogleMaps.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = GoogleMaps.debug.xcconfig; sourceTree = "<group>"; };
-		A784A7B3FFC8B920D687C88C06AEF42F /* GMSEmpty.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GMSEmpty.h; path = Sources/GMSEmpty.h; sourceTree = "<group>"; };
-=======
 		8DFE5C917B223F2B5115ACA19CBC63BE /* LocationMessageSizeCalculator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LocationMessageSizeCalculator.swift; path = Sources/Layout/LocationMessageSizeCalculator.swift; sourceTree = "<group>"; };
 		8EDA2DEDBD5F54E600911201621B8A73 /* MessagesCollectionView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MessagesCollectionView.swift; path = Sources/Views/MessagesCollectionView.swift; sourceTree = "<group>"; };
 		90DE0D411A3780BEA531993959122DCE /* Request.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Request.swift; path = Source/Request.swift; sourceTree = "<group>"; };
@@ -436,7 +395,6 @@
 		A2C65C6189F9D4A2806E6C8B25A5A565 /* GooglePlaces.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = GooglePlaces.bundle; path = Resources/GooglePlacesResources/GooglePlaces.bundle; sourceTree = "<group>"; };
 		A716B65FEC87096D9E04745AE13B648D /* String+Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "String+Extensions.swift"; path = "Sources/Extensions/String+Extensions.swift"; sourceTree = "<group>"; };
 		A84EFE25BF3ECF5110B70481A7D3D971 /* MultipartFormData.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MultipartFormData.swift; path = Source/MultipartFormData.swift; sourceTree = "<group>"; };
->>>>>>> 04a06de8d40f8ed3200f30709fc962229f32415c
 		A8C94E83D35232E25F0118D67BF17529 /* Pods-WanderlustAppiOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-WanderlustAppiOS.debug.xcconfig"; sourceTree = "<group>"; };
 		ACC17C3A665EC2AE98A16F1E9C18D4A7 /* PlayButtonView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PlayButtonView.swift; path = Sources/Views/PlayButtonView.swift; sourceTree = "<group>"; };
 		AF04F0A5D8161446731854D7E201903F /* GooglePlaces.xcframework */ = {isa = PBXFileReference; includeInIndex = 1; name = GooglePlaces.xcframework; path = Frameworks/GooglePlaces.xcframework; sourceTree = "<group>"; };
@@ -458,28 +416,6 @@
 		C191E415A382BD11B05771F96CB20374 /* TypingBubble.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TypingBubble.swift; path = Sources/Views/TypingBubble.swift; sourceTree = "<group>"; };
 		C3B5BC3850D7AC38541F77C355347403 /* LinkPreviewView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LinkPreviewView.swift; path = Sources/Views/LinkPreviewView.swift; sourceTree = "<group>"; };
 		C7CB8F18A89A6768EF679B8CFF8C6419 /* Pods-WanderlustAppiOS-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-WanderlustAppiOS-acknowledgements.markdown"; sourceTree = "<group>"; };
-<<<<<<< HEAD
-		CC72FF4BF7C946DF400AB174522F11EE /* DispatchQueue+Alamofire.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "DispatchQueue+Alamofire.swift"; path = "Source/DispatchQueue+Alamofire.swift"; sourceTree = "<group>"; };
-		CEFC93ACEAFDEE32239EFD99012CF8E2 /* SessionDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SessionDelegate.swift; path = Source/SessionDelegate.swift; sourceTree = "<group>"; };
-		CF809AE83D85292E6517CA70DC5AE9C1 /* Combine.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Combine.swift; path = Source/Combine.swift; sourceTree = "<group>"; };
-		D1AD73697C67220184931216302CFA93 /* StringEncoding+Alamofire.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "StringEncoding+Alamofire.swift"; path = "Source/StringEncoding+Alamofire.swift"; sourceTree = "<group>"; };
-		D37BC96F965C08D791B06B76491E772B /* Alamofire-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Alamofire-Info.plist"; sourceTree = "<group>"; };
-		D691CA5103F5F7E8CE8417EDB7F956D9 /* URLSessionConfiguration+Alamofire.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "URLSessionConfiguration+Alamofire.swift"; path = "Source/URLSessionConfiguration+Alamofire.swift"; sourceTree = "<group>"; };
-		D6CEB98596446A46EBE9195E80227180 /* Validation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Validation.swift; path = Source/Validation.swift; sourceTree = "<group>"; };
-		D8F8DB892619DD38887E7A987DFE16EF /* GoogleMapsBase.xcframework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.xcframework; name = GoogleMapsBase.xcframework; path = Base/Frameworks/GoogleMapsBase.xcframework; sourceTree = "<group>"; };
-		DA9A2CE9ECB4308E54A4A90B189E098D /* EventMonitor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = EventMonitor.swift; path = Source/EventMonitor.swift; sourceTree = "<group>"; };
-		DD82959BC7BB71E0181FCC67365A82E6 /* GoogleMaps.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = Maps/Resources/GoogleMapsResources/GoogleMaps.bundle; sourceTree = "<group>"; };
-		DE5BC73A09FA817E99328E92A547E2D8 /* ServerTrustEvaluation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ServerTrustEvaluation.swift; path = Source/ServerTrustEvaluation.swift; sourceTree = "<group>"; };
-		E4118C0CE69DBFF46BCFDBDBB7216E09 /* Pods-WanderlustAppiOS-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-WanderlustAppiOS-frameworks.sh"; sourceTree = "<group>"; };
-		E60F63F29273B8B6A8C0896F686FA54E /* MultipartFormData.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MultipartFormData.swift; path = Source/MultipartFormData.swift; sourceTree = "<group>"; };
-		E725A66958C6F726EAA377A3DD4A7783 /* Pods_WanderlustAppiOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WanderlustAppiOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E9B7841AB144FA98CD18F05E9D877651 /* Alamofire.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Alamofire.swift; path = Source/Alamofire.swift; sourceTree = "<group>"; };
-		EA07E200A54A459BC604D969B2E78AEC /* MultipartUpload.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MultipartUpload.swift; path = Source/MultipartUpload.swift; sourceTree = "<group>"; };
-		EC812F97F2772B12E328E79CB2D7DD25 /* GoogleMaps.xcframework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.xcframework; name = GoogleMaps.xcframework; path = Maps/Frameworks/GoogleMaps.xcframework; sourceTree = "<group>"; };
-		EDAEC11FF2C9B57A77C075A8FFF35649 /* Alamofire.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Alamofire.release.xcconfig; sourceTree = "<group>"; };
-		EFA9B24C112ED683D67BD71BA56F782D /* RequestCompression.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RequestCompression.swift; path = Source/RequestCompression.swift; sourceTree = "<group>"; };
-		EFE2D747BF063F8326B89E1D091BEC83 /* ParameterEncoder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ParameterEncoder.swift; path = Source/ParameterEncoder.swift; sourceTree = "<group>"; };
-=======
 		C80908679CBAEB54F694F51F7E1FE9D4 /* AutocompleteManagerDataSource.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AutocompleteManagerDataSource.swift; path = Sources/Plugins/AutocompleteManager/Protocols/AutocompleteManagerDataSource.swift; sourceTree = "<group>"; };
 		C9179F487AAB4A705CEE155941563C72 /* Assets.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Sources/Assets.xcassets; sourceTree = "<group>"; };
 		CDB2A7FB94DF3285F839933FD1AB1C9A /* AutocompleteCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AutocompleteCell.swift; path = Sources/Plugins/AutocompleteManager/Views/AutocompleteCell.swift; sourceTree = "<group>"; };
@@ -507,7 +443,6 @@
 		ED6D3120F9BEE9C0F8097B4D6E9ED67D /* Sender.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Sender.swift; path = Sources/Models/Sender.swift; sourceTree = "<group>"; };
 		F129ECF2AD06729D60053BC9C3FF9606 /* MediaMessageSizeCalculator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MediaMessageSizeCalculator.swift; path = Sources/Layout/MediaMessageSizeCalculator.swift; sourceTree = "<group>"; };
 		F1E2614E7E40059FFB4DFFD04C316A79 /* CGRect+Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "CGRect+Extensions.swift"; path = "Sources/Extensions/CGRect+Extensions.swift"; sourceTree = "<group>"; };
->>>>>>> 04a06de8d40f8ed3200f30709fc962229f32415c
 		F1F3071606C307730C25A80A971AEA75 /* Pods-WanderlustAppiOS-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-WanderlustAppiOS-acknowledgements.plist"; sourceTree = "<group>"; };
 		F3E268B51F7ABD05B34275959F318F5C /* SeparatorLine.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SeparatorLine.swift; path = Sources/Views/SeparatorLine.swift; sourceTree = "<group>"; };
 		F48943CED9F1161F711EF9FB431C9A87 /* TypingIndicatorCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TypingIndicatorCell.swift; path = Sources/Views/Cells/TypingIndicatorCell.swift; sourceTree = "<group>"; };
@@ -713,63 +648,17 @@
 				44BD106D472805C6E9B99EB6AD30F30D /* Resources */,
 				50131710AB7FE979B7C6C7110EE9D9F9 /* Support Files */,
 			);
+			name = GooglePlaces;
 			path = GooglePlaces;
 			sourceTree = "<group>";
 		};
 		50131710AB7FE979B7C6C7110EE9D9F9 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-<<<<<<< HEAD
-				932992ADA61D65D268D37D82F5628991 /* GoogleMaps-xcframeworks.sh */,
-				A4B1464A04383FC1900606F87D3A9F19 /* GoogleMaps.debug.xcconfig */,
-				3A2FCA4EA278BA82A88A50A2A353380C /* GoogleMaps.release.xcconfig */,
-				0A1D78B42DC3298344D5F2AB1C11E952 /* ResourceBundle-GoogleMapsResources-GoogleMaps-Info.plist */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/GoogleMaps";
-			sourceTree = "<group>";
-		};
-		5163FAB7943968412E04E30CA129F6C5 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				EC812F97F2772B12E328E79CB2D7DD25 /* GoogleMaps.xcframework */,
-				48EBF2D3BE0ED34B19F2E513C5D9181E /* GoogleMapsCore.xcframework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		5FACF35B676DEC3AFDEECDE8290355DB /* GoogleMaps */ = {
-			isa = PBXGroup;
-			children = (
-				6EDFA94CAC9091E8257432F22E43B9B4 /* Base */,
-				F81897FAA281FD70DDCD22C5C4A7F793 /* Maps */,
-				2BABDC97A9D56A4BC0E0C2641A9167A1 /* Support Files */,
-			);
-			path = GoogleMaps;
-			sourceTree = "<group>";
-		};
-		61C8CC330A5CA84DA2F5F1D32AB07069 /* iOS */ = {
-			isa = PBXGroup;
-			children = (
-				8D3D57353834825F7B52B816066B7789 /* CFNetwork.framework */,
-				FD0CE05D5D076B1B5190EE5DF97FD54E /* Foundation.framework */,
-			);
-			name = iOS;
-			sourceTree = "<group>";
-		};
-		62540BE15CEC137D6C07F372F0C8FC14 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				2E35B6830556C50CBF94C535309F8CB5 /* GooglePlaces-xcframeworks.sh */,
-				FFD7EFA344FFFEBBD99253F3F6A35F34 /* GooglePlaces.debug.xcconfig */,
-				C038407C6C9A33BA3F62C5202DD13F8A /* GooglePlaces.release.xcconfig */,
-				39241503EA632FD0200FF124FFE28B49 /* ResourceBundle-GooglePlacesResources-GooglePlaces-Info.plist */,
-=======
 				84866403156E4C13905725F56E14C192 /* GooglePlaces-xcframeworks.sh */,
 				5A0B653F89FE44EF5898BD12B877DCA0 /* GooglePlaces.debug.xcconfig */,
 				6A2CBE6EDAFD0110C47B68774CBA6D96 /* GooglePlaces.release.xcconfig */,
 				9CBED42A54E0F2D999DC3C3F1901CD20 /* ResourceBundle-GooglePlacesResources-GooglePlaces-Info.plist */,
->>>>>>> 04a06de8d40f8ed3200f30709fc962229f32415c
 			);
 			name = "Support Files";
 			path = "../Target Support Files/GooglePlaces";
@@ -819,34 +708,6 @@
 		7614B8530996FE3603DF0D7ACAB509AE /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-<<<<<<< HEAD
-				5D797E9A5C5782CE845840781FA1CC81 /* Alamofire */,
-				21BC9DE5EE18F27517C52ABD3FBF38ED /* GoogleMaps-GoogleMapsResources */,
-				58D55567BE5BB377C4B0D89C1322D23E /* GooglePlaces-GooglePlacesResources */,
-				E725A66958C6F726EAA377A3DD4A7783 /* Pods_WanderlustAppiOS.framework */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		79E9B6F6EF78B57B07F3FED18D4601E7 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				051900E0BF40B04630EF22BAE040C545 /* GooglePlaces.xcframework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		7D3C10BA89F8FB73828B109A6FA8CD84 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				BC28D04F0C40C67FDBD6D4E70DCA6EB0 /* Alamofire.modulemap */,
-				7561B4A28C487F406825551CDFA9BFD4 /* Alamofire-dummy.m */,
-				D37BC96F965C08D791B06B76491E772B /* Alamofire-Info.plist */,
-				A478DEBD3857D91ADF24D0EB496C1981 /* Alamofire-prefix.pch */,
-				371BBC16A0AB716E8491B20C7AD0B623 /* Alamofire-umbrella.h */,
-				1F7B75D82BABD1792A32C3C0E64113DF /* Alamofire.debug.xcconfig */,
-				EDAEC11FF2C9B57A77C075A8FFF35649 /* Alamofire.release.xcconfig */,
-=======
 				0D3D52F1658EEFAFA3893EBB74E8BEBF /* MessageKit.modulemap */,
 				60C5E9E5DE8C8FE5C6AB707F393E7451 /* MessageKit-dummy.m */,
 				9B82C4A07F5AD81BD1463BAA0934D89C /* MessageKit-Info.plist */,
@@ -854,7 +715,6 @@
 				4B835EE84F56F371619EE54B9E496741 /* MessageKit-umbrella.h */,
 				09C10E149251BC6701C3F93966E72F2B /* MessageKit.debug.xcconfig */,
 				E38A161CE7921C2E7BF550101BDA6429 /* MessageKit.release.xcconfig */,
->>>>>>> 04a06de8d40f8ed3200f30709fc962229f32415c
 			);
 			name = "Support Files";
 			path = "../Target Support Files/MessageKit";
@@ -1044,12 +904,8 @@
 				B1C8EAF82ED0F8AB9D8D68C7EEA284C3 /* GoogleMaps.release.xcconfig */,
 				0BA34C84CE5BBFBC05D0EAAD31F0FFB9 /* ResourceBundle-GoogleMapsResources-GoogleMaps-Info.plist */,
 			);
-<<<<<<< HEAD
-			path = Alamofire;
-=======
 			name = "Support Files";
 			path = "../Target Support Files/GoogleMaps";
->>>>>>> 04a06de8d40f8ed3200f30709fc962229f32415c
 			sourceTree = "<group>";
 		};
 		F53BCABDCEE70A36E10B7CCFA72415F1 /* Support Files */ = {
@@ -1214,7 +1070,7 @@
 			);
 			name = "Pods-WanderlustAppiOS";
 			productName = Pods_WanderlustAppiOS;
-			productReference = E725A66958C6F726EAA377A3DD4A7783 /* Pods_WanderlustAppiOS.framework */;
+			productReference = E725A66958C6F726EAA377A3DD4A7783 /* Pods-WanderlustAppiOS */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */

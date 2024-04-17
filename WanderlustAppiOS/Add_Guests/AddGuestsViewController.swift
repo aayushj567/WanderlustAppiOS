@@ -45,8 +45,8 @@ class AddGuestsViewController: UIViewController {
 //        navigationController?.pushViewController(addItenaryController, animated: true)
         
         let itineraryViewController = ItineraryViewController()
-            itineraryViewController.selectedDates = selectedDates
-            itineraryViewController.selectedUsers = selectedUsers
+//            itineraryViewController.selectedDates = selectedDates
+//        itineraryViewController.selectedUsers = selectedUsers
             navigationController?.pushViewController(itineraryViewController, animated: true)
     }
 }
