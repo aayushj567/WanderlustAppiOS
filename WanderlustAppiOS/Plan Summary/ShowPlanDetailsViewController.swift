@@ -14,83 +14,91 @@ class ShowPlanDetailsViewController: UIViewController {
     let displayPlanSummary = ShowPlanDetailsView()
     var delegate:MyPlansViewController!
     
-    override func loadView() {
-        view = displayPlanSummary
-        title = "Plan Summary"
-    }
-    
-    var receivedContact: Plan = Plan()
+    var receivedPlan: Plan = Plan()
+    var dayWise = [Day]()
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        print(receivedPlan)
+        //let sortedarrays = receivedPlan.days.sort { $0.name < $1.name }
+        if var days = receivedPlan.days{
+            days.sort { $0.name < $1.name }
+            dayWise = receivedPlan.days!
+        }
+        displayPlanSummary.tableViewExpense.delegate = self
+        displayPlanSummary.tableViewExpense.dataSource = self
+        displayPlanSummary.tableViewExpense.separatorColor = .clear
+        displayPlanSummary.tableViewExpense.separatorStyle = .none
+        displayPlanSummary.tableViewExpense.reloadData()
+
         
-        if let unwrappedName = receivedContact.name{
+        if let unwrappedName = receivedPlan.name{
             if !unwrappedName.isEmpty{
-                displayPlanSummary.labelName.text = "\(unwrappedName)"
+                title = "\(unwrappedName)"
             }
         }
         
-       // getPlans()
-//        if let unwrappedEmail = receivedContact.dateFrom{
-//            if !unwrappedEmail.isEmpty{
-//                displayPlanSummary.labelDateFrom.text = "Date from: \(unwrappedEmail)"
-//            }
-//        }
-//        if let unwrappedPhone = receivedContact.dateTo{
-//            if !unwrappedPhone.isEmpty{
-//                //if let unwrappedType = receivedContact.type{
-//                   // if !unwrappedType.isEmpty{
-//                        displayPlanSummary.labelDateTo.text = "Date to: \(unwrappedPhone)"
-//                   // }
-//                //}
-//            }
-//        }
-//        if let unwrappedAddress = receivedContact.people{
-//            if !unwrappedAddress.isEmpty{
-//                displayPlanSummary.labelPeople.text = "People:"
-//                displayPlanSummary.labelTravelPeople.text = "John Doe, Micheal Philips, Justin Beiber"
-//            }
-//        }
+        if let unwrappedDateFrom = receivedPlan.dateFrom{
+            if let unwrappedDateTo = receivedPlan.dateTo{
+                displayPlanSummary.labelDate.text = "Dates:"
+
+                var durationInDays = durationInDays(from: unwrappedDateFrom, to: unwrappedDateTo)
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "MM/dd/yyyy"
+                    
+                
+                
+                let dateString = dateFormatter.string(from: unwrappedDateFrom)
+                let dateString2 = dateFormatter.string(from: unwrappedDateTo)
+                let days = durationInDays == 1 ? "day" : "days"
+                   displayPlanSummary.labelDates.text = "\(dateString) - \(dateString2) (\(durationInDays) \(days))"
+            }
+             
+        }
         
-//        displayPlanSummary.labelItenerary.text = "Itinerary:"
-//        displayPlanSummary.labelIteneraryData.text = "Day 1: Empire State Building"
-//        if let unwrappedCity = receivedContact.budget{
-//            if !unwrappedCity.isEmpty{
-//                displayPlanSummary.labelBudget.text = "Estimated budget: \(unwrappedCity)"
-//            }
-//        }
-//        if let unwrappedZip = receivedContact.place{
-//            if !unwrappedZip.isEmpty{
-//                displayPlanSummary.labelPlace.text = "Place: \(unwrappedZip)"
-//            }
-//        }
-//        if let unwrappedImage = receivedContact.image{
-//            displayPlanSummary.imageView.image = unwrappedImage
-//        }
+        if let unwrappedGuests = receivedPlan.guests{
+            if !unwrappedGuests.isEmpty{
+                displayPlanSummary.labelPeople.text = "People:"
+                displayPlanSummary.labelTravelPeople.text = "\(unwrappedGuests.count + 1)"
+            }
+        }
+        var dayNames = ""
+        if let unwrappedDays = receivedPlan.days{
+            displayPlanSummary.labelItenerary.text = "Itinerary:"
+
+        }
         
-//        navigationItem.rightBarButtonItem = UIBarButtonItem(
-//            barButtonSystemItem: .edit,
-//            target: self,
-//            action: #selector(onEditButtonTapped)
-//        )
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            barButtonSystemItem: .edit,
+            target: self,
+            action: #selector(onDeletePlan)
+        )
+        
+        displayPlanSummary.showPeople.addTarget(self, action: #selector(showAlert), for: .touchUpInside)
+        displayPlanSummary.deletePlan.addTarget(self, action: #selector(onDeletePlan), for: .touchUpInside)
+       
     }
     
-//    @objc func onEditButtonTapped(){
-//        
+    override func loadView() {
+        view = displayPlanSummary
+    }
+    
+   @objc func onEditButtonTapped(){
+       
 //        let addContactController = AddContactViewController()
 //        
 //        addContactController.delegateshow = self
-//        addContactController.addContactView.textFieldName.text = receivedContact.name
-//        addContactController.addContactView.textFieldEmail.text = receivedContact.datefrom
-//        addContactController.addContactView.textFieldPhone.text = receivedContact.dateto
-//        addContactController.addContactView.textFieldAddress.text = receivedContact.people
-//        addContactController.addContactView.textFieldZip.text = receivedContact.place
-//        addContactController.addContactView.textFieldCity.text = receivedContact.budget
-//        addContactController.pickedImage = receivedContact.image
-//        addContactController.addContactView.buttonSelectType.setTitle(receivedContact.type, for: .normal)
-//        addContactController.selectedType = receivedContact.type
-//        addContactController.currentid = receivedContact.id
+//        addContactController.addContactView.textFieldName.text = receivedPlan.name
+//        addContactController.addContactView.textFieldEmail.text = receivedPlan.datefrom
+//        addContactController.addContactView.textFieldPhone.text = receivedPlan.dateto
+//        addContactController.addContactView.textFieldAddress.text = receivedPlan.people
+//        addContactController.addContactView.textFieldZip.text = receivedPlan.place
+//        addContactController.addContactView.textFieldCity.text = receivedPlan.budget
+//        addContactController.pickedImage = receivedPlan.image
+//        addContactController.addContactView.buttonSelectType.setTitle(receivedPlan.type, for: .normal)
+//        addContactController.selectedType = receivedPlan.type
+//        addContactController.currentid = receivedPlan.id
 //        addContactController.isEdit = true
 //        
 //        var viewControllers = navigationController?.viewControllers ?? []
@@ -98,14 +106,137 @@ class ShowPlanDetailsViewController: UIViewController {
 //            viewControllers[index] = addContactController
 //        }
 //        navigationController?.setViewControllers(viewControllers, animated: true)
-//    }
+    }
     
     func delegateOnEditContact(idVal: Int, newName: String, newEmail: String, newPhone:String, newAddress:String, newCity:String, newZip:String, newType:String, newImage: UIImage) {
         delegate.delegateOnEditContact(idVal: idVal, newName: newName, newEmail: newEmail, newPhone: newPhone, newAddress: newAddress, newCity: newCity, newZip: newZip, newType: newType, newImage: newImage)
     }
     
-//    @objc func getPlans(){
-//        let db = Firestore.firestore()
-//        
-//    }
+    func durationInDays(from startDate: Date, to endDate: Date) -> Int {
+        let calendar = Calendar.current
+        let components = calendar.dateComponents([.day], from: startDate, to: endDate)
+        let daysDifference = (components.day ?? 0) + 1
+        return max(daysDifference, 1)
+    }
+    
+    @objc func showAlert() {
+            var people = ""
+
+            if let unwrappedGuest = receivedPlan.guests {
+                for guest in unwrappedGuest{
+                    people += "\n\(guest)\n"
+                }
+            }
+            let alertController = UIAlertController(title: "People", message: people, preferredStyle: .alert)
+
+            let okAction = UIAlertAction(title: "OK", style: .default) { (_) in
+                print("OK button tapped")
+            }
+
+            alertController.addAction(okAction)
+
+            present(alertController, animated: true, completion: nil)
+    }
+    
+    @objc func onDeletePlan(){
+        print("on delete plan")
+        print("Plan id coming: \(receivedPlan.id)")
+        
+        
+        
+        let db = Firestore.firestore()
+        
+        if let days = receivedPlan.days{
+            for day in days{
+               if let destinations = day.destinations{
+                    for des in destinations{
+                        let destRef = db.collection("destinations").document(des.id!)
+                        destRef.delete { error in
+                            if let error = error {
+                                print("Error deleting document: \(error.localizedDescription)")
+                            } else {
+                                print("Document successfully deleted")
+                            }
+                        }
+                    }
+                }
+                let dayRef = db.collection("days").document(day.id!)
+                dayRef.delete { error in
+                    if let error = error {
+                        print("Error deleting document: \(error.localizedDescription)")
+                    } else {
+                        print("Document successfully deleted")
+                    }
+                }
+            }
+        }
+        
+
+        let planRef = db.collection("plans").document(receivedPlan.id!)
+
+        planRef.delete { error in
+            if let error = error {
+                print("Error deleting document: \(error.localizedDescription)")
+            } else {
+                print("Document successfully deleted")
+            }
+        }
+        
+        navigationController?.popViewController(animated: true)
+    }
+}
+
+extension ShowPlanDetailsViewController: UITableViewDelegate, UITableViewDataSource{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+       
+        //if let days = receivedPlan.days {
+            //print("daysdscdscwsdc \(dayWise.count) ")
+            return dayWise.count
+        //}
+        //return 0;
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "itinerary", for: indexPath) as! TableViewItineraryCell
+        print("test")
+        
+           // print("test")
+           // print(days)
+        cell.labelDayName.text = dayWise[indexPath.row].name
+        
+        var desti = ""
+       // if let destinations = dayWise
+        let day = dayWise[indexPath.row]
+                // Using newline to separate destination names instead of commas
+                let destinationDetails = day.destinations?.map { "\($0.name)" }.joined(separator: "\n") ?? "No destinations available"
+         
+                    cell.labelDestinationName?.text = "\(destinationDetails)"
+                    cell.labelDestinationName?.numberOfLines = 0
+        for dest in dayWise[indexPath.row].destinations!{
+            desti += "\(dest.name)\n"
+            //print("Base64 String: \(dest.imageBase64)")
+
+            if let base64String = dest.imageBase64 {
+                        // Convert the base64 string to Data
+                        if let imageData = Data(base64Encoded: base64String) {
+                            //print("Image Data Size: \(imageData.count)")
+                            // Create UIImage from the data
+                            if let image = UIImage(data: imageData) {
+                                // Set the image to the UIImageView
+                                cell.imageReceipt.image =  image
+                            }
+                        }
+                    }
+        }
+        //cell.labelDestinationName.text = desti
+        
+       
+        cell.selectionStyle = .none
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+            displayPlanSummary.tableViewExpense.deselectRow(at: indexPath, animated: true)
+    }
+   
 }

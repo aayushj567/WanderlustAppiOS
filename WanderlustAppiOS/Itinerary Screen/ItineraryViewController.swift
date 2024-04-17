@@ -3,8 +3,15 @@ import FirebaseAuth
 import FirebaseFirestore
 
 struct Day: Codable {
+    @DocumentID var id: String?
     var name: String
-    var destinations: [Destination]
+    var destinationIds: [String]?
+    var planId: String?
+    var destinations: [Destination]? = []// Add planId to link back to the parent plan
+    
+    enum CodingKeys: String, CodingKey {
+        case id, name, destinationIds, planId, destinations
+    }
 }
 
 class ItineraryViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
@@ -17,6 +24,7 @@ class ItineraryViewController: UIViewController, UITableViewDelegate, UITableVie
     var tabBarView: UIView!
     var onIconTapped: ((Int) -> Void)?
     var planNameLabel:UILabel!
+    var destinationIds: [String] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,39 +80,116 @@ class ItineraryViewController: UIViewController, UITableViewDelegate, UITableVie
         // Apply Auto Layout
         applyConstraints()
     }
-    @objc func saveItinerary()
-    {
-        let db = Firestore.firestore()  // Get a reference to the Firestore service
+    @objc func saveItinerary() {
         guard let currentUser = Auth.auth().currentUser else {
-                   fatalError("No user signed in")
-               }
-            // Create an instance of the Plan
-            let newPlan = Plan(
-                name: planNameLabel.text ?? "Untitled Plan",
-                dateFrom: startDatePicker.date,
-                dateTo: endDatePicker.date,
-                days: days,
-                owner: currentUser.uid  // Use the appropriate user identifier
-            )
+            fatalError("No user signed in")
+        }
 
-            // Convert and set the plan data
+        let db = Firestore.firestore()
+        let plansRef = db.collection("plans")
+        let planDocument = plansRef.document()
+
+        var newPlan = Plan(
+            name: planNameLabel.text ?? "Untitled Plan",
+            dateFrom: startDatePicker.date,
+            dateTo: endDatePicker.date,
+            dayIds: [],
+            owner: currentUser.uid
+            
+        )
+
+        do {
+            try planDocument.setData(from: newPlan) { error in
+                if let error = error {
+                    print("Error writing document: \(error)")
+                } else {
+                    print("Plan successfully saved!")
+                    // After saving the plan, proceed to save the days.
+                    self.saveDays(planId: planDocument.documentID, planDocument: planDocument)
+                    let nextScreen = MyPlansViewController()
+                    self.navigationController?.pushViewController(nextScreen, animated: true)
+                }
+            }
+        } catch let error {
+            print("Error serializing plan: \(error)")
+        }
+    }
+    func saveDays(planId: String, planDocument: DocumentReference) {
+        let db = Firestore.firestore()
+        let daysRef = db.collection("days")
+
+        var dayIds: [String] = []
+
+        for day in days {
+            let dayDocument = daysRef.document()
+            var dayCopy = day
+            dayCopy.planId = planId  // Assign planId to day
+
             do {
-                let planRef = db.collection("plans").document()  // Create a new document reference
-                try planRef.setData(from: newPlan) { error in
+                try dayDocument.setData(from: dayCopy) { error in
                     if let error = error {
-                        print("Error writing document: \(error)")
+                        print("Error saving day: \(error)")
                     } else {
-                        print("Plan successfully saved!")
-                        // Here you can perform additional actions on successful save
-                        let nextScreen = MyPlansViewController()
-                        self.navigationController?.pushViewController(nextScreen, animated: true)
-                        
+                        print("Day \(day.name) successfully saved!")
+                        dayIds.append(dayDocument.documentID)
+                        // Save destinations for this day and update day with destination IDs
+                        self.saveDestinations(dayId: dayDocument.documentID, dayDocument: dayDocument, destinations: day.destinations!)
                     }
                 }
             } catch let error {
-                print("Error serializing plan: \(error)")
+                print("Error serializing day: \(error)")
             }
+            
+        }
+
+        // Update the plan document with the day IDs after all days are saved
+        planDocument.updateData(["dayIds": dayIds]) { error in
+            if let error = error {
+                print("Error updating plan with day IDs: \(error)")
+            } else {
+                print("Plan updated with day IDs")
+            }
+        }
     }
+
+
+    func saveDestinations(dayId: String, dayDocument: DocumentReference, destinations: [Destination]) {
+        let db = Firestore.firestore()
+        let destinationsRef = db.collection("destinations")
+
+        
+
+        for destination in destinations {
+            let destinationDocument = destinationsRef.document()
+            var destinationCopy = destination
+            destinationCopy.dayId = dayId  // Assign dayId to destination
+
+            do {
+                try destinationDocument.setData(from: destinationCopy) { error in
+                    if let error = error {
+                        print("Error saving destination: \(error)")
+                    } else {
+                        print("Destination \(destination.name) successfully saved!")
+                        self.destinationIds.append(destinationDocument.documentID)
+                        print(destinationDocument.documentID)
+                    }
+                }
+            } catch let error {
+                print("Error serializing destination: \(error)")
+            }
+        }
+
+        // Update the day document with the destination IDs after all destinations are saved
+        print(self.destinationIds)
+        dayDocument.updateData(["destinationIds": self.destinationIds]) { error in
+            if let error = error {
+                print("Error updating day with destination IDs: \(error)")
+            } else {
+                print("Day updated with destination IDs")
+            }
+        }
+    }
+
     func setupTabBarView() {
         tabBarView = UIView()
         tabBarView.translatesAutoresizingMaskIntoConstraints = false
@@ -226,10 +311,11 @@ class ItineraryViewController: UIViewController, UITableViewDelegate, UITableVie
         let cell = tableView.dequeueReusableCell(withIdentifier: "dayCell", for: indexPath)
         let day = days[indexPath.row]
         // Using newline to separate destination names instead of commas
-        let destinationDetails = day.destinations.map { "\($0.name) - Duration: \($0.duration)" }.joined(separator: "\n")
+        let destinationDetails = day.destinations?.map { "\($0.name) - Duration: \($0.duration)" }.joined(separator: "\n") ?? "No destinations available"
+
             cell.textLabel?.text = "\(day.name):\n\(destinationDetails)"
-            cell.textLabel?.numberOfLines = 0// Allow unlimited lines for text label
-        cell.accessoryType = .detailDisclosureButton
+            cell.textLabel?.numberOfLines = 0  // Allow unlimited lines for text label
+            cell.accessoryType = .detailDisclosureButton
         return cell
     }
 

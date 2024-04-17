@@ -37,7 +37,7 @@ class FirstScreenView: UIView {
             tableViewExpense.layer.borderColor = UIColor.white.cgColor
             tableViewExpense.separatorColor = .white
             tableViewExpense.layer.borderColor = .none
-            tableViewExpense.register(TableViewContactsCell.self, forCellReuseIdentifier: "contacts")
+            tableViewExpense.register(TableViewPlansCell.self, forCellReuseIdentifier: "plans")
             tableViewExpense.translatesAutoresizingMaskIntoConstraints = false
             self.addSubview(tableViewExpense)
         }
@@ -94,16 +94,13 @@ class FirstScreenView: UIView {
                 tableViewExpense.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -8),
                 
                 tabBarView.leadingAnchor.constraint(equalTo: leadingAnchor),
-                                    tabBarView.trailingAnchor.constraint(equalTo: trailingAnchor),
-                                    tabBarView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
-                                    tabBarView.heightAnchor.constraint(equalToConstant: 50)
+                tabBarView.trailingAnchor.constraint(equalTo: trailingAnchor),
+                tabBarView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
+                tabBarView.heightAnchor.constraint(equalToConstant: 50)
             ])
         }
         
         required init?(coder: NSCoder) {
             fatalError("init(coder:) has not been implemented")
         }
-    
-    
-    
 }
