@@ -16,7 +16,10 @@ class ShowPlanDetailsViewController: UIViewController {
     
     var receivedPlan: Plan = Plan()
     var dayWise = [Day]()
+    var people = ""
     
+    let db = Firestore.firestore()
+
     let userId = Auth.auth().currentUser?.uid
     
     override func viewDidLoad() {
@@ -77,13 +80,37 @@ class ShowPlanDetailsViewController: UIViewController {
                     target: self,
                     action: #selector(onDeletePlan)
                 )
-                displayPlanSummary.deletePlan.addTarget(self, action: #selector(onDeletePlan), for: .touchUpInside)
-            }else{
-                displayPlanSummary.deletePlan.isHidden = true
             }
         }
-       
+            db.collection("users").whereField("id", isEqualTo: receivedPlan.owner!).getDocuments { [weak self] (snapshot, error) in
+                guard let userdocuments = snapshot?.documents else {
+                    print("Error fetching plans: \(error?.localizedDescription ?? "Unknown error")")
+                    return
+                }
+                userdocuments.forEach { document in
+                   // var guest = (document.data()["name"] as? String ?? "")
+                    self?.people += "\n\(document.data()["name"] as? String ?? "") (Owner)"
+                }
+            }
+            
         
+        if let unwrappedGuest = receivedPlan.guests {
+            for guest in unwrappedGuest{
+                db.collection("users").whereField("id", isEqualTo: guest).getDocuments { [weak self] (snapshot, error) in
+                    guard let userdocuments = snapshot?.documents else {
+                        print("Error fetching plans: \(error?.localizedDescription ?? "Unknown error")")
+                        return
+                    }
+                    userdocuments.forEach { document in
+                        var guest = (document.data()["name"] as? String ?? "")
+                        self?.people += "\n\(guest)\n"
+                    }
+                }
+                
+            }
+        }
+        
+        displayPlanSummary.deletePlan.addTarget(self, action: #selector(onDeletePlan), for: .touchUpInside)
         displayPlanSummary.showPeople.addTarget(self, action: #selector(showAlert), for: .touchUpInside)
         
        
@@ -129,14 +156,10 @@ class ShowPlanDetailsViewController: UIViewController {
     }
     
     @objc func showAlert() {
-            var people = ""
+          //  var people = ""
 
-            if let unwrappedGuest = receivedPlan.guests {
-                for guest in unwrappedGuest{
-                    people += "\n\(guest)\n"
-                }
-            }
-            let alertController = UIAlertController(title: "People", message: people, preferredStyle: .alert)
+           
+        let alertController = UIAlertController(title: "People", message: self.people, preferredStyle: .alert)
 
             let okAction = UIAlertAction(title: "OK", style: .default) { (_) in
                 print("OK button tapped")
