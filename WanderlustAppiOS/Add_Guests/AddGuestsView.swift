@@ -45,14 +45,13 @@ class AddGuestsView: UIView {
         self.addSubview(tableViewPeople)
     }
     
-    func setupNextButton(){
+    func setupNextButton() {
         buttonNext = UIButton(type: .system)
-        buttonNext.titleLabel?.font = .boldSystemFont(ofSize: 16)
-        buttonNext.setTitle("  Next  ", for: .normal)
-        buttonNext.backgroundColor = #colorLiteral(red: 0.1844881177, green: 0.4828699231, blue: 1, alpha: 1)
-        buttonNext.layer.cornerRadius = 5.0
-        buttonNext.setTitleColor(UIColor.white, for: .normal)
         buttonNext.translatesAutoresizingMaskIntoConstraints = false
+        buttonNext.setTitle("Next", for: .normal)
+        buttonNext.setTitleColor(.white, for: .normal)
+        buttonNext.backgroundColor = .systemBlue
+        buttonNext.layer.cornerRadius = 5
         self.addSubview(buttonNext)
     }
     func initConstraints(){
@@ -64,10 +63,12 @@ class AddGuestsView: UIView {
             tableViewPeople.topAnchor.constraint(equalTo: searchBar.bottomAnchor, constant: 16),
             tableViewPeople.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 16),
             tableViewPeople.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -16),
-            tableViewPeople.bottomAnchor.constraint(equalTo: buttonNext.topAnchor, constant: 32),
-            
-            buttonNext.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -60),
-            buttonNext.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor),
+            tableViewPeople.bottomAnchor.constraint(equalTo: buttonNext.topAnchor, constant: -16),
+                    
+                    buttonNext.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+                    buttonNext.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -16),
+                    buttonNext.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -16),
+                    buttonNext.heightAnchor.constraint(equalToConstant: 50)
         ])
     }
 }

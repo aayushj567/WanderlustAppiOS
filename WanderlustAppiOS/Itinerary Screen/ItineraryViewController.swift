@@ -21,7 +21,7 @@ class ItineraryViewController: UIViewController, UITableViewDelegate, UITableVie
     var days: [Day] = []
     var onIconTapped: ((Int) -> Void)?
     var selectedDates: [Date] = []
-    var selectedUsers: [User] = []
+    var selectedUserIds: [String] = []
     var destinationIds: [String] = []
     
     override func loadView() {
@@ -41,7 +41,7 @@ class ItineraryViewController: UIViewController, UITableViewDelegate, UITableVie
         
         updateDaysFromDates()
         setupTabBarActions()
-        print("Selected Users: \(selectedUsers)")
+        print("Selected Users: \(selectedUserIds)")
     }
     
     func setupTabBarActions() {
