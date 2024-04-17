@@ -8,7 +8,6 @@ struct Day: Codable {
     var destinationIds: [String]?
     var planId: String?
     var destinations: [Destination]? = []// Add planId to link back to the parent plan
-    
     enum CodingKeys: String, CodingKey {
         case id, name, destinationIds, planId, destinations
     }
@@ -23,9 +22,15 @@ class ItineraryViewController: UIViewController, UITableViewDelegate, UITableVie
     var selectedDates: [Date] = []
     var selectedUserIds: [String] = []
     var destinationIds: [String] = []
-    
+    var planName: String?
     override func loadView() {
         itineraryView = ItineraryView(frame: UIScreen.main.bounds)
+        if let planName = planName{
+            itineraryView.planNameLabel.text = planName
+        }
+        else{
+            itineraryView.planNameLabel.text = "Your Plan"
+        }
         view = itineraryView
     }
     

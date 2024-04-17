@@ -9,7 +9,7 @@ class AddGuestsViewController: UIViewController {
     var filteredUsers: [User] = []
     var selectedUserIds: [String] = []
     var selectedDates: [Date] = []
-    
+    var planName: String?
     let userId = Auth.auth().currentUser?.uid
     
     override func loadView() {
@@ -72,6 +72,7 @@ class AddGuestsViewController: UIViewController {
         let itineraryViewController = ItineraryViewController()
         itineraryViewController.selectedDates = selectedDates
         itineraryViewController.selectedUserIds = selectedUserIds
+        itineraryViewController.planName = planName
         navigationController?.pushViewController(itineraryViewController, animated: true)
     }
 }

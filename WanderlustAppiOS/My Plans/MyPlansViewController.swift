@@ -35,7 +35,8 @@ class MyPlansViewController: UIViewController {
         fetchPlansForUser()
         fetchPlansForGuests()
         displayPlans()
-        NotificationCenter.default.addObserver(self, selector: #selector(dataDeleted), name: NSNotification.Name("DataDeleted"), object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(dataDeleted), name: NSNotification.Name("DataDeleted"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(handleDeletePlan(_:)), name: NSNotification.Name("DeletePlan"), object: nil)
         plansScreen.onIconTapped = { [unowned self] index in
             // Handle the icon tap, switch views accordingly
             print("Icon at index \(index) was tapped.")
@@ -203,11 +204,19 @@ extension MyPlansViewController {
             }
         }
     }
-    @objc func dataDeleted() {
-            // Reload your table view
-        self.plansScreen.tableViewExpense.reloadData()
-    }
+//    @objc func dataDeleted() {
+//            // Reload your table view
+//        self.plansScreen.tableViewExpense.reloadData()
+//    }
 
+    @objc func handleDeletePlan(_ notification: Notification) {
+        if let planId = notification.userInfo?["planId"] as? String {
+            // Remove the plan with the specified ID from the plans array
+            plans = plans.filter { $0.id != planId }
+            // Reload the table view
+            plansScreen.tableViewExpense.reloadData()
+        }
+    }
 }
 
 
