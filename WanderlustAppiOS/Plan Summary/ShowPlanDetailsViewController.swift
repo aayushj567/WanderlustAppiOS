@@ -24,7 +24,7 @@ class ShowPlanDetailsViewController: UIViewController {
         //let sortedarrays = receivedPlan.days.sort { $0.name < $1.name }
         if var days = receivedPlan.days{
             days.sort { $0.name < $1.name }
-            dayWise = receivedPlan.days!
+            dayWise = days
         }
         displayPlanSummary.tableViewExpense.delegate = self
         displayPlanSummary.tableViewExpense.dataSource = self
