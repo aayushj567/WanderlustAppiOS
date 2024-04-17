@@ -19,7 +19,7 @@ class FirstViewController: UIViewController {
     
     let userId = Auth.auth().currentUser?.uid
     
-    var userName = ""
+    var userName = Auth.auth().currentUser?.displayName
     
     override func loadView() {
         view = firstView
@@ -30,9 +30,9 @@ class FirstViewController: UIViewController {
         firstView.newPlanButton.addTarget(self, action: #selector(onNewButtonTapped), for: .touchUpInside)
         firstView.allPlansButton.addTarget(self, action: #selector(onAllPlansButtonTapped), for: .touchUpInside)
         
-        getUser()
+        //getUser()
         navigationItem.hidesBackButton = true
-        firstView.labelWelcomeLabel.text = "Welcome, \(userName)"
+        firstView.labelWelcomeLabel.text = "Welcome, \(userName!)"
         firstView.labelTextLabel.text = "What would you like to do today ?"
     }
     
@@ -46,29 +46,29 @@ class FirstViewController: UIViewController {
         navigationController?.pushViewController(myplans, animated: true)
     }
     
-    func getUser(){
-        // let db = Firestore.firestore()
-        let usersRef = db.collection("users").whereField("id", isEqualTo: userId)
-        // print("Enter into the function")
-        
-        usersRef.getDocuments { (querySnapshot, err) in
-            if let err = err {
-                print("Error getting documents: \(err)")
-            } else {
-                // Iterate over each plan document
-                for userDocument in querySnapshot!.documents {
-                    do {
-                        // Try to decode the plan document into a Plan struct
-                        print("inside else")
-                        var user = try userDocument.data(as: User.self)
-                        self.userName = user.name!
-                    }
-                    catch {
-                        print("Error decoding plan: \(error)")
-                    }
-                }
-            }
-        }
-    }
+//    func getUser(){
+//        // let db = Firestore.firestore()
+//        let usersRef = db.collection("users").whereField("id", isEqualTo: userId)
+//        // print("Enter into the function")
+//        
+//        usersRef.getDocuments { (querySnapshot, err) in
+//            if let err = err {
+//                print("Error getting documents: \(err)")
+//            } else {
+//                // Iterate over each plan document
+//                for userDocument in querySnapshot!.documents {
+//                    do {
+//                        // Try to decode the plan document into a Plan struct
+//                        print("inside else")
+//                        var user = try userDocument.data(as: User.self)
+//                        self.userName = user.name!
+//                    }
+//                    catch {
+//                        print("Error decoding plan: \(error)")
+//                    }
+//                }
+//            }
+//        }
+//    }
 }
  

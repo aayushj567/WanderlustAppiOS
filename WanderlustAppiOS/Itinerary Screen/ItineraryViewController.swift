@@ -75,9 +75,11 @@ class ItineraryViewController: UIViewController, UITableViewDelegate, UITableVie
             dateFrom: selectedDates.first ?? Date(),
             dateTo: selectedDates.last ?? Date(),
             dayIds: [],
-            owner: currentUser.uid
+            owner: currentUser.uid,
+            guests: selectedUserIds
+            
         )
-        
+        print(newPlan)
         do {
             try planDocument.setData(from: newPlan) { error in
                 if let error = error {
@@ -105,6 +107,7 @@ class ItineraryViewController: UIViewController, UITableViewDelegate, UITableVie
             var dayCopy = day
             dayCopy.planId = planId
             
+            
             do {
                 try dayDocument.setData(from: dayCopy) { error in
                     if let error = error {
@@ -119,6 +122,7 @@ class ItineraryViewController: UIViewController, UITableViewDelegate, UITableVie
                 print("Error serializing day: \(error)")
             }
         }
+        print(days)
         
         planDocument.updateData(["dayIds": dayIds]) { error in
             if let error = error {

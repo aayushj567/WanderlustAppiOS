@@ -120,7 +120,7 @@ extension ChatPlanViewController: UITableViewDataSource {
             print("hi \(numberOfPlans)")
             // Show placeholder message when plans array is empty
             let messageLabel = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height))
-            messageLabel.text = "No plans found"
+            messageLabel.text = "No plans found to chat"
             messageLabel.textColor = .gray
             messageLabel.numberOfLines = 0
             messageLabel.textAlignment = .center
@@ -158,7 +158,7 @@ extension ChatPlanViewController: UITableViewDelegate {
         let chatViewController = ChatViewController2()
        let plan = plans[indexPath.row]
 //        print(plans)
-        chatViewController.title = "messages"
+        chatViewController.title = "Messages"
         chatViewController.planId = plan.id
         navigationController?.pushViewController(chatViewController, animated: true)
     }
