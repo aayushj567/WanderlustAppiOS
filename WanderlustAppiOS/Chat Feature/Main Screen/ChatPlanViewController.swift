@@ -35,11 +35,6 @@ class ChatPlanViewController: UIViewController {
                        let myplansVC = MyPlansViewController()
                        navigationController?.pushViewController(myplansVC, animated: true)
                    }
-                   if(index == 2)
-                   {
-                       let chatView = ChatPlanViewController()
-                       navigationController?.pushViewController(chatView, animated: true)
-                   }
                    print("Icon at index \(index) was tapped.")
                    if(index == 3)
                    {

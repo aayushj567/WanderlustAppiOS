@@ -39,7 +39,7 @@ class ItineraryViewController: UIViewController, UITableViewDelegate, UITableVie
         let dateString = dateFormatter.string(from: selectedDates.first!)
         let dateString2 = dateFormatter.string(from: selectedDates.last!)
         
-        itineraryView.startDateInfoLabel.text = selectedDates.first?.description
+        //itineraryView.startDateInfoLabel.text = selectedDates.first?.description
         itineraryView.endDateInfoLabel.text = "\(dateString) - \(dateString2)"
         view = itineraryView
     }
@@ -51,8 +51,6 @@ class ItineraryViewController: UIViewController, UITableViewDelegate, UITableVie
         itineraryView.tableView.dataSource = self
         itineraryView.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "dayCell")
         
-//        itineraryView.startDatePicker.addTarget(self, action: #selector(dateChanged(_:)), for: .valueChanged)
-//        itineraryView.endDatePicker.addTarget(self, action: #selector(dateChanged(_:)), for: .valueChanged)
         itineraryView.saveButton.addTarget(self, action: #selector(saveItinerary), for: .touchUpInside)
         itineraryView.estimateBudgetButton.addTarget(self, action: #selector(calculateAndDisplayEstimate), for: .touchUpInside)
         if let plan = planToEdit {
@@ -89,12 +87,6 @@ class ItineraryViewController: UIViewController, UITableViewDelegate, UITableVie
         // Set the plan name label
         itineraryView.planNameLabel.text = plan.name
 
-        // Set the date pickers to the start and end dates of the plan
-//        if let startDate = plan.dateFrom, let endDate = plan.dateTo {
-//            itineraryView.startDatePicker.date = startDate
-//            itineraryView.endDatePicker.date = endDate
-//            
-//        }
         // Load days and destinations from the plan
         if let days = plan.days {
                 self.days = days.sorted { day1, day2 in

@@ -44,10 +44,6 @@ class MyPlansViewController: UIViewController {
                 let homeView = FirstViewController()
                 navigationController?.pushViewController(homeView, animated: true)
             }
-            if(index == 1){
-                let myplansVC = MyPlansViewController()
-                navigationController?.pushViewController(myplansVC, animated: true)
-            }
             if(index == 2)
             {
                 let chatView = ChatPlanViewController()

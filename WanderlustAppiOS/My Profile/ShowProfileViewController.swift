@@ -13,7 +13,7 @@ class ShowProfileViewController: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-
+        title = "My Profile"
         // Check if a user is currently signed in
         if let currentUser = Auth.auth().currentUser {
             // if user is signed in load thir image
@@ -43,11 +43,6 @@ class ShowProfileViewController: UIViewController {
                     navigationController?.pushViewController(chatView, animated: true)
                 }
                 print("Icon at index \(index) was tapped.")
-                if(index == 3)
-                {
-                    let profileView = ShowProfileViewController()
-                    navigationController?.pushViewController(profileView, animated: true)
-                }
             }
         }
         
@@ -92,7 +87,7 @@ class ShowProfileViewController: UIViewController {
     
     @objc func onEditButtonTapped(){
         let editScreen = EditProfileViewController()
-        navigationController?.popViewController(animated: true)
+        //navigationController?.popViewController(animated: true)
         navigationController?.pushViewController(editScreen, animated: true)
     }
     

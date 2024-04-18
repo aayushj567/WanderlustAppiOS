@@ -25,7 +25,7 @@ class ShowPlanDetailsViewController: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        print(receivedPlan)
+       // print(receivedPlan)
         //let sortedarrays = receivedPlan.days.sort { $0.name < $1.name }
         if var days = receivedPlan.days{
             days.sort {
@@ -265,15 +265,25 @@ extension ShowPlanDetailsViewController: UITableViewDelegate, UITableViewDataSou
                         }
                     }
         }
-        //cell.labelDestinationName.text = desti
-        
        
         cell.selectionStyle = .none
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-            displayPlanSummary.tableViewExpense.deselectRow(at: indexPath, animated: true)
+        
+        let destinationDetails = dayWise[indexPath.row].destinations?.map { "\($0.name)" }.joined(separator: "\n") ?? "No destinations available"
+            print(destinationDetails)
+        
+        let alertController = UIAlertController(title: "Destinations", message: destinationDetails, preferredStyle: .alert)
+
+            let okAction = UIAlertAction(title: "OK", style: .default) { (_) in
+                print("OK button tapped")
+            }
+
+            alertController.addAction(okAction)
+
+            present(alertController, animated: true, completion: nil)
     }
    
 }

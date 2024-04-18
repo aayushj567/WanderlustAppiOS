@@ -127,7 +127,7 @@ class CalendarViewController: UIViewController{
             showAlert(title: "Alert", message: "Plan name is empty")
         }
         else if selectedDates.count == 0{
-            showAlert(title: "Alert", message: "Please select days")
+            showAlert(title: "Alert", message: "Please select start day and end day")
         }
         else 
         {

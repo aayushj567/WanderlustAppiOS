@@ -48,7 +48,7 @@ class TableViewItineraryCell: UITableViewCell {
         labelDestinationName.translatesAutoresizingMaskIntoConstraints = false
         labelDestinationName.font = UIFont.boldSystemFont(ofSize: 15.0)
         labelDestinationName.numberOfLines = 0 // Allow multiple lines
-                labelDestinationName.lineBreakMode = .byTruncatingTail
+        labelDestinationName.lineBreakMode = .byTruncatingTail
         wrapperCellView.addSubview(labelDestinationName)
     }
 //    func setuplabelBudget(){
@@ -97,12 +97,13 @@ class TableViewItineraryCell: UITableViewCell {
             labelDestinationName.topAnchor.constraint(equalTo: labelDayName.bottomAnchor, constant: 4),
             labelDestinationName.leadingAnchor.constraint(equalTo: labelDayName.leadingAnchor),
             labelDestinationName.heightAnchor.constraint(lessThanOrEqualTo: wrapperCellView.heightAnchor),
-            labelDestinationName.heightAnchor.constraint(equalToConstant: 20),
+//            labelDestinationName.heightAnchor.constraint(equalToConstant: 20),
             
             imageReceipt.leadingAnchor.constraint(equalTo: wrapperCellView.leadingAnchor, constant: 8),
             imageReceipt.centerYAnchor.constraint(equalTo: wrapperCellView.centerYAnchor),
             imageReceipt.heightAnchor.constraint(equalTo: wrapperCellView.heightAnchor, constant: -20),
             imageReceipt.widthAnchor.constraint(equalTo: wrapperCellView.heightAnchor, constant: -20),
+            labelDestinationName.bottomAnchor.constraint(equalTo: imageReceipt.bottomAnchor),
             
             separatorView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
                        separatorView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10),
