@@ -85,7 +85,7 @@ class ShowPlanDetailsViewController: UIViewController {
                 navigationItem.rightBarButtonItem = UIBarButtonItem(
                     barButtonSystemItem: .edit,
                     target: self,
-                    action: #selector(onDeletePlan)
+                    action: #selector(onEditButtonTapped)
                 )
             }
         }
@@ -129,31 +129,14 @@ class ShowPlanDetailsViewController: UIViewController {
     
    @objc func onEditButtonTapped(){
        
-//        let addContactController = AddContactViewController()
-//        
-//        addContactController.delegateshow = self
-//        addContactController.addContactView.textFieldName.text = receivedPlan.name
-//        addContactController.addContactView.textFieldEmail.text = receivedPlan.datefrom
-//        addContactController.addContactView.textFieldPhone.text = receivedPlan.dateto
-//        addContactController.addContactView.textFieldAddress.text = receivedPlan.people
-//        addContactController.addContactView.textFieldZip.text = receivedPlan.place
-//        addContactController.addContactView.textFieldCity.text = receivedPlan.budget
-//        addContactController.pickedImage = receivedPlan.image
-//        addContactController.addContactView.buttonSelectType.setTitle(receivedPlan.type, for: .normal)
-//        addContactController.selectedType = receivedPlan.type
-//        addContactController.currentid = receivedPlan.id
-//        addContactController.isEdit = true
-//        
-//        var viewControllers = navigationController?.viewControllers ?? []
-//        if let index = viewControllers.lastIndex(where: { $0 is ShowContactViewController }) {
-//            viewControllers[index] = addContactController
-//        }
-//        navigationController?.setViewControllers(viewControllers, animated: true)
+       let calendarVC = CalendarViewController()
+           calendarVC.planToEdit = self.receivedPlan
+           navigationController?.pushViewController(calendarVC, animated: true)
     }
     
-    func delegateOnEditContact(idVal: Int, newName: String, newEmail: String, newPhone:String, newAddress:String, newCity:String, newZip:String, newType:String, newImage: UIImage) {
-        delegate.delegateOnEditContact(idVal: idVal, newName: newName, newEmail: newEmail, newPhone: newPhone, newAddress: newAddress, newCity: newCity, newZip: newZip, newType: newType, newImage: newImage)
-    }
+//    func delegateOnEditContact(idVal: Int, newName: String, newEmail: String, newPhone:String, newAddress:String, newCity:String, newZip:String, newType:String, newImage: UIImage) {
+//        delegate.delegateOnEditContact(idVal: idVal, newName: newName, newEmail: newEmail, newPhone: newPhone, newAddress: newAddress, newCity: newCity, newZip: newZip, newType: newType, newImage: newImage)
+//    }
     
     func durationInDays(from startDate: Date, to endDate: Date) -> Int {
         let calendar = Calendar.current

@@ -27,9 +27,13 @@ class ViewController: UIViewController {
         super.viewWillAppear(animated)
         handleAuth = Auth.auth().addStateDidChangeListener{ [weak self] auth, user in
             guard let self = self else { return }
-            if user != nil && self.hasCompletedRegistration { // new user just completed registration
-                self.hasCompletedRegistration = false
-                return
+            if user != nil && !self.hasCompletedRegistration { // already a user
+//                let mainScreen = CalendarViewController()
+                let mainScreen = FirstViewController()
+                self.navigationController?.pushViewController(mainScreen, animated: true)
+            } else if  user != nil && self.hasCompletedRegistration { // new user just completed registration
+                    self.hasCompletedRegistration = false
+                    return
             }
         }
     }
@@ -54,12 +58,7 @@ class ViewController: UIViewController {
     func signIntoFirebase(email: String, password: String){
         //authenticating the user...
         Auth.auth().signIn(withEmail: email, password: password, completion: {(result, error) in
-            if error == nil{
-                //user authenticated...
-//                let mainScreen = CalendarViewController()
-                let mainScreen = FirstViewController()
-                self.navigationController?.pushViewController(mainScreen, animated: true)
-            }else{
+            if error != nil{
                 //alert that no user found or password wrong...
                 self.showAlert(title: "Error", message: "No user found with the provided credentials.")
             }
@@ -108,6 +107,5 @@ class ViewController: UIViewController {
         present(alert, animated: true, completion: nil)
     }
 }
-
 
 
