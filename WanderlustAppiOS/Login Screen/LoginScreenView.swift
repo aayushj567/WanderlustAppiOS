@@ -85,7 +85,7 @@ class LoginView: UIView {
                 backgroundImage.image = UIImage(named: "Image")
                 backgroundImage.contentMode = .scaleAspectFill // Adjust content mode as needed
                 backgroundImage.clipsToBounds = true // Clip to bounds to avoid image overflow
-                
+                backgroundImage.alpha = 0.7
                 // Add the UIImageView as the background of the view
                 self.addSubview(backgroundImage)
                 self.sendSubviewToBack(backgroundImage)

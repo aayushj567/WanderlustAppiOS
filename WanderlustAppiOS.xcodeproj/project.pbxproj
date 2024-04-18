@@ -55,6 +55,9 @@
 		A542435E2BAE3C5800189102 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = A542435D2BAE3C5800189102 /* Base */; };
 		A54243602BAE3C5900189102 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A542435F2BAE3C5900189102 /* Assets.xcassets */; };
 		A54243632BAE3C5900189102 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = A54243622BAE3C5900189102 /* Base */; };
+		A550FD012BD174B000C7CB59 /* PasswordTextFieldToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A550FD002BD174B000C7CB59 /* PasswordTextFieldToggle.swift */; };
+		A550FD032BD18DCC00C7CB59 /* EditProfilePhotoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A550FD022BD18DCC00C7CB59 /* EditProfilePhotoManager.swift */; };
+		A550FD052BD190FF00C7CB59 /* ButtonImageUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A550FD042BD190FF00C7CB59 /* ButtonImageUtils.swift */; };
 		A567B9372BCDD6DE0051C8A3 /* PhotoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A567B9362BCDD6DE0051C8A3 /* PhotoManager.swift */; };
 		A567B9392BCDDBF20051C8A3 /* ImageViewUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A567B9382BCDDBF20051C8A3 /* ImageViewUtils.swift */; };
 		A56C26392BC0D65B0015B87A /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56C26282BC0D65B0015B87A /* CalendarView.swift */; };
@@ -119,6 +122,9 @@
 		A542435F2BAE3C5900189102 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A54243622BAE3C5900189102 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A54243642BAE3C5900189102 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A550FD002BD174B000C7CB59 /* PasswordTextFieldToggle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordTextFieldToggle.swift; sourceTree = "<group>"; };
+		A550FD022BD18DCC00C7CB59 /* EditProfilePhotoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfilePhotoManager.swift; sourceTree = "<group>"; };
+		A550FD042BD190FF00C7CB59 /* ButtonImageUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonImageUtils.swift; sourceTree = "<group>"; };
 		A567B9362BCDD6DE0051C8A3 /* PhotoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoManager.swift; sourceTree = "<group>"; };
 		A567B9382BCDDBF20051C8A3 /* ImageViewUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewUtils.swift; sourceTree = "<group>"; };
 		A56C26282BC0D65B0015B87A /* CalendarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
@@ -228,6 +234,7 @@
 			children = (
 				57020F502BC0E2D9009D9369 /* EditProfileViewController.swift */,
 				A58B8F862BD1017F00AE882E /* EditProfileFirebase.swift */,
+				A550FD022BD18DCC00C7CB59 /* EditProfilePhotoManager.swift */,
 			);
 			path = "Edit Profile";
 			sourceTree = "<group>";
@@ -337,7 +344,9 @@
 				A54243562BAE3C5800189102 /* AppDelegate.swift */,
 				A54243582BAE3C5800189102 /* SceneDelegate.swift */,
 				A542435A2BAE3C5800189102 /* ViewController.swift */,
+				A550FD002BD174B000C7CB59 /* PasswordTextFieldToggle.swift */,
 				A567B9382BCDDBF20051C8A3 /* ImageViewUtils.swift */,
+				A550FD042BD190FF00C7CB59 /* ButtonImageUtils.swift */,
 				A542435C2BAE3C5800189102 /* Main.storyboard */,
 				A542435F2BAE3C5900189102 /* Assets.xcassets */,
 				A54243612BAE3C5900189102 /* LaunchScreen.storyboard */,
@@ -543,6 +552,7 @@
 				A56C26402BC0D65B0015B87A /* ChatsView.swift in Sources */,
 				57A468902BCF563100FC0DB3 /* ShowPlanDetailsView.swift in Sources */,
 				9C0795012BC0C33E00AC46D5 /* SearchDestinationController.swift in Sources */,
+				A550FD012BD174B000C7CB59 /* PasswordTextFieldToggle.swift in Sources */,
 				57A468772BCA0A3100FC0DB3 /* configs.swift in Sources */,
 				57020F412BC0CB37009D9369 /* AddGuestsViewController.swift in Sources */,
 				9C0795022BC0C33E00AC46D5 /* SearchDestinationView.swift in Sources */,
@@ -579,10 +589,12 @@
 				9CC6072C2BCDD126003B3F01 /* ItineraryView.swift in Sources */,
 				9C07950B2BC0C3A600AC46D5 /* ItineraryViewController.swift in Sources */,
 				A56C26422BC0D65B0015B87A /* ProfileView.swift in Sources */,
+				A550FD052BD190FF00C7CB59 /* ButtonImageUtils.swift in Sources */,
 				57A4688C2BCDD9F100FC0DB3 /* ChatPlanView.swift in Sources */,
 				A56C26432BC0D65B0015B87A /* ContactInfo.swift in Sources */,
 				57A4688E2BCDE1EF00FC0DB3 /* ChatViewController2.swift in Sources */,
 				A54243592BAE3C5800189102 /* SceneDelegate.swift in Sources */,
+				A550FD032BD18DCC00C7CB59 /* EditProfilePhotoManager.swift in Sources */,
 				57020F512BC0E2D9009D9369 /* EditProfileViewController.swift in Sources */,
 				57A468832BCA23E700FC0DB3 /* ChatScreenView.swift in Sources */,
 				57020F402BC0CB37009D9369 /* AddGuestsView.swift in Sources */,

@@ -77,6 +77,7 @@ class RegistrationView: UIView {
         textFieldPassword.layer.borderWidth = 1
         textFieldPassword.autocorrectionType = .no
         textFieldPassword.autocapitalizationType = .none
+        textFieldPassword.enablePasswordToggle()
         textFieldPassword.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(textFieldPassword)
     }

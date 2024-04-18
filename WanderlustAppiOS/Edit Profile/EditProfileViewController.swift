@@ -24,6 +24,7 @@ class EditProfileViewController: UIViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
         // added transparency to background
         editProfileScreen.backgroundImage.alpha = 0.3
+        editProfileScreen.textFieldPassword.isHidden = true
         fillCurrentDetails()
         editProfileScreen.buttonRegister.addTarget(self, action: #selector(onRegisterTapped), for: .touchUpInside)
         editProfileScreen.buttonTakePhoto.menu = getMenuImagePicker()
@@ -35,14 +36,14 @@ class EditProfileViewController: UIViewController {
         editProfileScreen.labelTitle.text = "Edit your details"
         editProfileScreen.labelPhoto.text = "Choose image"
         editProfileScreen.buttonRegister.setTitle("Save changes", for: .normal)
-        editProfileScreen.textFieldPassword.placeholder = "ENTER YOUR NEW PASSWORD..."
+        editProfileScreen.textFieldPassword.text = "ENTER YOUR NEW PASSWORD..."
         
         // Check if a user is currently signed in
         if let currentUser = Auth.auth().currentUser {
             // if user is signed in load thir image
-//            if let imageURL = currentUser.photoURL {
-//                editProfileScreen.buttonTakePhoto.setImage(UIImage(systemName: "camera.fill")?.withRenderingMode(.alwaysOriginal), for: .normal)
-//            }
+            if let imageURL = currentUser.photoURL {
+                editProfileScreen.buttonTakePhoto.loadRemoteImage(from: imageURL)
+            }
             // then load their name and emails
             let name = currentUser.displayName
             let email = currentUser.email
@@ -66,8 +67,8 @@ class EditProfileViewController: UIViewController {
             showAlert(message: "Invalid email. Please enter a valid email address.")
             return
         }
-        // start the registration process by first uploading the picture...
-        //uploadProfilePhotoToStorage()
+        // start the editing process in Firebase...
+        wasEmailOrPasswordEdited()
     }
 
     func isValidEmail(_ email: String) -> Bool {
@@ -94,37 +95,29 @@ class EditProfileViewController: UIViewController {
     
     //MARK: take Photo using Camera...
     func pickUsingCamera(){
-//        let cameraController = UIImagePickerController()
-//        cameraController.sourceType = .camera
-//        cameraController.allowsEditing = true
-//        cameraController.delegate = self
-//        present(cameraController, animated: true)
+        let cameraController = UIImagePickerController()
+        cameraController.sourceType = .camera
+        cameraController.allowsEditing = true
+        cameraController.delegate = self
+        present(cameraController, animated: true)
     }
     
     //MARK: pick Photo using Gallery...
     func pickPhotoFromGallery(){
-//        //MARK: Photo from Gallery...
-//        var configuration = PHPickerConfiguration()
-//        configuration.filter = PHPickerFilter.any(of: [.images])
-//        configuration.selectionLimit = 1
-//        
-//        let photoPicker = PHPickerViewController(configuration: configuration)
-//        
-//        photoPicker.delegate = self
-//        present(photoPicker, animated: true, completion: nil)
+        //MARK: Photo from Gallery...
+        var configuration = PHPickerConfiguration()
+        configuration.filter = PHPickerFilter.any(of: [.images])
+        configuration.selectionLimit = 1
+        
+        let photoPicker = PHPickerViewController(configuration: configuration)
+        
+        photoPicker.delegate = self
+        present(photoPicker, animated: true, completion: nil)
     }
     
     //MARK: pick Photo using Gallery...
     func deleteButtonTapped(){
-        //MARK: Photo from Gallery...
-//        var configuration = PHPickerConfiguration()
-//        configuration.filter = PHPickerFilter.any(of: [.images])
-//        configuration.selectionLimit = 1
-//        
-//        let photoPicker = PHPickerViewController(configuration: configuration)
-//        
-//        photoPicker.delegate = self
-//        present(photoPicker, animated: true, completion: nil)
+        //MARK: Delete photo from Firebase...
     }
     
     func showAlert(message: String) {
