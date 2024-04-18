@@ -78,11 +78,27 @@ class CalendarViewController: UIViewController{
         }
     }
 
+    func showAlert(title: String, message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alertController.addAction(okAction)
+        present(alertController, animated: true, completion: nil)
+    }
+    
     //MARK: action to perform when next button is tapped...
     @objc func onNextButtonTapped() {
         let addGuestsController = AddGuestsViewController()
-        addGuestsController.selectedDates = selectedDates
-        navigationController?.pushViewController(addGuestsController, animated: true)
+        if homeScreen.planTextField.text?.isEmpty ?? true{
+            showAlert(title: "Alert", message: "Plan name is empty")
+        }
+        else if selectedDates.count == 0{
+            showAlert(title: "Alert", message: "Please select days")
+        }
+        else{
+            addGuestsController.selectedDates = selectedDates
+            addGuestsController.planName = homeScreen.planTextField.text
+            navigationController?.pushViewController(addGuestsController, animated: true)
+        }
     }
 }
 
@@ -115,6 +131,7 @@ extension CalendarViewController: UICalendarViewDelegate, UICalendarSelectionMul
         return nil
     }
 }
+
 
 
 

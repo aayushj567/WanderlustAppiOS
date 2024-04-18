@@ -28,7 +28,14 @@ class ShowPlanDetailsViewController: UIViewController {
         print(receivedPlan)
         //let sortedarrays = receivedPlan.days.sort { $0.name < $1.name }
         if var days = receivedPlan.days{
-            days.sort { $0.name < $1.name }
+            days.sort {
+                guard let day1 = Int($0.name.components(separatedBy: " ").last ?? ""),
+                      let day2 = Int($1.name.components(separatedBy: " ").last ?? "") else {
+                    // If the name format is not as expected, maintain the current order
+                    return false
+                }
+                return day1 < day2
+            }
             dayWise = days
         }
         displayPlanSummary.tableViewExpense.delegate = self
@@ -213,7 +220,8 @@ class ShowPlanDetailsViewController: UIViewController {
                 print("Document successfully deleted")
             }
         }
-        NotificationCenter.default.post(name: NSNotification.Name("DataDeleted"), object: nil)
+        NotificationCenter.default.post(name: NSNotification.Name("DeletePlan"), object: nil, userInfo: ["planId": receivedPlan.id!])
+
 
         navigationController?.popViewController(animated: true)
     }
