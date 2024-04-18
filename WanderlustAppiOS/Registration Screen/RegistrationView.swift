@@ -122,6 +122,8 @@ class RegistrationView: UIView {
                 backgroundImage = UIImageView(frame: UIScreen.main.bounds)
                 backgroundImage.image = UIImage(named: "Image")
                 backgroundImage.contentMode = .scaleAspectFill // Adjust content mode as needed
+                // Adjust the alpha value to make the background image more transparent
+                backgroundImage.alpha = 0.9 // Adjust the alpha value as needed
                 backgroundImage.clipsToBounds = true // Clip to bounds to avoid image overflow
                 
                 // Add the UIImageView as the background of the view

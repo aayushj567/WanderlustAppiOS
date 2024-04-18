@@ -27,6 +27,7 @@ class FirstViewController: UIViewController {
  
     override func viewDidLoad() {
         super.viewDidLoad()
+        firstView.backgroundImage.alpha = 0.3 // Adjust the alpha value
         firstView.newPlanButton.addTarget(self, action: #selector(onNewButtonTapped), for: .touchUpInside)
         firstView.allPlansButton.addTarget(self, action: #selector(onAllPlansButtonTapped), for: .touchUpInside)
         firstView.logoutButton.addTarget(self, action: #selector(logout), for: .touchUpInside)

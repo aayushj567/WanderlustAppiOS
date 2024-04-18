@@ -17,9 +17,7 @@
 		57020F422BC0CB37009D9369 /* AddPeopleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57020F3E2BC0CB37009D9369 /* AddPeopleTableViewCell.swift */; };
 		57020F4A2BC0E1E7009D9369 /* ShowProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57020F492BC0E1E7009D9369 /* ShowProfileView.swift */; };
 		57020F4C2BC0E24F009D9369 /* ShowProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57020F4B2BC0E24F009D9369 /* ShowProfileViewController.swift */; };
-		57020F4F2BC0E2AB009D9369 /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57020F4E2BC0E2AB009D9369 /* EditProfileView.swift */; };
-		57020F512BC0E2D9009D9369 /* EditProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57020F502BC0E2D9009D9369 /* EditProfileController.swift */; };
-		57020F532BC0E30B009D9369 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57020F522BC0E30B009D9369 /* Utilities.swift */; };
+		57020F512BC0E2D9009D9369 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57020F502BC0E2D9009D9369 /* EditProfileViewController.swift */; };
 		576183342BC7316700CA28D1 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 576183332BC7316700CA28D1 /* FirebaseAuth */; };
 		576183362BC7316700CA28D1 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 576183352BC7316700CA28D1 /* FirebaseFirestore */; };
 		576183382BC7316700CA28D1 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 576183372BC7316700CA28D1 /* FirebaseFirestoreSwift */; };
@@ -84,9 +82,7 @@
 		57020F3E2BC0CB37009D9369 /* AddPeopleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddPeopleTableViewCell.swift; sourceTree = "<group>"; };
 		57020F492BC0E1E7009D9369 /* ShowProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowProfileView.swift; sourceTree = "<group>"; };
 		57020F4B2BC0E24F009D9369 /* ShowProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowProfileViewController.swift; sourceTree = "<group>"; };
-		57020F4E2BC0E2AB009D9369 /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
-		57020F502BC0E2D9009D9369 /* EditProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileController.swift; sourceTree = "<group>"; };
-		57020F522BC0E30B009D9369 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		57020F502BC0E2D9009D9369 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		5761833B2BC731DC00CA28D1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		57A4686C2BC753B300FC0DB3 /* RegistrationFirebase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationFirebase.swift; sourceTree = "<group>"; };
 		57A4686F2BC8837000FC0DB3 /* Days.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Days.swift; sourceTree = "<group>"; };
@@ -228,9 +224,7 @@
 		57020F4D2BC0E26E009D9369 /* Edit Profile */ = {
 			isa = PBXGroup;
 			children = (
-				57020F4E2BC0E2AB009D9369 /* EditProfileView.swift */,
-				57020F502BC0E2D9009D9369 /* EditProfileController.swift */,
-				57020F522BC0E30B009D9369 /* Utilities.swift */,
+				57020F502BC0E2D9009D9369 /* EditProfileViewController.swift */,
 			);
 			path = "Edit Profile";
 			sourceTree = "<group>";
@@ -543,7 +537,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				57A468992BCF835300FC0DB3 /* FirstView.swift in Sources */,
-				57020F4F2BC0E2AB009D9369 /* EditProfileView.swift in Sources */,
 				A56C26402BC0D65B0015B87A /* ChatsView.swift in Sources */,
 				57A468902BCF563100FC0DB3 /* ShowPlanDetailsView.swift in Sources */,
 				9C0795012BC0C33E00AC46D5 /* SearchDestinationController.swift in Sources */,
@@ -568,7 +561,6 @@
 				A567B9372BCDD6DE0051C8A3 /* PhotoManager.swift in Sources */,
 				A56C263C2BC0D65B0015B87A /* HomeViewController.swift in Sources */,
 				57A468742BC8864100FC0DB3 /* User.swift in Sources */,
-				57020F532BC0E30B009D9369 /* Utilities.swift in Sources */,
 				57A4689B2BCF836D00FC0DB3 /* FirstViewController.swift in Sources */,
 				57A468942BCF564D00FC0DB3 /* TableViewItineraryCell.swift in Sources */,
 				57A4687F2BCA10FB00FC0DB3 /* ChatPlanViewController.swift in Sources */,
@@ -587,7 +579,7 @@
 				A56C26432BC0D65B0015B87A /* ContactInfo.swift in Sources */,
 				57A4688E2BCDE1EF00FC0DB3 /* ChatViewController2.swift in Sources */,
 				A54243592BAE3C5800189102 /* SceneDelegate.swift in Sources */,
-				57020F512BC0E2D9009D9369 /* EditProfileController.swift in Sources */,
+				57020F512BC0E2D9009D9369 /* EditProfileViewController.swift in Sources */,
 				57A468832BCA23E700FC0DB3 /* ChatScreenView.swift in Sources */,
 				57020F402BC0CB37009D9369 /* AddGuestsView.swift in Sources */,
 				57020F4C2BC0E24F009D9369 /* ShowProfileViewController.swift in Sources */,

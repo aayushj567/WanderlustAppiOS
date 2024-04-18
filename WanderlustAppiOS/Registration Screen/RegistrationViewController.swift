@@ -30,6 +30,7 @@ class RegistrationViewController: UIViewController {
         super.viewDidLoad()
         title = "Register"
         navigationController?.navigationBar.prefersLargeTitles = true
+        registrationScreen.backgroundImage.alpha = 0.3
         registrationScreen.buttonRegister.addTarget(self, action: #selector(onRegisterTapped), for: .touchUpInside)
         registrationScreen.buttonTakePhoto.menu = getMenuImagePicker()
     }
