@@ -68,12 +68,14 @@ class ItineraryView: UIView {
         
         saveButton = UIButton()
         saveButton.translatesAutoresizingMaskIntoConstraints = false
+        saveButton.titleLabel?.font = .boldSystemFont(ofSize: 16)
         saveButton.setTitle("Save", for: .normal)
         saveButton.backgroundColor = .systemBlue
         saveButton.layer.cornerRadius = 5
         
         estimateBudgetButton = UIButton()
         estimateBudgetButton.translatesAutoresizingMaskIntoConstraints = false
+        estimateBudgetButton.titleLabel?.font = .boldSystemFont(ofSize: 16)
         estimateBudgetButton.setTitle("Estimate Budget", for: .normal)
         estimateBudgetButton.backgroundColor = .systemGreen
         estimateBudgetButton.layer.cornerRadius = 5

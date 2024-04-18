@@ -226,14 +226,27 @@ extension ShowPlanDetailsViewController: UITableViewDelegate, UITableViewDataSou
         
            // print("test")
            // print(days)
-        cell.labelDayName.text = dayWise[indexPath.row].name
+       // cell.labelDayName.text = dayWise[indexPath.row].name
+        
+        let calendar = Calendar.current
+        var dateComponents = DateComponents()
+        dateComponents.day = indexPath.row
+        let incrementedDate = calendar.date(byAdding: dateComponents, to: receivedPlan.dateFrom!)
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM/dd/yyyy"
+        
+        let dateString = dateFormatter.string(from: incrementedDate!)
+        
+        cell.labelDayName.text = "\(dayWise[indexPath.row].name): \(dateString)"
         
         var desti = ""
        // if let destinations = dayWise
         let day = dayWise[indexPath.row]
+        
                 // Using newline to separate destination names instead of commas
                 let destinationDetails = day.destinations?.map { "\($0.name)" }.joined(separator: "\n") ?? "No destinations available"
-         
+                    print(destinationDetails)
                     cell.labelDestinationName?.text = "\(destinationDetails)"
                     cell.labelDestinationName?.numberOfLines = 0
         for dest in dayWise[indexPath.row].destinations!{

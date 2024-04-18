@@ -32,8 +32,15 @@ class ItineraryViewController: UIViewController, UITableViewDelegate, UITableVie
         else{
             itineraryView.planNameLabel.text = "Your Plan"
         }
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM/dd/yyyy"
+        
+        let dateString = dateFormatter.string(from: selectedDates.first!)
+        let dateString2 = dateFormatter.string(from: selectedDates.last!)
+        
         itineraryView.startDateInfoLabel.text = selectedDates.first?.description
-        itineraryView.endDateInfoLabel.text = selectedDates.last?.description
+        itineraryView.endDateInfoLabel.text = "\(dateString) - \(dateString2)"
         view = itineraryView
     }
     
