@@ -11,7 +11,14 @@ class CalendarViewController: UIViewController{
     let homeScreen = CalendarView()
     //var selectedDates = [DateComponents]()
     var selectedDates: [Date] = []
-    
+    var planToEdit: Plan? {
+            didSet {
+                if isViewLoaded {
+                    updateUIForEditing()
+                }
+            }
+        }
+
     override func loadView() {
         view = homeScreen
     }
@@ -58,8 +65,36 @@ class CalendarViewController: UIViewController{
                 navigationController?.pushViewController(profileView, animated: true)
             }
         }
+        updateUIForEditing()
     }
     
+    private func updateUIForEditing() {
+            guard let plan = planToEdit else { return }
+            
+            homeScreen.planTextField.text = plan.name
+            
+//            if let dateFrom = plan.dateFrom, let dateTo = plan.dateTo {
+//                // Calculate all dates between dateFrom and dateTo
+//                var dates: [Date] = []
+//                var currentDate = dateFrom
+//                while currentDate <= dateTo {
+//                    dates.append(currentDate)
+//                    currentDate = Calendar.current.date(byAdding: .day, value: 1, to: currentDate)!
+//                }
+//                
+//                // Here you might need to adjust the selection behavior of your UICalendarView to reflect the selected dates.
+//                // Since UICalendarView is not a standard UIKit component and without documentation, I can't provide exact code.
+//                // You'll have to find out how to mark dates as selected in your calendar component.
+//                
+//                selectedDates = dates
+//            }
+        }
+    
+    func updatePlanDates() {
+        // Assuming your Plan object has `dateFrom` and `dateTo`
+        planToEdit?.dateFrom = selectedDates.min()
+        planToEdit?.dateTo = selectedDates.max()
+    }
     //MARK: Function to insert a date into the selectedDates array in sorted order
     func insertDate(_ date: DateComponents, into array: inout [DateComponents]) {
         // Find the index where the date should be inserted
@@ -94,7 +129,14 @@ class CalendarViewController: UIViewController{
         else if selectedDates.count == 0{
             showAlert(title: "Alert", message: "Please select days")
         }
-        else{
+        else 
+        {
+            if var planToEdit = planToEdit {
+                planToEdit.name = homeScreen.planTextField.text
+                addGuestsController.planToEdit = planToEdit
+            }
+           print( selectedDates.first!)
+            print(selectedDates.last!)
             addGuestsController.selectedDates = selectedDates
             addGuestsController.planName = homeScreen.planTextField.text
             navigationController?.pushViewController(addGuestsController, animated: true)
@@ -107,12 +149,17 @@ extension CalendarViewController: UICalendarViewDelegate, UICalendarSelectionMul
     func multiDateSelection(_ selection: UICalendarSelectionMultiDate, didSelectDate dateComponents: DateComponents) {
         if let date = dateComponents.date {
             selectedDates.append(date)
+            updatePlanDates()
+            //updateCalendarUI()
+           
         }
     }
         
     func multiDateSelection(_ selection: UICalendarSelectionMultiDate, didDeselectDate dateComponents: DateComponents) {
         if let date = dateComponents.date, let index = selectedDates.firstIndex(of: date) {
             selectedDates.remove(at: index)
+            updatePlanDates()
+            //updateCalendarUI()
         }
     }
     
