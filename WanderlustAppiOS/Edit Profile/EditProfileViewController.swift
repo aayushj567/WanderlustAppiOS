@@ -32,9 +32,10 @@ class EditProfileViewController: UIViewController {
     func fillCurrentDetails() {
         print("Filling details")
         // editing the titles of buttons and labels from registartion screen
-        editProfileScreen.labelTitle.text = "Edit my details"
+        editProfileScreen.labelTitle.text = "Edit your details"
         editProfileScreen.labelPhoto.text = "Choose image"
         editProfileScreen.buttonRegister.setTitle("Save changes", for: .normal)
+        editProfileScreen.textFieldPassword.placeholder = "ENTER YOUR NEW PASSWORD..."
         
         // Check if a user is currently signed in
         if let currentUser = Auth.auth().currentUser {
@@ -50,7 +51,7 @@ class EditProfileViewController: UIViewController {
         }
     }
     
-    //MARK: action to perform when registration button is tapped...
+    //MARK: action to perform when Save Chnages button is tapped...
     @objc func onRegisterTapped(){
         // gathering data from text fields and making sure they are not empty
         guard let nameText = editProfileScreen.textFieldName.text, !nameText.isEmpty,

@@ -68,6 +68,7 @@
 		A56C26422BC0D65B0015B87A /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56C26342BC0D65B0015B87A /* ProfileView.swift */; };
 		A56C26432BC0D65B0015B87A /* ContactInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56C26362BC0D65B0015B87A /* ContactInfo.swift */; };
 		A56C26442BC0D65B0015B87A /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56C26372BC0D65B0015B87A /* MainViewController.swift */; };
+		A58B8F872BD1017F00AE882E /* EditProfileFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A58B8F862BD1017F00AE882E /* EditProfileFirebase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -131,6 +132,7 @@
 		A56C26342BC0D65B0015B87A /* ProfileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		A56C26362BC0D65B0015B87A /* ContactInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactInfo.swift; sourceTree = "<group>"; };
 		A56C26372BC0D65B0015B87A /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		A58B8F862BD1017F00AE882E /* EditProfileFirebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileFirebase.swift; sourceTree = "<group>"; };
 		CFB43322217446DE35F385C1 /* Pods-WanderlustAppiOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WanderlustAppiOS.debug.xcconfig"; path = "Target Support Files/Pods-WanderlustAppiOS/Pods-WanderlustAppiOS.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -225,6 +227,7 @@
 			isa = PBXGroup;
 			children = (
 				57020F502BC0E2D9009D9369 /* EditProfileViewController.swift */,
+				A58B8F862BD1017F00AE882E /* EditProfileFirebase.swift */,
 			);
 			path = "Edit Profile";
 			sourceTree = "<group>";
@@ -558,6 +561,7 @@
 				A567B9392BCDDBF20051C8A3 /* ImageViewUtils.swift in Sources */,
 				A56C26392BC0D65B0015B87A /* CalendarView.swift in Sources */,
 				A54243572BAE3C5800189102 /* AppDelegate.swift in Sources */,
+				A58B8F872BD1017F00AE882E /* EditProfileFirebase.swift in Sources */,
 				A567B9372BCDD6DE0051C8A3 /* PhotoManager.swift in Sources */,
 				A56C263C2BC0D65B0015B87A /* HomeViewController.swift in Sources */,
 				57A468742BC8864100FC0DB3 /* User.swift in Sources */,
