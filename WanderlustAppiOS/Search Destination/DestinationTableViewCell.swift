@@ -172,6 +172,7 @@ class DestinationTableViewCell: UITableViewCell {
         addToPlanCheckbox.setImage(UIImage(systemName: "square"), for: .normal)
         addToPlanCheckbox.setImage(UIImage(systemName: "checkmark.square.fill"), for: .selected)
         addToPlanCheckbox.addTarget(self, action: #selector(checkBoxTapped), for: .touchUpInside)
+        addToPlanCheckbox.tintColor = .white
         addToPlanCheckbox.isUserInteractionEnabled = true;
         
         self.addSubview(addToPlanCheckbox)

@@ -23,6 +23,7 @@ class ItineraryViewController: UIViewController, UITableViewDelegate, UITableVie
     var selectedUserIds: [String] = []
     var destinationIds: [String] = []
     var planName: String?
+    var planToEdit: Plan?
     override func loadView() {
         itineraryView = ItineraryView(frame: UIScreen.main.bounds)
         if let planName = planName{
@@ -31,20 +32,27 @@ class ItineraryViewController: UIViewController, UITableViewDelegate, UITableVie
         else{
             itineraryView.planNameLabel.text = "Your Plan"
         }
+        itineraryView.startDateInfoLabel.text = selectedDates.first?.description
+        itineraryView.endDateInfoLabel.text = selectedDates.last?.description
         view = itineraryView
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Add Itinerary"
         itineraryView.tableView.delegate = self
         itineraryView.tableView.dataSource = self
         itineraryView.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "dayCell")
         
-        itineraryView.startDatePicker.addTarget(self, action: #selector(dateChanged(_:)), for: .valueChanged)
-        itineraryView.endDatePicker.addTarget(self, action: #selector(dateChanged(_:)), for: .valueChanged)
+//        itineraryView.startDatePicker.addTarget(self, action: #selector(dateChanged(_:)), for: .valueChanged)
+//        itineraryView.endDatePicker.addTarget(self, action: #selector(dateChanged(_:)), for: .valueChanged)
         itineraryView.saveButton.addTarget(self, action: #selector(saveItinerary), for: .touchUpInside)
-        
-        updateDaysFromDates()
+        itineraryView.estimateBudgetButton.addTarget(self, action: #selector(calculateAndDisplayEstimate), for: .touchUpInside)
+        if let plan = planToEdit {
+              configureViewForEditing(plan)
+          } else {
+              updateDaysFromDates() // Setup the view for creating a new plan
+          }
         //setupTabBarActions()
         print("Selected Users: \(selectedUserIds)")
         itineraryView.onIconTapped = { [unowned self] index in
@@ -63,7 +71,6 @@ class ItineraryViewController: UIViewController, UITableViewDelegate, UITableVie
                 let chatView = ChatPlanViewController()
                 navigationController?.pushViewController(chatView, animated: true)
             }
-            print("Icon at index \(index) was tapped.")
             if(index == 3)
             {
                 let profileView = ShowProfileViewController()
@@ -71,7 +78,29 @@ class ItineraryViewController: UIViewController, UITableViewDelegate, UITableVie
             }
         }
     }
-    
+    func configureViewForEditing(_ plan: Plan) {
+        // Set the plan name label
+        itineraryView.planNameLabel.text = plan.name
+
+        // Set the date pickers to the start and end dates of the plan
+//        if let startDate = plan.dateFrom, let endDate = plan.dateTo {
+//            itineraryView.startDatePicker.date = startDate
+//            itineraryView.endDatePicker.date = endDate
+//            
+//        }
+        // Load days and destinations from the plan
+        if let days = plan.days {
+                self.days = days.sorted { day1, day2 in
+                    guard let dayNumber1 = Int(day1.name.replacingOccurrences(of: "Day ", with: "")),
+                          let dayNumber2 = Int(day2.name.replacingOccurrences(of: "Day ", with: "")) else {
+                        return false
+                    }
+                    return dayNumber1 < dayNumber2
+                }
+                updateDaysFromDates()
+                itineraryView.tableView.reloadData()
+            }
+    }
     func setupTabBarActions() {
         for subview in itineraryView.tabBarView.subviews {
             if let stackView = subview as? UIStackView {
@@ -88,10 +117,41 @@ class ItineraryViewController: UIViewController, UITableViewDelegate, UITableVie
         let index = iconView.tag
         onIconTapped?(index)
     }
+    @objc func calculateAndDisplayEstimate() {
+        let basePricePerDestination = 15.0  // Base price per destination
+        let multiplierRange = (15...30)     // Price range multiplier
+        
+        let totalDestinations = days.flatMap { $0.destinations }.count
+        let randomMultiplier = Double(multiplierRange.randomElement() ?? 15)  // Random multiplier within range
+        let estimatedBudget = Double(totalDestinations) * randomMultiplier
+        
+        // Assuming there's a method or a label to display this estimated budget
+        let formattedBudget = String(format: "%.2f", estimatedBudget)
+        showAlert(title: "Estimated Budget", message: "The estimated budget for your trip is $\(formattedBudget).")
+    }
+
+    func showAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        present(alert, animated: true, completion: nil)
+    }
+
     
     @objc func saveItinerary() {
         guard let currentUser = Auth.auth().currentUser else {
             fatalError("No user signed in")
+        }
+        let emptyDays = days.filter { $0.destinations?.isEmpty ?? true }
+            if !emptyDays.isEmpty {
+                let alert = UIAlertController(title: "Incomplete Itinerary", message: "Please add destinations for all days before saving.", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+                return
+            }
+        if let plan = planToEdit {
+            var showPlan = ShowPlanDetailsViewController()
+            showPlan.receivedPlan = plan
+            showPlan.onDeletePlan()
         }
         
         let db = Firestore.firestore()
@@ -107,7 +167,16 @@ class ItineraryViewController: UIViewController, UITableViewDelegate, UITableVie
             guests: selectedUserIds
             
         )
-        print(newPlan)
+        if var plan = planToEdit {
+            plan.days = days
+            print("Edited Plan\(plan)")
+            print(plan.id!)
+            print(plan.days!.count)
+            
+            
+        }
+        
+        //print(newPlan)
         do {
             try planDocument.setData(from: newPlan) { error in
                 if let error = error {
@@ -196,7 +265,9 @@ class ItineraryViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     @objc func dateChanged(_ sender: UIDatePicker) {
-        updateDaysFromDates()
+        
+                updateDaysFromDates()
+            
     }
     
     func updateDaysFromDates() {
@@ -207,14 +278,19 @@ class ItineraryViewController: UIViewController, UITableViewDelegate, UITableVie
         }
         
         let calendar = Calendar.current
-        let dateRange = calendar.dateComponents([.day], from: startDate, to: endDate).day ?? 0
-        
-        if dateRange >= 0 {
-            days = (0...dateRange).map { Day(name: "Day \($0 + 1)", destinationIds: [], planId: nil, destinations: []) }
-        } else {
-            let swappedDateRange = calendar.dateComponents([.day], from: endDate, to: startDate).day ?? 0
-            days = (0...swappedDateRange).map { Day(name: "Day \($0 + 1)", destinationIds: [], planId: nil, destinations: []) }
-        }
+            let dateRange = calendar.dateComponents([.day], from: startDate, to: endDate).day ?? 0
+            
+            if dateRange >= 0 {
+                days = (0...dateRange).map { index in
+                    let dayName = "Day \(index + 1)"
+                    if let existingDay = days.first(where: { $0.name == dayName }) {
+                        return existingDay // Use existing day to preserve any added destinations
+                    } else {
+                        return Day(name: dayName, destinationIds: [], planId: nil, destinations: []) // Create new day
+                    }
+                }
+            }
+            
         
         itineraryView.tableView.reloadData()
     }
@@ -226,10 +302,25 @@ class ItineraryViewController: UIViewController, UITableViewDelegate, UITableVie
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "dayCell", for: indexPath)
         let day = days[indexPath.row]
-        let destinationDetails = day.destinations?.map { "\($0.name) - Duration: \($0.duration ?? "")" }.joined(separator: "\n") ?? ""
-        cell.textLabel?.text = "\(day.name):\n\(destinationDetails)"
-        cell.textLabel?.numberOfLines = 0
-        cell.accessoryType = .detailDisclosureButton
+        if let destinations = day.destinations, !destinations.isEmpty {
+               // Join all destination names into a single string
+               let destinationDetails = destinations.map { "\($0.name)" }.joined(separator: "\n")
+               cell.textLabel?.text = "\(day.name):\n\(destinationDetails)"
+            cell.textLabel?.font = UIFont.systemFont(ofSize: 22)
+           } else {
+               // Placeholder text that prompts user to add destinations
+               cell.textLabel?.font = UIFont.systemFont(ofSize: 14)
+               cell.textLabel?.text = "\(day.name):\nClick to select destinations"
+           }
+                cell.textLabel?.numberOfLines = 0
+                 cell.textLabel?.font = UIFont.systemFont(ofSize: 22)
+              cell.backgroundColor = UIColor.systemGray6 // Set a background color
+              cell.layer.borderColor = UIColor.darkGray.cgColor
+              cell.layer.borderWidth = 2
+                  cell.layer.cornerRadius = 8
+                  cell.clipsToBounds = true
+           cell.textLabel?.numberOfLines = 0
+            //cell.accessoryType = .detailDisclosureButton
         return cell
     }
     

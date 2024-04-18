@@ -11,6 +11,8 @@ class AddGuestsViewController: UIViewController {
     var selectedDates: [Date] = []
     var planName: String?
     let userId = Auth.auth().currentUser?.uid
+    var planToEdit: Plan?
+        
     
     override func loadView() {
         view = addGuestView
@@ -51,7 +53,17 @@ class AddGuestsViewController: UIViewController {
             }
         }
     }
-    
+    func updateUIForEditing() {
+        if let plan = planToEdit {
+            // Set the planName from planToEdit, it will be used when saving the plan
+            //planName = plan.name
+            // Set the selectedUserIds from the guests in the planToEdit
+            selectedUserIds = plan.guests ?? []
+            print(selectedUserIds)
+            // Force reload of the table to reflect the changes in checkboxes
+            addGuestView.tableViewPeople.reloadData()
+        }
+    }
     func fetchUsers() {
         let db = Firestore.firestore()
         db.collection("users").whereField("id", isNotEqualTo: userId).getDocuments { [weak self] (querySnapshot, error) in
@@ -63,6 +75,7 @@ class AddGuestsViewController: UIViewController {
                     try? document.data(as: User.self)
                 } ?? []
                 self.filteredUsers = self.users
+                updateUIForEditing()
                 self.addGuestView.tableViewPeople.reloadData()
             }
         }
@@ -70,6 +83,10 @@ class AddGuestsViewController: UIViewController {
     
     @objc func onNextButtonTapped() {
         let itineraryViewController = ItineraryViewController()
+        if var planToEdit = planToEdit {
+            planToEdit.guests = selectedUserIds
+            itineraryViewController.planToEdit = planToEdit
+                }
         itineraryViewController.selectedDates = selectedDates
         itineraryViewController.selectedUserIds = selectedUserIds
         itineraryViewController.planName = planName

@@ -41,25 +41,25 @@ class SearchDestinationController: UIViewController {
         
         searchDestinationView.onIconTapped = { [unowned self] index in
             // Handle the icon tap, switch views accordingly
-//            if(index == 0){
-//                let homeView = CalendarViewController()
-//                navigationController?.pushViewController(homeView, animated: true)
-//            }
-//            if(index == 1){
-//                let myplansVC = MyPlansViewController()
-//                navigationController?.pushViewController(myplansVC, animated: true)
-//            }
-//            if(index == 2)
-//            {
-//                let chatView = ChatViewController()
-//                navigationController?.pushViewController(chatView, animated: true)
-//            }
-//            print("Icon at index \(index) was tapped.")
-//            if(index == 3)
-//            {
-//                let profileView = ShowProfileViewController()
-//                navigationController?.pushViewController(profileView, animated: true)
-//            }
+            if(index == 0){
+                let homeView = CalendarViewController()
+                navigationController?.pushViewController(homeView, animated: true)
+            }
+            if(index == 1){
+                let myplansVC = MyPlansViewController()
+                navigationController?.pushViewController(myplansVC, animated: true)
+            }
+            if(index == 2)
+            {
+                let chatView = ChatPlanViewController()
+                navigationController?.pushViewController(chatView, animated: true)
+            }
+            print("Icon at index \(index) was tapped.")
+            if(index == 3)
+            {
+                let profileView = ShowProfileViewController()
+                navigationController?.pushViewController(profileView, animated: true)
+            }
             
             // Insert logic to switch to the corresponding view
         }
