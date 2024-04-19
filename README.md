@@ -1,3 +1,8 @@
+
+## User Flow Recording Link:
+https://drive.google.com/file/d/1a3wV29SzlDgTXRp_1Y3zonEg6hEkALU7/view?usp=sharing
+
+### About the App :- 
 Wanderlust Itinerary Planner App is a iternary planner, users would be able to do efficient planning for their trips. The user would be able to create plans, based on their dates and destinations and collaborate with fellow users on the same trip. The user flow is as follows -
 
 1) When the app runs it opens up the login screen.
