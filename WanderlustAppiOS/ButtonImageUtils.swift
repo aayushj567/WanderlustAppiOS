@@ -20,8 +20,8 @@ extension UIButton {
             if let data = try? Data(contentsOf: url) {
                 if let image = UIImage(data: data) {
                     DispatchQueue.main.async {
-                        self?.setImage(image, for: .normal)
-                        self?.contentMode = .scaleAspectFit // Adjust content mode
+                        self?.setImage(image.withRenderingMode(.alwaysOriginal), for: .normal)
+                        //self?.contentMode = .scaleAspectFit // Adjust content mode
                     }
                 }
             }

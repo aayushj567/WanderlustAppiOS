@@ -14,7 +14,7 @@ class RegistrationView: UIView {
     var textFieldEmail: UITextField!
     var textFieldPassword: UITextField!
     // adding photos
-    var labelPhoto:UILabel!
+    var labelPhoto: UILabel!
     var buttonTakePhoto: UIButton!
     // register button
     var buttonRegister: UIButton!

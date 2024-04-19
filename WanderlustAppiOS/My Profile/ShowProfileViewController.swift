@@ -4,7 +4,6 @@ import FirebaseAuth
 class ShowProfileViewController: UIViewController {
     
     let displayScreen = ShowProfileView()
-    var delegate:ViewController!
     
     override func loadView() {
         view = displayScreen
@@ -16,7 +15,7 @@ class ShowProfileViewController: UIViewController {
 
         // Check if a user is currently signed in
         if let currentUser = Auth.auth().currentUser {
-            // if user is signed in load thir image
+            // if user is signed in load thir image from auth
             if let imageURL = currentUser.photoURL {
                 displayScreen.imageView.loadRemoteImage(from: imageURL)
             }

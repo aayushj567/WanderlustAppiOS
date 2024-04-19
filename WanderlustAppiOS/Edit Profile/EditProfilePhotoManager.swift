@@ -30,6 +30,8 @@ extension EditProfileViewController:PHPickerViewControllerDelegate{
                                     for: .normal
                                 )
                                 self.pickedImage = uwImage
+                                print("new image was selected")
+                                self.imageWasChanged = true
                             }
                         }
                     }
@@ -51,6 +53,8 @@ extension EditProfileViewController: UINavigationControllerDelegate, UIImagePick
                 for: .normal
             )
             self.pickedImage = image
+            print("new image was selected")
+            self.imageWasChanged = true
         }else{
             // Do your thing for No image loaded...
         }

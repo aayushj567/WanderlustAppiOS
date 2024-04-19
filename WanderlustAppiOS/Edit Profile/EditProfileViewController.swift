@@ -13,6 +13,8 @@ class EditProfileViewController: UIViewController {
     let storage = Storage.storage()
     //variable to store the picked Image...
     var pickedImage:UIImage?
+    //flag for image changed
+    var imageWasChanged = false
     
     override func loadView() {
         view = editProfileScreen
@@ -54,6 +56,7 @@ class EditProfileViewController: UIViewController {
     
     //MARK: action to perform when Save Chnages button is tapped...
     @objc func onRegisterTapped(){
+        print("save changes tapped")
         // gathering data from text fields and making sure they are not empty
         guard let nameText = editProfileScreen.textFieldName.text, !nameText.isEmpty,
               let emailText = editProfileScreen.textFieldEmail.text, !emailText.isEmpty,
@@ -68,7 +71,7 @@ class EditProfileViewController: UIViewController {
             return
         }
         // start the editing process in Firebase...
-        wasEmailOrPasswordEdited()
+        self.wasProfileEdited()
     }
 
     func isValidEmail(_ email: String) -> Bool {
@@ -86,7 +89,8 @@ class EditProfileViewController: UIViewController {
             UIAction(title: "Gallery",handler: {(_) in
                 self.pickPhotoFromGallery()
             }),
-            UIAction(title: "Delete photo", attributes: .destructive, handler: { (_) in self.deleteButtonTapped()
+            UIAction(title: "Delete photo", attributes: .destructive, handler: { (_) in 
+                self.deletePhotoButtonTapped()
             })
         ]
         
@@ -115,9 +119,11 @@ class EditProfileViewController: UIViewController {
         present(photoPicker, animated: true, completion: nil)
     }
     
-    //MARK: pick Photo using Gallery...
-    func deleteButtonTapped(){
-        //MARK: Delete photo from Firebase...
+    func deletePhotoButtonTapped(){
+        DispatchQueue.main.async {
+            self.editProfileScreen.buttonTakePhoto.setImage(UIImage(systemName:"camera.fill")?.withRenderingMode(.alwaysOriginal), for: .normal)
+            self.imageWasChanged = true
+        }
     }
     
     func showAlert(message: String) {
@@ -126,18 +132,18 @@ class EditProfileViewController: UIViewController {
         present(alert, animated: true, completion: nil)
     }
     
-//    func showRegistrationSuccessAlert() {
-//        let alert = UIAlertController(title: "Success", message: "Registration successful. Please log in.", preferredStyle: .alert)
-//        alert.addAction(UIAlertAction(title: "OK", style: .default) { _ in
-//            self.sendUserToLoginScreen()
-//        })
-//        present(alert, animated: true, completion: nil)
-//    }
+    func showRegistrationSuccessAlert() {
+        let alert = UIAlertController(title: "Success", message: "Registration successful. Please log in.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default) { _ in
+            self.sendUserToLoginScreen()
+        })
+        present(alert, animated: true, completion: nil)
+    }
     
-//    func sendUserToLoginScreen() {
-//        loginScreenDelegate.hasCompletedRegistration = true
-//        navigationController?.popViewController(animated: true)
-//    }
+    func sendUserToLoginScreen() {
+        //loginScreenDelegate.hasCompletedRegistration = true
+        //navigationController?.popViewController(animated: true)
+    }
 }
 
 

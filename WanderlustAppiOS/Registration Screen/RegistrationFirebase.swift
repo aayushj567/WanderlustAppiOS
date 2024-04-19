@@ -15,6 +15,7 @@ import FirebaseStorage
 
 extension RegistrationViewController{
     
+    //MARK: Upload image to Firebase Storage...
     func uploadProfilePhotoToStorage(){
         var profilePhotoURL:URL?
         
@@ -30,7 +31,7 @@ extension RegistrationViewController{
                 // creating a jpg file with unique id in imageUsers folder...
                 let imageRef = imagesRepo.child("\(NSUUID().uuidString).jpg")
                 // Upload the image data to Firebase Storage in the image reference
-                let uploadTask = imageRef.putData(jpegData, completion: {(metadata, error) in
+                _ = imageRef.putData(jpegData, completion: {(metadata, error) in
                     if error == nil{ // if no error in uploading
                         imageRef.downloadURL(completion: {(url, error) in // fetch download link of image
                             if error == nil{
@@ -47,7 +48,6 @@ extension RegistrationViewController{
             registerNewAccount(photoURL: profilePhotoURL)
         }
     }
-    
     
     //MARK: create a Firebase user with email and password in Firebase Auth...
     func registerNewAccount(photoURL: URL?){
@@ -67,12 +67,14 @@ extension RegistrationViewController{
         }
     }
     
-    //MARK: We set the name of the user after we create the account...
+    //MARK: We set the name and profile phtoto of the user after we create the account...
     func setNameAndPhotoOfTheUserInFirebaseAuth(name: String, email: String, photoURL: URL?){
+        // create change request for current user in Auth
         let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
+        // set display name and profile photo url
         changeRequest?.displayName = name
         changeRequest?.photoURL = photoURL
-        
+        // commit the changes to Firebase Auth
         changeRequest?.commitChanges(completion: {(error) in
             if error == nil{
                 //MARK: the profile update is successful...
@@ -85,7 +87,7 @@ extension RegistrationViewController{
         })
     }
     
-    // MARK: Save the user data to Firestore database...
+    // MARK: Save the user data containing name, email, and photo url to Firestore...
     func saveUserToFirestore(photoURL: URL?){
         // Gather the data from the text fields...
         let registeredEmail = registrationScreen.textFieldEmail.text!
