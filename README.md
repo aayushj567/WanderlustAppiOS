@@ -11,5 +11,5 @@ Wanderlust Itinerary Planner App is a iternary planner, users would be able to d
 9)  Clicking on logout in profile would go to login screen.
 
 
-# Notes:- If you experience package errors then you can delete package.resolve file and update your packages by going to File - Packages - Update to latest Package Versions.
-# You can also do a pod install in your directory and clean your build and try running again.
+### Notes:- If you experience package errors then you can delete package.resolve file and update your packages by going to File - Packages - Update to latest Package Versions.
+### You can also do a pod install in your directory and clean your build and try running again.
