@@ -58,16 +58,18 @@ extension EditProfileViewController{
         let name = editProfileScreen.textFieldName.text
         let email = editProfileScreen.textFieldEmail.text
         // check if name or email is left empty
-        if name != nil && email != nil {
-            // check if email or name is the same...
-            if name != Auth.auth().currentUser?.displayName || email != Auth.auth().currentUser?.email {
-                print("Name or email was edited by user")
-                self.reauthenticateUser()
+        if name != nil || email != nil || self.imageWasChanged{
+            self.reauthenticateUser()
+            if name != Auth.auth().currentUser?.displayName {
                 self.editDetailsInFirestore(name, email)
-                if self.imageWasChanged {
-                    self.uploadProfilePhotoToStorage()
-                }
+            }
                 
+            if email != Auth.auth().currentUser?.email {
+                print("Name or email was edited by user")
+                self.editDetailsInFirestore(name, email)
+            }
+            if self.imageWasChanged {
+                self.uploadProfilePhotoToStorage()
             }
         }
     }

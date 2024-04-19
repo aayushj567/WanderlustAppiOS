@@ -9,23 +9,12 @@ class ShowProfileViewController: UIViewController {
         view = displayScreen
     }
     override func viewWillAppear(_ animated: Bool) {
-        viewDidLoad()
+        setupUserDetails()
     }
     override func viewDidLoad() {
         
         super.viewDidLoad()
         title = "My Profile"
-        // Check if a user is currently signed in
-        if let currentUser = Auth.auth().currentUser {
-            // if user is signed in load thir image from auth
-            if let imageURL = currentUser.photoURL {
-                displayScreen.imageView.loadRemoteImage(from: imageURL)
-            }
-            // and load their name and emails
-            let name = currentUser.displayName
-            let email = currentUser.email
-            displayScreen.labelName.text = "\(name ?? "N/A")"
-            displayScreen.labelEmail.text = "Email: \(email ?? "N/A")"
             
             displayScreen.onIconTapped = { [unowned self] index in
                 // Handle the icon tap, switch views accordingly
@@ -45,7 +34,6 @@ class ShowProfileViewController: UIViewController {
                 }
                 print("Icon at index \(index) was tapped.")
             }
-        }
         
         //MARK: Creating a settings button with drop down menu...
         // create the drop down menu buttons and their action
@@ -63,6 +51,24 @@ class ShowProfileViewController: UIViewController {
          let settingsImage = UIImage(systemName: "gearshape")?.withRenderingMode(.alwaysOriginal)
          navigationItem.rightBarButtonItem = UIBarButtonItem(title: nil, image: settingsImage, primaryAction: nil, menu: profileMenu)
         
+    }
+    
+    func setupUserDetails(){
+        // Check if a user is currently signed in
+        if let currentUser = Auth.auth().currentUser {
+            // if user is signed in load thir image from auth
+            if let imageURL = currentUser.photoURL {
+                displayScreen.imageView.loadRemoteImage(from: imageURL)
+            }else {
+                displayScreen.imageView.image = UIImage(systemName: "person.circle")?.withRenderingMode(.alwaysOriginal)
+            }
+           
+            // and load their name and emails
+            let name = currentUser.displayName
+            let email = currentUser.email
+            displayScreen.labelName.text = "\(name ?? "N/A")"
+            displayScreen.labelEmail.text = "Email: \(email ?? "N/A")"
+        }
     }
     
     @objc func logoutButtonTapped() {
