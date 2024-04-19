@@ -41,7 +41,6 @@ extension EditProfileViewController{
                 } else {
                     // Reauthentication successful
                     print("Reauthentication successful")
-                    
                     // Proceed with the desired action (e.g., updating email, password, etc.)
                 }
             }
@@ -49,6 +48,7 @@ extension EditProfileViewController{
 
         // Present the alert
         self.present(reauthAlert, animated: true, completion: nil)
+        return
     }
     
     //MARK: Check if email or password was edited...
@@ -61,9 +61,11 @@ extension EditProfileViewController{
             // check if email or name is the same...
             if name != Auth.auth().currentUser?.displayName || email != Auth.auth().currentUser?.email {
                 print("Name or email was edited by user")
+                self.reauthenticateUser()
                 self.editDetailsInFirestore(name, email)
             } else {
                 if self.imageWasChanged {
+                    self.reauthenticateUser()
                     self.uploadProfilePhotoToStorage()
                 }
             }
