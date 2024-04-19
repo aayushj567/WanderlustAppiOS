@@ -41,6 +41,7 @@ extension EditProfileViewController{
                 } else {
                     // Reauthentication successful
                     print("Reauthentication successful")
+                    self.navigationController?.popViewController(animated: true)
                     // Proceed with the desired action (e.g., updating email, password, etc.)
                 }
             }
@@ -63,11 +64,10 @@ extension EditProfileViewController{
                 print("Name or email was edited by user")
                 self.reauthenticateUser()
                 self.editDetailsInFirestore(name, email)
-            } else {
                 if self.imageWasChanged {
-                    self.reauthenticateUser()
                     self.uploadProfilePhotoToStorage()
                 }
+                
             }
         }
     }

@@ -8,7 +8,9 @@ class ShowProfileViewController: UIViewController {
     override func loadView() {
         view = displayScreen
     }
-
+    override func viewWillAppear(_ animated: Bool) {
+        viewDidLoad()
+    }
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -50,7 +52,6 @@ class ShowProfileViewController: UIViewController {
          var menuItems: [UIAction] {
              return [
                 UIAction(title: "Edit Profile", handler: { (_) in self.onEditButtonTapped()}),
-//                UIAction(title: "Change Password", handler: { (_) in self.onChangePasswordButtonTapped()}),
                 UIAction(title: "Log out", attributes: .destructive, handler: { (_) in self.logoutButtonTapped()})
              ]
          }
@@ -61,8 +62,6 @@ class ShowProfileViewController: UIViewController {
         // creating the settings button at the top right bar.
          let settingsImage = UIImage(systemName: "gearshape")?.withRenderingMode(.alwaysOriginal)
          navigationItem.rightBarButtonItem = UIBarButtonItem(title: nil, image: settingsImage, primaryAction: nil, menu: profileMenu)
-        
-        //navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(logoutButtonTapped))
         
     }
     
@@ -86,8 +85,6 @@ class ShowProfileViewController: UIViewController {
     
     @objc func onEditButtonTapped(){
         let editScreen = EditProfileViewController()
-        //navigationController?.popViewController(animated: true)
-        navigationController?.popViewController(animated: true)
         navigationController?.pushViewController(editScreen, animated: true)
     }
     
