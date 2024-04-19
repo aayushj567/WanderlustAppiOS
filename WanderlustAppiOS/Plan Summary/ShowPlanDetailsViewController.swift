@@ -25,7 +25,7 @@ class ShowPlanDetailsViewController: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        print(receivedPlan)
+       // print(receivedPlan)
         //let sortedarrays = receivedPlan.days.sort { $0.name < $1.name }
         if var days = receivedPlan.days{
             days.sort {
@@ -226,14 +226,27 @@ extension ShowPlanDetailsViewController: UITableViewDelegate, UITableViewDataSou
         
            // print("test")
            // print(days)
-        cell.labelDayName.text = dayWise[indexPath.row].name
+       // cell.labelDayName.text = dayWise[indexPath.row].name
+        
+        let calendar = Calendar.current
+        var dateComponents = DateComponents()
+        dateComponents.day = indexPath.row
+        let incrementedDate = calendar.date(byAdding: dateComponents, to: receivedPlan.dateFrom!)
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM/dd/yyyy"
+        
+        let dateString = dateFormatter.string(from: incrementedDate!)
+        
+        cell.labelDayName.text = "\(dayWise[indexPath.row].name): \(dateString)"
         
         var desti = ""
        // if let destinations = dayWise
         let day = dayWise[indexPath.row]
+        
                 // Using newline to separate destination names instead of commas
                 let destinationDetails = day.destinations?.map { "\($0.name)" }.joined(separator: "\n") ?? "No destinations available"
-         
+                    print(destinationDetails)
                     cell.labelDestinationName?.text = "\(destinationDetails)"
                     cell.labelDestinationName?.numberOfLines = 0
         for dest in dayWise[indexPath.row].destinations!{
@@ -252,15 +265,25 @@ extension ShowPlanDetailsViewController: UITableViewDelegate, UITableViewDataSou
                         }
                     }
         }
-        //cell.labelDestinationName.text = desti
-        
        
         cell.selectionStyle = .none
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-            displayPlanSummary.tableViewExpense.deselectRow(at: indexPath, animated: true)
+        
+        let destinationDetails = dayWise[indexPath.row].destinations?.map { "\($0.name)" }.joined(separator: "\n") ?? "No destinations available"
+            print(destinationDetails)
+        
+        let alertController = UIAlertController(title: "Destinations", message: destinationDetails, preferredStyle: .alert)
+
+            let okAction = UIAlertAction(title: "OK", style: .default) { (_) in
+                print("OK button tapped")
+            }
+
+            alertController.addAction(okAction)
+
+            present(alertController, animated: true, completion: nil)
     }
    
 }

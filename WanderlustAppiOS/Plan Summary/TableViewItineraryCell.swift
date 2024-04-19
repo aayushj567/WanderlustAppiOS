@@ -13,6 +13,8 @@ class TableViewItineraryCell: UITableViewCell {
     var labelDayName: UILabel!
     var labelDestinationName: UILabel!
     var imageReceipt: UIImageView!
+    var separatorView: UIView! // Separator view
+
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -20,6 +22,8 @@ class TableViewItineraryCell: UITableViewCell {
         setuplabelDayName()
         setuplabelDestinationName()
         setupimageReceipt()
+        setupSeparatorView() // Setup separator view
+
         initConstraints()
         
     }
@@ -35,12 +39,16 @@ class TableViewItineraryCell: UITableViewCell {
         labelDayName = UILabel()
         labelDayName.translatesAutoresizingMaskIntoConstraints = false
         labelDayName.font = UIFont.boldSystemFont(ofSize: 15.0)
+        labelDayName.textColor = .systemBlue
+
         wrapperCellView.addSubview(labelDayName)
     }
     func setuplabelDestinationName(){
         labelDestinationName = UILabel()
         labelDestinationName.translatesAutoresizingMaskIntoConstraints = false
         labelDestinationName.font = UIFont.boldSystemFont(ofSize: 15.0)
+        labelDestinationName.numberOfLines = 0 // Allow multiple lines
+        labelDestinationName.lineBreakMode = .byTruncatingTail
         wrapperCellView.addSubview(labelDestinationName)
     }
 //    func setuplabelBudget(){
@@ -67,6 +75,13 @@ class TableViewItineraryCell: UITableViewCell {
         wrapperCellView.addSubview(imageReceipt)
     }
     
+    func setupSeparatorView() {
+               separatorView = UIView()
+               separatorView.backgroundColor = UIColor.lightGray.withAlphaComponent(0.5) // Adjust color and alpha as needed
+               separatorView.translatesAutoresizingMaskIntoConstraints = false
+               self.addSubview(separatorView)
+           }
+    
     
     func initConstraints(){
         NSLayoutConstraint.activate([
@@ -81,12 +96,19 @@ class TableViewItineraryCell: UITableViewCell {
             
             labelDestinationName.topAnchor.constraint(equalTo: labelDayName.bottomAnchor, constant: 4),
             labelDestinationName.leadingAnchor.constraint(equalTo: labelDayName.leadingAnchor),
-            labelDestinationName.heightAnchor.constraint(equalToConstant: 20),
+            labelDestinationName.heightAnchor.constraint(lessThanOrEqualTo: wrapperCellView.heightAnchor),
+//            labelDestinationName.heightAnchor.constraint(equalToConstant: 20),
             
             imageReceipt.leadingAnchor.constraint(equalTo: wrapperCellView.leadingAnchor, constant: 8),
             imageReceipt.centerYAnchor.constraint(equalTo: wrapperCellView.centerYAnchor),
             imageReceipt.heightAnchor.constraint(equalTo: wrapperCellView.heightAnchor, constant: -20),
             imageReceipt.widthAnchor.constraint(equalTo: wrapperCellView.heightAnchor, constant: -20),
+            labelDestinationName.bottomAnchor.constraint(equalTo: imageReceipt.bottomAnchor),
+            
+            separatorView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
+                       separatorView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10),
+                       separatorView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+                       separatorView.heightAnchor.constraint(equalToConstant: 1),
             
                    
             wrapperCellView.heightAnchor.constraint(equalToConstant: 110)

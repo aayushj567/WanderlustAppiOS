@@ -16,6 +16,8 @@ class AddPeopleTableViewCell: UITableViewCell {
     var userTapped: ((_ isSelected: Bool) -> Void)?
 
     var checkboxButton: UIButton!
+    var separatorView: UIView! // Separator view
+
     
     func setupCheckboxButton() {
         checkboxButton = UIButton()
@@ -47,17 +49,18 @@ class AddPeopleTableViewCell: UITableViewCell {
         setupPersonIconImage()
         setupPersonNameLabel()
         setupCheckboxButton()
+        setupSeparatorView()
         initConstraints()
     }
     
     func setupWrapperCellView(){
         wrapperCellView = UITableViewCell()
         wrapperCellView.backgroundColor = .white
-        wrapperCellView.layer.cornerRadius = 6.0
+       // wrapperCellView.layer.cornerRadius = 6.0
         wrapperCellView.layer.shadowColor = UIColor.gray.cgColor
-        wrapperCellView.layer.shadowOffset = .zero
-        wrapperCellView.layer.shadowRadius = 4.0
-        wrapperCellView.layer.shadowOpacity = 0.4
+        //wrapperCellView.layer.shadowOffset = .zero
+        //wrapperCellView.layer.shadowRadius = 4.0
+        //wrapperCellView.layer.shadowOpacity = 0.4
         wrapperCellView.translatesAutoresizingMaskIntoConstraints = false
         wrapperCellView.layer.borderColor = UIColor.green.cgColor
         self.addSubview(wrapperCellView)
@@ -77,6 +80,13 @@ class AddPeopleTableViewCell: UITableViewCell {
         personNameLabel.translatesAutoresizingMaskIntoConstraints = false
         wrapperCellView.addSubview(personNameLabel)
     }
+    
+    func setupSeparatorView() {
+               separatorView = UIView()
+               separatorView.backgroundColor = UIColor.lightGray.withAlphaComponent(0.5) // Adjust color and alpha as needed
+               separatorView.translatesAutoresizingMaskIntoConstraints = false
+               self.addSubview(separatorView)
+           }
     
     func initConstraints(){
         NSLayoutConstraint.activate([
@@ -105,7 +115,12 @@ class AddPeopleTableViewCell: UITableViewCell {
                 checkboxButton.centerYAnchor.constraint(equalTo: wrapperCellView.centerYAnchor),
                 checkboxButton.widthAnchor.constraint(equalToConstant: 20),
             
-            wrapperCellView.heightAnchor.constraint(equalToConstant: 88)
+            separatorView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
+                       separatorView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10),
+                       separatorView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+                       separatorView.heightAnchor.constraint(equalToConstant: 1),
+            
+            wrapperCellView.heightAnchor.constraint(equalToConstant: 40)
         ])
         
     }

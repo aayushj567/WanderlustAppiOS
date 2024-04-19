@@ -23,6 +23,25 @@ class ChatPlanViewController: UIViewController {
         chatPlanView.tableView.delegate = self
         // Fetch plans where the current user is the owner or included in guests
         fetchPlans()
+        
+        chatPlanView.onIconTapped = { [unowned self] index in
+                   // Handle the icon tap, switch views accordingly
+                   print("Icon at index \(index) was tapped.")
+                   if(index == 0){
+                       let homeView = FirstViewController()
+                       navigationController?.pushViewController(homeView, animated: true)
+                   }
+                   if(index == 1){
+                       let myplansVC = MyPlansViewController()
+                       navigationController?.pushViewController(myplansVC, animated: true)
+                   }
+                   print("Icon at index \(index) was tapped.")
+                   if(index == 3)
+                   {
+                       let profileView = ShowProfileViewController()
+                       navigationController?.pushViewController(profileView, animated: true)
+                   }
+               }
     }
     
 //    private func setupTableView() {

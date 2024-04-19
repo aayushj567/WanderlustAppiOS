@@ -12,7 +12,7 @@ class ShowProfileViewController: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-
+        title = "My Profile"
         // Check if a user is currently signed in
         if let currentUser = Auth.auth().currentUser {
             // if user is signed in load thir image from auth
@@ -24,6 +24,25 @@ class ShowProfileViewController: UIViewController {
             let email = currentUser.email
             displayScreen.labelName.text = "\(name ?? "N/A")"
             displayScreen.labelEmail.text = "Email: \(email ?? "N/A")"
+            
+            displayScreen.onIconTapped = { [unowned self] index in
+                // Handle the icon tap, switch views accordingly
+                print("Icon at index \(index) was tapped.")
+                if(index == 0){
+                    let homeView = FirstViewController()
+                    navigationController?.pushViewController(homeView, animated: true)
+                }
+                if(index == 1){
+                    let myplansVC = MyPlansViewController()
+                    navigationController?.pushViewController(myplansVC, animated: true)
+                }
+                if(index == 2)
+                {
+                    let chatView = ChatPlanViewController()
+                    navigationController?.pushViewController(chatView, animated: true)
+                }
+                print("Icon at index \(index) was tapped.")
+            }
         }
         
         //MARK: Creating a settings button with drop down menu...
@@ -67,7 +86,7 @@ class ShowProfileViewController: UIViewController {
     
     @objc func onEditButtonTapped(){
         let editScreen = EditProfileViewController()
-        navigationController?.popViewController(animated: true)
+        //navigationController?.popViewController(animated: true)
         navigationController?.pushViewController(editScreen, animated: true)
     }
     

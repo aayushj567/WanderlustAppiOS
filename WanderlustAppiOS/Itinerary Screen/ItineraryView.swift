@@ -10,14 +10,14 @@ import UIKit
 class ItineraryView: UIView {
     
     var tableView: UITableView!
-    var startDateInfoLabel: UILabel!
+   // var startDateInfoLabel: UILabel!
     var endDateInfoLabel: UILabel!
     var saveButton: UIButton!
     var tabBarView: UIView!
     var planNameLabel: UILabel!
     var onIconTapped: ((Int) -> Void)?
     var startDateLabel: UILabel!
-    var endDateLabel: UILabel!
+   // var endDateLabel: UILabel!
     var instructionLabel: UILabel!
     var estimateBudgetButton: UIButton!
     
@@ -40,17 +40,11 @@ class ItineraryView: UIView {
         planNameLabel.translatesAutoresizingMaskIntoConstraints = false
         
         startDateLabel = UILabel()
-        startDateLabel.text = "Start Date:"
+        startDateLabel.text = "Dates:"
         startDateLabel.translatesAutoresizingMaskIntoConstraints = false
-        startDateLabel.font = UIFont.systemFont(ofSize: 16)
-            
-        startDateInfoLabel = UILabel()
-        startDateInfoLabel.translatesAutoresizingMaskIntoConstraints = false
-        startDateInfoLabel.font = UIFont.systemFont(ofSize: 16)
-        endDateLabel = UILabel()
-        endDateLabel.text = "End Date:"
-        endDateLabel.translatesAutoresizingMaskIntoConstraints = false
-        endDateLabel.font = UIFont.systemFont(ofSize: 16)
+        startDateLabel.font = UIFont.boldSystemFont(ofSize: 16)
+
+        
             
         endDateInfoLabel = UILabel()
         endDateInfoLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -68,12 +62,14 @@ class ItineraryView: UIView {
         
         saveButton = UIButton()
         saveButton.translatesAutoresizingMaskIntoConstraints = false
+        saveButton.titleLabel?.font = .boldSystemFont(ofSize: 16)
         saveButton.setTitle("Save", for: .normal)
         saveButton.backgroundColor = .systemBlue
         saveButton.layer.cornerRadius = 5
         
         estimateBudgetButton = UIButton()
         estimateBudgetButton.translatesAutoresizingMaskIntoConstraints = false
+        estimateBudgetButton.titleLabel?.font = .boldSystemFont(ofSize: 16)
         estimateBudgetButton.setTitle("Estimate Budget", for: .normal)
         estimateBudgetButton.backgroundColor = .systemGreen
         estimateBudgetButton.layer.cornerRadius = 5
@@ -82,8 +78,8 @@ class ItineraryView: UIView {
         
                addSubview(planNameLabel)
                addSubview(startDateLabel)
-               addSubview(startDateInfoLabel)
-               addSubview(endDateLabel)
+              // addSubview(startDateInfoLabel)
+               //addSubview(endDateLabel)
                addSubview(endDateInfoLabel)
                addSubview(instructionLabel)
                addSubview(saveButton)
@@ -142,14 +138,11 @@ class ItineraryView: UIView {
                     startDateLabel.topAnchor.constraint(equalTo: planNameLabel.bottomAnchor, constant: 20),
                     startDateLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
 
-                    startDateInfoLabel.centerYAnchor.constraint(equalTo: startDateLabel.centerYAnchor),
-                    startDateInfoLabel.leadingAnchor.constraint(equalTo: startDateLabel.trailingAnchor, constant: 10),
+                    endDateInfoLabel.topAnchor.constraint(equalTo: planNameLabel.bottomAnchor, constant: 20),
+                    
+                    endDateInfoLabel.leadingAnchor.constraint(equalTo: startDateLabel.trailingAnchor, constant: 5),
 
-                    endDateLabel.topAnchor.constraint(equalTo: startDateInfoLabel.bottomAnchor, constant: 20),
-                    endDateLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
-
-                    endDateInfoLabel.centerYAnchor.constraint(equalTo: endDateLabel.centerYAnchor),
-                    endDateInfoLabel.leadingAnchor.constraint(equalTo: endDateLabel.trailingAnchor, constant: 10),
+                
 
                     instructionLabel.topAnchor.constraint(equalTo: endDateInfoLabel.bottomAnchor, constant: 20),
                     instructionLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),

@@ -99,7 +99,8 @@ class SearchDestinationView: UIView {
     {
         nextButton = UIButton()
         nextButton.translatesAutoresizingMaskIntoConstraints = false
-        nextButton.setTitle("Next", for: .normal)
+        nextButton.setTitle("Save", for: .normal)
+        nextButton.titleLabel?.font = .boldSystemFont(ofSize: 16)
         nextButton.backgroundColor = .systemBlue // Example color
         nextButton.layer.cornerRadius = 5
         self.addSubview(nextButton)

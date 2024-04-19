@@ -16,7 +16,7 @@ class ViewController: UIViewController {
     var currentUser:FirebaseAuth.User?
     // flag to check if the user has completed the registration process
     var hasCompletedRegistration = false
-
+    var isLoggedin = false
     let loginScreen = LoginView()
     override func loadView() {
         view = loginScreen
@@ -27,7 +27,7 @@ class ViewController: UIViewController {
         super.viewWillAppear(animated)
         handleAuth = Auth.auth().addStateDidChangeListener{ [weak self] auth, user in
             guard let self = self else { return }
-            if user != nil && !self.hasCompletedRegistration { // already a user
+            if user != nil && !self.hasCompletedRegistration && !self.isLoggedin{ // already a user
 //                let mainScreen = CalendarViewController()
                 let mainScreen = FirstViewController()
                 self.navigationController?.pushViewController(mainScreen, animated: true)
@@ -57,16 +57,25 @@ class ViewController: UIViewController {
     //MARK: sign-in logic for Firebase...
     func signIntoFirebase(email: String, password: String){
         //authenticating the user...
+        self.isLoggedin = true
         Auth.auth().signIn(withEmail: email, password: password, completion: {(result, error) in
-            if error != nil{
-                //alert that no user found or password wrong...
-                self.showAlert(title: "Error", message: "No user found with the provided credentials.")
-            }
+            if error == nil{
+               //user authenticated...
+               let mainScreen = FirstViewController()
+               self.navigationController?.pushViewController(mainScreen, animated: true)
+                
+           }else{
+               //alert that no user found or password wrong...
+               self.showAlert(title: "Error", message: "No user found with the provided credentials.")
+           }
         })
     }
     
     // MARK: action when the login button is tapped...
     @objc func onLoginTapped(){
+        // delete this before committing
+//        signIntoFirebase(email: "example1@gmail.com", password: "abc123")
+        self.isLoggedin = true;
         guard let emailText = loginScreen.textFieldEmail.text, !emailText.isEmpty,
               let passwordText = loginScreen.textFieldPassword.text, !passwordText.isEmpty
         else {
