@@ -11,13 +11,7 @@ class CalendarViewController: UIViewController{
     let homeScreen = CalendarView()
     //var selectedDates = [DateComponents]()
     var selectedDates: [Date] = []
-    var planToEdit: Plan? {
-            didSet {
-                if isViewLoaded {
-                    updateUIForEditing()
-                }
-            }
-        }
+    var planToEdit: Plan?
 
     override func loadView() {
         view = homeScreen

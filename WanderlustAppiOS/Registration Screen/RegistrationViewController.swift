@@ -50,10 +50,16 @@ class RegistrationViewController: UIViewController {
             showAlert(message: "Invalid email. Please enter a valid email address.")
             return
         }
+        guard isPasswordValid(passwordText) else {
+            showAlert(message: "Invalid password. Password should be atleast of 6 characters long.")
+            return
+        }
         // start the registration process by first uploading the picture...
         uploadProfilePhotoToStorage()
     }
-
+    func isPasswordValid(_ password: String) -> Bool {
+        return password.count >= 6
+    }
     func isValidEmail(_ email: String) -> Bool {
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
         let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
