@@ -50,7 +50,7 @@ class ShowProfileViewController: UIViewController {
          var menuItems: [UIAction] {
              return [
                 UIAction(title: "Edit Profile", handler: { (_) in self.onEditButtonTapped()}),
-                UIAction(title: "Change Password", handler: { (_) in self.onChangePasswordButtonTapped()}),
+//                UIAction(title: "Change Password", handler: { (_) in self.onChangePasswordButtonTapped()}),
                 UIAction(title: "Log out", attributes: .destructive, handler: { (_) in self.logoutButtonTapped()})
              ]
          }
@@ -87,6 +87,7 @@ class ShowProfileViewController: UIViewController {
     @objc func onEditButtonTapped(){
         let editScreen = EditProfileViewController()
         //navigationController?.popViewController(animated: true)
+        navigationController?.popViewController(animated: true)
         navigationController?.pushViewController(editScreen, animated: true)
     }
     

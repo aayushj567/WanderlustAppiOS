@@ -12,6 +12,7 @@ class CalendarView: UIView {
     var topLabel: UILabel!
     var planTextField: UITextField!
     var calendarView: UICalendarView!
+    var noteLabel: UILabel!
     var buttonNext: UIButton!
     var tabBarView: UIView!
     var onIconTapped: ((Int) -> Void)?
@@ -41,6 +42,12 @@ class CalendarView: UIView {
         planTextField.autocorrectionType = .no
         self.addSubview(planTextField)
         
+        noteLabel = UILabel()
+        noteLabel.text = "Note: Of the Selected Dates, only range will be considered."
+        noteLabel.translatesAutoresizingMaskIntoConstraints = false
+        noteLabel.font = UIFont.italicSystemFont(ofSize: 12)
+        self.addSubview(noteLabel)
+        
         calendarView = UICalendarView()
         calendarView.translatesAutoresizingMaskIntoConstraints = false
         calendarView.calendar = .current
@@ -67,7 +74,11 @@ class CalendarView: UIView {
             planTextField.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 16),
             planTextField.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -16),
             
-            calendarView.topAnchor.constraint(equalTo: self.planTextField.bottomAnchor, constant: 10),
+            noteLabel.topAnchor.constraint(equalTo: self.planTextField.bottomAnchor, constant: 10),
+            noteLabel.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            noteLabel.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -16),
+            
+            calendarView.topAnchor.constraint(equalTo: self.noteLabel.bottomAnchor, constant: 2),
             calendarView.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 10),
             calendarView.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -10),
             calendarView.heightAnchor.constraint(equalToConstant: 500),

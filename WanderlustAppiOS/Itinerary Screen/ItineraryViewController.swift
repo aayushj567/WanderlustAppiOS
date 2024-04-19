@@ -134,7 +134,6 @@ class ItineraryViewController: UIViewController, UITableViewDelegate, UITableVie
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         present(alert, animated: true, completion: nil)
     }
-
     
     @objc func saveItinerary() {
         guard let currentUser = Auth.auth().currentUser else {
@@ -147,15 +146,19 @@ class ItineraryViewController: UIViewController, UITableViewDelegate, UITableVie
                 self.present(alert, animated: true, completion: nil)
                 return
             }
+        
+        let db = Firestore.firestore()
+        let plansRef = db.collection("plans")
+        var planDocument = plansRef.document()
+        
         if let plan = planToEdit {
             var showPlan = ShowPlanDetailsViewController()
             showPlan.receivedPlan = plan
             showPlan.onDeletePlan()
+            planDocument = plansRef.document(plan.id!)
         }
         
-        let db = Firestore.firestore()
-        let plansRef = db.collection("plans")
-        let planDocument = plansRef.document()
+       
         
         var newPlan = Plan(
             name: itineraryView.planNameLabel.text ?? "Untitled Plan",
@@ -168,9 +171,11 @@ class ItineraryViewController: UIViewController, UITableViewDelegate, UITableVie
         )
         if var plan = planToEdit {
             plan.days = days
-            print("Edited Plan\(plan)")
-            print(plan.id!)
-            print(plan.days!.count)
+//            print("Edited Plan\(plan)")
+//            print(plan.id!)
+//            print(plan.days!.count)
+            newPlan.id = plan.id
+            
             
             
         }
@@ -190,7 +195,64 @@ class ItineraryViewController: UIViewController, UITableViewDelegate, UITableVie
         } catch let error {
             print("Error serializing plan: \(error)")
         }
-    }
+        }
+
+    
+//    @objc func saveItinerary() {
+//        guard let currentUser = Auth.auth().currentUser else {
+//            fatalError("No user signed in")
+//        }
+//        let emptyDays = days.filter { $0.destinations?.isEmpty ?? true }
+//            if !emptyDays.isEmpty {
+//                let alert = UIAlertController(title: "Incomplete Itinerary", message: "Please add destinations for all days before saving.", preferredStyle: .alert)
+//                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+//                self.present(alert, animated: true, completion: nil)
+//                return
+//            }
+//        if let plan = planToEdit {
+//            var showPlan = ShowPlanDetailsViewController()
+//            showPlan.receivedPlan = plan
+//            showPlan.onDeletePlan()
+//        }
+//        
+//        let db = Firestore.firestore()
+//        let plansRef = db.collection("plans")
+//        let planDocument = plansRef.document()
+//        
+//        var newPlan = Plan(
+//            name: itineraryView.planNameLabel.text ?? "Untitled Plan",
+//            dateFrom: selectedDates.first ?? Date(),
+//            dateTo: selectedDates.last ?? Date(),
+//            dayIds: [],
+//            owner: currentUser.uid,
+//            guests: selectedUserIds
+//            
+//        )
+//        if var plan = planToEdit {
+//            plan.days = days
+//            print("Edited Plan\(plan)")
+//            print(plan.id!)
+//            print(plan.days!.count)
+//            
+//            
+//        }
+//        
+//        //print(newPlan)
+//        do {
+//            try planDocument.setData(from: newPlan) { error in
+//                if let error = error {
+//                    print("Error writing document: \(error)")
+//                } else {
+//                    print("Plan successfully saved!")
+//                    self.saveDays(planId: planDocument.documentID, planDocument: planDocument)
+//                    let nextScreen = MyPlansViewController()
+//                    self.navigationController?.pushViewController(nextScreen, animated: true)
+//                }
+//            }
+//        } catch let error {
+//            print("Error serializing plan: \(error)")
+//        }
+//    }
     
     func saveDays(planId: String, planDocument: DocumentReference) {
         let db = Firestore.firestore()
